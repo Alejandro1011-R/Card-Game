@@ -1,0 +1,15 @@
+/home/mauro/Proyectos/Card-Game/Card-Game/obj/Debug/net6.0/Card-Game.csproj.AssemblyReference.cache
+/home/mauro/Proyectos/Card-Game/Card-Game/obj/Debug/net6.0/Card-Game.GeneratedMSBuildEditorConfig.editorconfig
+/home/mauro/Proyectos/Card-Game/Card-Game/obj/Debug/net6.0/Card-Game.AssemblyInfoInputs.cache
+/home/mauro/Proyectos/Card-Game/Card-Game/obj/Debug/net6.0/Card-Game.AssemblyInfo.cs
+/home/mauro/Proyectos/Card-Game/Card-Game/obj/Debug/net6.0/Card-Game.csproj.CoreCompileInputs.cache
+/home/mauro/Proyectos/Card-Game/Card-Game/bin/Debug/net6.0/Card-Game
+/home/mauro/Proyectos/Card-Game/Card-Game/bin/Debug/net6.0/Card-Game.deps.json
+/home/mauro/Proyectos/Card-Game/Card-Game/bin/Debug/net6.0/Card-Game.runtimeconfig.json
+/home/mauro/Proyectos/Card-Game/Card-Game/bin/Debug/net6.0/Card-Game.dll
+/home/mauro/Proyectos/Card-Game/Card-Game/bin/Debug/net6.0/ref/Card-Game.dll
+/home/mauro/Proyectos/Card-Game/Card-Game/bin/Debug/net6.0/Card-Game.pdb
+/home/mauro/Proyectos/Card-Game/Card-Game/obj/Debug/net6.0/Card-Game.dll
+/home/mauro/Proyectos/Card-Game/Card-Game/obj/Debug/net6.0/ref/Card-Game.dll
+/home/mauro/Proyectos/Card-Game/Card-Game/obj/Debug/net6.0/Card-Game.pdb
+/home/mauro/Proyectos/Card-Game/Card-Game/obj/Debug/net6.0/Card-Game.genruntimeconfig.cache
