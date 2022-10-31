@@ -16,21 +16,23 @@ namespace BattleCards
             DeckSize = 40;
             HandSize = 5;
             XCard = 0;
-            for (var i = 0; i < CardDataBase.CardList.Count ; i++)
+            Random rnd = new Random();
+            for (var i = 0; i < DeckSize ; i++)
             {
-                Random rnd = new Random();
+               
                 XCard = rnd.Next(0, CardDataBase.CardList.Count);
                 Deck.Add(CardDataBase.CardList[XCard]);
+                CardDataBase.CardList.RemoveAt(XCard);
                 
             }
         }
 
         public void Stuffle()
         {
-            
+            Random rnd = new Random();
             for (var i = 0; i < Deck.Count; i++)
             {
-                Random rnd = new Random();
+                
                 AuxDeck[0] = Deck[i];
                 int RandomIndex = rnd.Next(0, Deck.Count);
                 Deck[i] = Deck[RandomIndex];
@@ -38,7 +40,7 @@ namespace BattleCards
 
                 
             }
-            Deck = AuxDeck;
+        
 
         }
        
