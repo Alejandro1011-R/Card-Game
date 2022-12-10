@@ -26,6 +26,23 @@ namespace BattleCards
                 
             }
         }
+        void Update() {   //cambio de turno
+
+            if (Deck.Count == DeckSize){
+
+                Stuffle();
+                for (var i = 0; i < HandSize; i++)
+                {
+                    DrawCard();
+                }
+            }
+            else {
+                
+                DrawCard();
+
+            }
+            
+        }
 
         public void Stuffle()
         {
