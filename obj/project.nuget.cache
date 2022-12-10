@@ -1,15 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PncQXIuPmxuPGCAMARaMiMLqma1A5QJ3iL708pO99sUnqSEY/IddntucFsYKcwnNv6uHyqz3WvrCGV5wHvm7xg==",
+  "dgSpecHash": "hFbTzoXdISC7gUFTL4YRPwY4znlw2s0wW3oPyDncHhhPGTs0u7a730bpYZq6llshJGm4ODJS893Ul+JjtPJ4QA==",
   "success": true,
-  "projectFilePath": "c:\\Users\\Alejandrito\\source\\repos\\CARD GAME\\Card-Game\\Card-Game.csproj",
+  "projectFilePath": "C:\\Users\\Alejandrito\\source\\repos\\CARD GAME\\Card-Game\\Card-Game.csproj",
   "expectedPackageFiles": [],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file c:\\Users\\Alejandrito\\source\\repos\\CARD GAME\\Card-Game\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }
