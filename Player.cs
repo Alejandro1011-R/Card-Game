@@ -34,9 +34,21 @@ namespace BattleCards
             return Health;
         }
 
-public int GetPlayerHand()
-{
-    return PlayerHand.Count;
-} 
+        public int GetPlayerHand()
+        {
+            return PlayerHand.Count;
+        } 
+
+        public int GetLife()
+        {
+            return Health;
+        }
+
+        public int GetDeckCount()
+        {
+            return Deck.Count;
+        }
+
+    
     }   
 }
