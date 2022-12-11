@@ -5,9 +5,11 @@ namespace BattleCards
     public class Player
     {
         private string Name;
+        private int Health;
         public Player(string name)
         {
             Name = name;
+            Health = 5;
             PlayerM = new List<Card>();
             PlayerR = new List<Card>();
             Cementery = new List<Card>();
@@ -27,5 +29,14 @@ namespace BattleCards
             return Name;
         }
 
+        public int GetHealth()
+        {
+            return Health;
+        }
+
+public int GetPlayerHand()
+{
+    return PlayerHand.Count;
+} 
     }   
 }
