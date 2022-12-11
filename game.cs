@@ -87,7 +87,7 @@ namespace BattleCards
                     System.Console.WriteLine("Presione cualquier tecla para continuar...");
                     System.Console.ReadKey();
                     System.Console.Clear();
-                    GameLoop(player1, player2);
+                    GameLoop(player1, player2, 1);
                 }
                 else
                 {
@@ -96,7 +96,7 @@ namespace BattleCards
                     System.Console.WriteLine("Presione cualquier tecla para continuar...");
                     System.Console.ReadKey();
                     System.Console.Clear();
-                    GameLoop(player2, player1);
+                    GameLoop(player2, player1, 1);
                 }
             }
             else
@@ -137,12 +137,15 @@ Random rnd = new Random();
                     return "cruz";
                 }
  }
-        static void GameLoop(Player player1, Player player2)
+        static void GameLoop(Player player1, Player player2, int turn)
         {
+            if(EndGame(player1, player2)) return;
+
+
             System.Console.WriteLine("Turno de " + player1.GetName());
             Board board = new Board();
             board.BoardInfo(player1, player2);
-   //         board.PrintBoard();
+            //         board.PrintBoard();
             
             System.Console.WriteLine("Presione cualquier tecla para continuar...");
             System.Console.ReadKey();
@@ -151,17 +154,67 @@ Random rnd = new Random();
             System.Console.WriteLine("Presione cualquier tecla para continuar...");
             System.Console.ReadKey();
             System.Console.Clear();
-            GameLoop(player1, player2);
+            GameLoop(player1, player2, turn++);
 
         }
         static void GameRule()
         {
+            
 
         }
-        static bool EndTurn()
+        static bool EndGame(Player player1, Player player2) //Condiciones de fin de juego
         {
-            
-          return true;
+            if(player1.GetLife()==0)
+            {
+                System.Console.WriteLine(player2.GetName() + " ha ganado!");
+                System.Console.WriteLine("Presione cualquier tecla para volver al menu...");
+                System.Console.ReadKey();
+                System.Console.Clear();
+                Game game = new Game();
+                return true;
+            }
+            else if(player2.GetLife()==0)
+            {
+                System.Console.WriteLine(player1.GetName() + " ha ganado!");
+                System.Console.WriteLine("Presione cualquier tecla para volver al menu...");
+                System.Console.ReadKey();
+                System.Console.Clear();
+                Game game = new Game();
+                return true;
+            }
+
+            else if (player1.GetDeckCount() == 0 && player1.GetPlayerHand() == 0)
+            {
+                if (player1.GetLife() > player2.GetLife())
+                {
+                    System.Console.WriteLine(player1.GetName() + " ha ganado!");
+                    System.Console.WriteLine("Presione cualquier tecla para volver al menu...");
+                    System.Console.ReadKey();
+                    System.Console.Clear();
+                    Game game = new Game();
+                    return true;
+                }
+                else if (player1.GetLife() < player2.GetLife())
+                {
+                    System.Console.WriteLine(player2.GetName() + " ha ganado!");
+                    System.Console.WriteLine("Presione cualquier tecla para volver al menu...");
+                    System.Console.ReadKey();
+                    System.Console.Clear();
+                    Game game = new Game();
+                    return true;
+                }
+                else
+                {
+                    System.Console.WriteLine("Empate!");
+                    System.Console.WriteLine("Presione cualquier tecla para volver al menu...");
+                    System.Console.ReadKey();
+                    System.Console.Clear();
+                    Game game = new Game();
+                    return true;
+                }
+
+            }
+          return false;
         }
     }
 }
