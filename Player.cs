@@ -42,7 +42,7 @@ namespace BattleCards
         public List<Card> PlayerM; //melee row// fila de ataque cuerpo a cuerpo (max 9)
         public List<Card> PlayerR; //range row// ataque larga distancia (max 9)
 
-        public List<Card> AuxDeck = new List<Card>();
+       // public List<Card> AuxDeck = new List<Card>();
         public List<Card> Cementery = new List<Card>();
 
         public List<Card> Hand = new List<Card>(); 
