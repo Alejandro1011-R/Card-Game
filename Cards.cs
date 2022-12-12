@@ -9,10 +9,10 @@ namespace BattleCards
         public string Description;
         public int BasePower;
         public int Power;
-        public int Armour;
+       
         public int CardType;
         public int Faction;
-        public int Colour;
+       
         public bool Passive;
         
 
@@ -22,26 +22,24 @@ namespace BattleCards
             Name = "Default";
             Description = "Default";
             Power = 0;
-            Armour = 0;
             CardType = 0;
             Faction=0;
-            Colour=0;
             Passive = false;
             BasePower=0;
             
         }
 
-        public Card(int id, string name, string description, int power, int armour, int cardType, int faction, int colour,bool passive)
+        public Card(int id, string name, string description, int power, int cardType, int faction,bool passive)
         {
             Id = id;
             Name = name;
             Description = description;
             BasePower=power;
             Power = power;
-            Armour = armour;
+           
             CardType = cardType;
             Faction = faction;
-            Colour =colour;
+         
             Passive =passive;
             
         }
