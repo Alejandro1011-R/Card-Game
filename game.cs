@@ -129,16 +129,78 @@ namespace BattleCards
     Console.ForegroundColor = ConsoleColor.White;
  }
 
-   static void SystemGame(Player player, int turn)
+   static void SystemGame(Player player, int turn, int id, Player player1, Player player2)
         {
             player.Update();
+            bool temp = true;
+            var dic = new Dictionary<Card, int>();
             if(turn == 1){
              System.Console.WriteLine(player.GetName()+ " Ha recibido 5 cartas, elija cual desea jugar");}
                     for(int i=0; i< player.GetHand();i++)
                     {
+                        dic.Add(player.GetHands()[i], i+1);
                         System.Console.WriteLine(i+1+". "+ player.GetHands()[i].Name+": "+player.GetHands()[i].Description +", Power: " +player.GetHands()[i].Power+", Faction: "+player.GetHands()[i].Faction);
                     }
+                    Board board = new Board(player1, player2);
                     ConsoleKeyInfo option = Console.ReadKey();
+            if(id == 1){
+                
+                int index = (48 - ((int)option.Key))*(-1);
+                
+                for (var i = 0; i < 2; i++)
+                {
+                    for (var j = 0; j < Board.board.GetLength(1); j++)
+                    {
+                        if (Board.board[i, j] == "[  ]")
+                        {
+                            Board.board[i ,j] = "[" + player.GetHands()[index].Id.ToString() + "]";
+                            Board.CardsInGame.Add(player.GetHands()[index], player.GetHands()[index].Id);
+                            player.Hand.Remove(player.GetHands()[index]);
+                            temp = false;
+                            break;
+                            
+                        }
+                    }
+                    if(temp == false){
+                        break;
+                    }
+
+                    
+                }
+
+            }
+            else if(id == 2){
+                
+                int index = (48 - ((int)option.Key))*(-1);
+                for (var i = Board.board.GetLength(0)-1; i > 2; i--)
+                {
+                    for (var j = Board.board.GetLength(1)-1; j >= 0; j--)
+                    {
+                        if (Board.board[i, j] == "[  ]")
+                        {
+                            Board.board[i ,j] = "[" + player.GetHands()[index].Id.ToString() + "]";
+                            Board.CardsInGame.Add(player.GetHands()[index], player.GetHands()[index].Id);
+                            player.Hand.Remove(player.GetHands()[index]);
+                            temp = false;
+                            break;
+                            
+                        }
+                    }
+                    if(temp == false){
+                        break;
+                    }
+
+                    
+                }
+
+            }
+            else{
+                System.Console.WriteLine("Opcion invalida, presione cualquier tecla para volver al menu...");
+                System.Console.ReadKey();
+                System.Console.Clear();
+                Game game = new Game();
+            }
+            Board board2 = new Board(player1, player2);
 
         }
  static string CaraoCruz()
@@ -160,15 +222,15 @@ Random rnd = new Random();
 
 
             System.Console.WriteLine("Turno de " + player1.GetName());
-            Board board = new Board();
-            board.BoardInfo(player1, player2);
-            SystemGame(player1, turn);
+           // Board board = new Board();
+           // board.BoardInfo(player1, player2);
+            SystemGame(player1, turn, 1, player1, player2);
             
             System.Console.WriteLine("Presione cualquier tecla para continuar...");
             System.Console.ReadKey();
             System.Console.Clear();
             System.Console.WriteLine("Turno de " + player2.GetName());
-            SystemGame(player2, turn);
+            SystemGame(player2, turn, 2, player1, player2);
             System.Console.WriteLine("Presione cualquier tecla para continuar...");
             System.Console.ReadKey();
             System.Console.Clear();
