@@ -14,7 +14,7 @@ namespace BattleCards
             PlayerR = new List<Card>();
             Cementery = new List<Card>();
             Deck = new List<Card>();
-            Deck=Stuffle(CardDataBase.CardList);
+            Deck=PlayerDeck.Start();
             PlayerHand = new List<Card>();
             PlayerHand=Deck.Take(5).ToList();
             Pass = false;

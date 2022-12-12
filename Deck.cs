@@ -11,7 +11,7 @@ namespace BattleCards
         public int HandSize;
         public int XCard;
 
-        void Start()
+       public void Start()
         {
             DeckSize = 40;
             HandSize = 5;
@@ -26,7 +26,7 @@ namespace BattleCards
                 
             }
         }
-        void Update() {   //cambio de turno
+      public  void Update() {   //cambio de turno
 
             if (Deck.Count == DeckSize){
 
