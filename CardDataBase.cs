@@ -9,7 +9,7 @@ namespace BattleCards
         public static List<Card> CardList = new List<Card>();
 
 
-        void awake()
+        public void awake()
         {  //int id, string name, string description, int power, int armour, int cardType, int faction, int colour
             //faction 0 skelije
             //faction 1 monstruos
@@ -33,9 +33,11 @@ namespace BattleCards
             CardList.Add(new Card(15,"Regis", "Inflinge 2 de daño a una unidad enemiga", 2, 0, 0, 1, 2,false));
             CardList.Add(new Card(16,"Eredin", "Inflinge 2 de daño a una unidad enemiga", 2, 0, 0, 1, 2,false));
             CardList.Add(new Card(17,"Ghoul", "Ataca directamente al adversario", 2, 0, 0, 1, 2,false));
+        }
 
-
-
+        public static string GetCardName()
+        {
+            return CardList[0].Name;
         }
 
     }

@@ -2,6 +2,8 @@
 {
 public static class juego{
     public static void Main(){
+        CardDataBase cardDataBase = new CardDataBase();
+    cardDataBase.awake();
         Game game = new Game();
     }
 }

@@ -18,20 +18,20 @@ namespace BattleCards
             System.Console.WriteLine("Hola, a continuacion podra seleccionar lo que desea hacer en el juego:");
             System.Console.WriteLine("1. Jugar ");
             System.Console.WriteLine("2. Salir");
-            string option = System.Console.ReadLine();
+            ConsoleKey option = Console.ReadKey().Key;
             System.Console.Clear();
-            if (option == "1")
+            if (option == ConsoleKey.D1 )
             {
                 System.Console.WriteLine("Desea jugar contra la computadora o contra otro jugador?");
                 System.Console.WriteLine("1. Computadora");
                 System.Console.WriteLine("2. Jugador");
-                option = System.Console.ReadLine();
+                ConsoleKeyInfo option2 = Console.ReadKey();
                 System.Console.Clear();
-                if(option=="2")
+                if(option2.KeyChar=='2')
                 {
                    StartGameVsPerson();
                 }
-                else if(option=="1")
+                else if(option2.KeyChar=='1')
                 {
                     StartGameVsComputer();
                 }
@@ -44,7 +44,7 @@ namespace BattleCards
                 }
                
             }
-            else if (option == "2")
+            else if (option == ConsoleKey.D2)
             {
                 System.Console.WriteLine("Gracias por jugar!");
                 System.Console.WriteLine("Presione cualquier tecla para salir...");
@@ -65,25 +65,27 @@ namespace BattleCards
         static void StartGameVsPerson()
         {
             System.Console.WriteLine("Ingrese el nombre del primer jugador:");
-            string player1Name = System.Console.ReadLine();
+            string player1Name = System.Console.ReadLine().Trim();
             System.Console.Clear();
             System.Console.WriteLine("Ingrese el nombre del segundo jugador:");
-            string player2Name = System.Console.ReadLine();
+            string player2Name = System.Console.ReadLine().Trim();
             System.Console.Clear();
-
             Player player1 = new Player(player1Name);
             Player player2 = new Player(player2Name);
             System.Console.WriteLine("Hola " + player1.GetName() + " y " + player2.GetName() + "! a continuacion se elegira al hazar quien comenzara el juego.");
             System.Console.WriteLine(player1.GetName() + " eliga cara o cruz:");
-            string option = System.Console.ReadLine();
+            System.Console.WriteLine("1. Cara");
+            System.Console.WriteLine("2. Cruz");
+            ConsoleKey option = Console.ReadKey().Key;
             System.Console.Clear();
-            if (option == "cara" || option == "cruz")
+            if (option == ConsoleKey.D1 || option == ConsoleKey.D2)
             {
-                option=CaraoCruz();
-                if (option == "Cara")
+               string moneda=CaraoCruz();
+                if (moneda == "Cara")
                 {
                     System.Console.WriteLine("El resultado fue cara!");
                     System.Console.WriteLine(player1.GetName() + " comenzara el juego!");
+                 
                     System.Console.WriteLine("Presione cualquier tecla para continuar...");
                     System.Console.ReadKey();
                     System.Console.Clear();
@@ -93,6 +95,7 @@ namespace BattleCards
                 {
                     System.Console.WriteLine("El resultado fue cruz!");
                     System.Console.WriteLine(player2.GetName() + " comenzara el juego!");
+                   
                     System.Console.WriteLine("Presione cualquier tecla para continuar...");
                     System.Console.ReadKey();
                     System.Console.Clear();
@@ -111,6 +114,8 @@ namespace BattleCards
             System.Console.ReadKey();
             System.Console.Clear();
         }
+
+     
  static void StartGameVsComputer()
  {
     System.Console.WriteLine("Elija el adversario contra el que desea jugar");
@@ -124,6 +129,14 @@ namespace BattleCards
     Console.ForegroundColor = ConsoleColor.White;
  }
 
+   static void SystemGame(Player player)
+        {
+             System.Console.WriteLine(player.GetName()+ " Ha recibido 5 cartas, elija cual desea jugar");
+                    for(int i=0; i< player.GetPlayerHand();i++)
+                    {
+                        System.Console.WriteLine(i+1+". "+ player.GetPlayerHands()[i].Name);
+                    }
+        }
  static string CaraoCruz()
  {
 Random rnd = new Random();
@@ -139,14 +152,13 @@ Random rnd = new Random();
  }
         static void GameLoop(Player player1, Player player2, int turn)
         {
-            if(EndGame(player1, player2)) return;
+       //     if(EndGame(player1, player2)) return;
 
 
             System.Console.WriteLine("Turno de " + player1.GetName());
             Board board = new Board();
             board.BoardInfo(player1, player2);
-            //         board.PrintBoard();
-            
+            SystemGame(player1);
             System.Console.WriteLine("Presione cualquier tecla para continuar...");
             System.Console.ReadKey();
             System.Console.Clear();
