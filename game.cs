@@ -134,8 +134,10 @@ namespace BattleCards
              System.Console.WriteLine(player.GetName()+ " Ha recibido 5 cartas, elija cual desea jugar");
                     for(int i=0; i< player.GetPlayerHand();i++)
                     {
-                        System.Console.WriteLine(i+1+". "+ player.GetPlayerHands()[i].Name);
+                        System.Console.WriteLine(i+1+". "+ player.GetPlayerHands()[i].Name+": "+player.GetPlayerHands()[i].Description +", Power: " +player.GetPlayerHands()[i].Power+", Faction: "+player.GetPlayerHands()[i].Faction);
                     }
+                    ConsoleKeyInfo option = Console.ReadKey();
+
         }
  static string CaraoCruz()
  {
