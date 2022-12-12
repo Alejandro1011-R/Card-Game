@@ -6,6 +6,7 @@ public static class juego{
     cardDataBase.awake();
         Game game = new Game();
     }
+    // prueba
 }
 }
 // static List<int> Orden(List<int> cartas)
