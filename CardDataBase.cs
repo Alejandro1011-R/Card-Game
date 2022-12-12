@@ -35,10 +35,6 @@ namespace BattleCards
             CardList.Add(new Card(17,"Ghoul", "Ataca directamente al adversario", 2, 0, 1,false));
         }
 
-        public static string GetCardName()
-        {
-            return CardList[0].Name;
-        }
-
+       
     }
 }

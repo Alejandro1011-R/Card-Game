@@ -46,7 +46,7 @@ namespace BattleCards
             System.Console.WriteLine("Tablero de juego:");
             PrintBoard();
             System.Console.WriteLine("Jugador 1: "+ player1.GetName() + "               Jugador 2: "+ player2.GetName());
-            System.Console.WriteLine("Cartas en mano: "+ player1.GetPlayerHand() + "         Cartas en mano: "+ player2.GetPlayerHand());
+            System.Console.WriteLine("Cartas en mano: "+ player1.GetHand() + "         Cartas en mano: "+ player2.GetHand());
             System.Console.WriteLine("Vida: "+ player1.GetHealth() + "                   Vida: "+ player2.GetHealth());
         }
     }

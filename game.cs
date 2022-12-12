@@ -129,12 +129,14 @@ namespace BattleCards
     Console.ForegroundColor = ConsoleColor.White;
  }
 
-   static void SystemGame(Player player)
+   static void SystemGame(Player player, int turn)
         {
-             System.Console.WriteLine(player.GetName()+ " Ha recibido 5 cartas, elija cual desea jugar");
-                    for(int i=0; i< player.GetPlayerHand();i++)
+            player.Update();
+            if(turn == 1){
+             System.Console.WriteLine(player.GetName()+ " Ha recibido 5 cartas, elija cual desea jugar");}
+                    for(int i=0; i< player.GetHand();i++)
                     {
-                        System.Console.WriteLine(i+1+". "+ player.GetPlayerHands()[i].Name+": "+player.GetPlayerHands()[i].Description +", Power: " +player.GetPlayerHands()[i].Power+", Faction: "+player.GetPlayerHands()[i].Faction);
+                        System.Console.WriteLine(i+1+". "+ player.GetHands()[i].Name+": "+player.GetHands()[i].Description +", Power: " +player.GetHands()[i].Power+", Faction: "+player.GetHands()[i].Faction);
                     }
                     ConsoleKeyInfo option = Console.ReadKey();
 
@@ -160,11 +162,13 @@ Random rnd = new Random();
             System.Console.WriteLine("Turno de " + player1.GetName());
             Board board = new Board();
             board.BoardInfo(player1, player2);
-            SystemGame(player1);
+            SystemGame(player1, turn);
+            
             System.Console.WriteLine("Presione cualquier tecla para continuar...");
             System.Console.ReadKey();
             System.Console.Clear();
             System.Console.WriteLine("Turno de " + player2.GetName());
+            SystemGame(player2, turn);
             System.Console.WriteLine("Presione cualquier tecla para continuar...");
             System.Console.ReadKey();
             System.Console.Clear();
@@ -197,7 +201,7 @@ Random rnd = new Random();
                 return true;
             }
 
-            else if (player1.GetDeckCount() == 0 && player1.GetPlayerHand() == 0)
+            else if (player1.GetDeckCount() == 0 && player1.GetHand() == 0)
             {
                 if (player1.GetLife() > player2.GetLife())
                 {
