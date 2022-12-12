@@ -11,35 +11,35 @@ namespace BattleCards
         {
 
         
-for (int i=0; i<board.GetLength(0); i++)
-{
-for(int j=0; j<board.GetLength(1); j++)
-{
-if(i<=1)
-{
-    
-    Console.ForegroundColor = ConsoleColor.DarkRed;
-    System.Console.Write("[]");
-    if(j==4) System.Console.WriteLine("");
+            for (int i=0; i<board.GetLength(0); i++)
+            {
+                for(int j=0; j<board.GetLength(1); j++)
+                {
+                    if(i<=1)
+                    {
+                        
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        System.Console.Write("[]");
+                        if(j==4) System.Console.WriteLine("");
 
-}
-else if(i==2)
-{
-    Console.ForegroundColor = ConsoleColor.DarkBlue;
-    System.Console.Write("--");
-    if(j==4) System.Console.WriteLine("");
-}
-else
-{
-    Console.ForegroundColor = ConsoleColor.DarkGreen;
-    System.Console.Write("[]");
-    if(j==4) {
-        System.Console.WriteLine("");
-        Console.ForegroundColor=ConsoleColor.White;
-        }
-}
-}
-        }
+                    }
+                    else if(i==2)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkBlue;
+                        System.Console.Write("--");
+                        if(j==4) System.Console.WriteLine("");
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        System.Console.Write("[]");
+                        if(j==4) {
+                            System.Console.WriteLine("");
+                            Console.ForegroundColor=ConsoleColor.White;
+                        }
+                    }
+                }
+            }
         }
          public void BoardInfo(Player player1, Player player2)
         {
