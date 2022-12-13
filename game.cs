@@ -4,7 +4,7 @@ namespace BattleCards
 {
     public class Game
     {
-        public Game()
+        public Game() //juego
         {
            Presentation();
 
@@ -131,21 +131,23 @@ namespace BattleCards
 
    static void SystemGame(Player player, int turn, int id, Player player1, Player player2)
         {
-            player.Update();
+            player.Update();  // En cada turno repartir carta en cada turno
             bool temp = true;
             var dic = new Dictionary<Card, int>();
-            if(turn == 1){
+            if(turn == 1)
+            {  
              System.Console.WriteLine(player.GetName()+ " Ha recibido 5 cartas, elija cual desea jugar");}
-                    for(int i=0; i< player.GetHand();i++)
+                    for(int i=0; i< player.GetHand();i++) // imprime las cartas en mano del jugador que este jugando
                     {
                         dic.Add(player.GetHands()[i], i+1);
                         System.Console.WriteLine(i+1+". "+ player.GetHands()[i].Name+": "+player.GetHands()[i].Description +", Power: " +player.GetHands()[i].Power+", Faction: "+player.GetHands()[i].Faction);
                     }
                     Board board = new Board(player1, player2);
                     ConsoleKeyInfo option = Console.ReadKey();
+            //Se activa la carta jugada en el campo y se remueve de la mano
             if(id == 1){
                 
-                int index = (48 - ((int)option.Key))*(-1);
+                int index = (48 - ((int)option.Key))*(-1); //Esto lo puse asi xq el option me da x ejemplo 49 '1' y no vi otra via pa hacerlo si quieres modifica
                 
                 for (var i = 0; i < 2; i++)
                 {
@@ -242,59 +244,59 @@ Random rnd = new Random();
             
 
         }
-        static bool EndGame(Player player1, Player player2) //Condiciones de fin de juego
-        {
-            if(player1.GetLife()==0)
-            {
-                System.Console.WriteLine(player2.GetName() + " ha ganado!");
-                System.Console.WriteLine("Presione cualquier tecla para volver al menu...");
-                System.Console.ReadKey();
-                System.Console.Clear();
-                Game game = new Game();
-                return true;
-            }
-            else if(player2.GetLife()==0)
-            {
-                System.Console.WriteLine(player1.GetName() + " ha ganado!");
-                System.Console.WriteLine("Presione cualquier tecla para volver al menu...");
-                System.Console.ReadKey();
-                System.Console.Clear();
-                Game game = new Game();
-                return true;
-            }
+        // static bool EndGame(Player player1, Player player2) //MODIFICA TO ESTO
+        // {
+            // if(player1.GetLife()==0)
+            // {
+            //     System.Console.WriteLine(player2.GetName() + " ha ganado!");
+            //     System.Console.WriteLine("Presione cualquier tecla para volver al menu...");
+            //     System.Console.ReadKey();
+            //     System.Console.Clear();
+            //     Game game = new Game();
+            //     return true;
+            // }
+            // else if(player2.GetLife()==0)
+            // {
+            //     System.Console.WriteLine(player1.GetName() + " ha ganado!");
+            //     System.Console.WriteLine("Presione cualquier tecla para volver al menu...");
+            //     System.Console.ReadKey();
+            //     System.Console.Clear();
+            //     Game game = new Game();
+            //     return true;
+            // }
 
-            else if (player1.GetDeckCount() == 0 && player1.GetHand() == 0)
-            {
-                if (player1.GetLife() > player2.GetLife())
-                {
-                    System.Console.WriteLine(player1.GetName() + " ha ganado!");
-                    System.Console.WriteLine("Presione cualquier tecla para volver al menu...");
-                    System.Console.ReadKey();
-                    System.Console.Clear();
-                    Game game = new Game();
-                    return true;
-                }
-                else if (player1.GetLife() < player2.GetLife())
-                {
-                    System.Console.WriteLine(player2.GetName() + " ha ganado!");
-                    System.Console.WriteLine("Presione cualquier tecla para volver al menu...");
-                    System.Console.ReadKey();
-                    System.Console.Clear();
-                    Game game = new Game();
-                    return true;
-                }
-                else
-                {
-                    System.Console.WriteLine("Empate!");
-                    System.Console.WriteLine("Presione cualquier tecla para volver al menu...");
-                    System.Console.ReadKey();
-                    System.Console.Clear();
-                    Game game = new Game();
-                    return true;
-                }
+            // else if (player1.GetDeckCount() == 0 && player1.GetHand() == 0)
+            // {
+            //     if (player1.GetLife() > player2.GetLife())
+            //     {
+            //         System.Console.WriteLine(player1.GetName() + " ha ganado!");
+            //         System.Console.WriteLine("Presione cualquier tecla para volver al menu...");
+            //         System.Console.ReadKey();
+            //         System.Console.Clear();
+            //         Game game = new Game();
+            //         return true;
+            //     }
+            //     else if (player1.GetLife() < player2.GetLife())
+            //     {
+            //         System.Console.WriteLine(player2.GetName() + " ha ganado!");
+            //         System.Console.WriteLine("Presione cualquier tecla para volver al menu...");
+            //         System.Console.ReadKey();
+            //         System.Console.Clear();
+            //         Game game = new Game();
+            //         return true;
+            //     }
+            //     else
+            //     {
+            //         System.Console.WriteLine("Empate!");
+            //         System.Console.WriteLine("Presione cualquier tecla para volver al menu...");
+            //         System.Console.ReadKey();
+            //         System.Console.Clear();
+            //         Game game = new Game();
+            //         return true;
+            //     }
 
-            }
-          return false;
-        }
+        //     }
+        //   return false;
+       // }
     }
 }
