@@ -1,13 +1,15 @@
 ﻿namespace BattleCards
 {
-public static class juego{
-    public static void Main(){
-        CardDataBase cardDataBase = new CardDataBase();
-    cardDataBase.awake();
-        Game game = new Game();
+    public static class juego
+    {
+        public static void Main()
+        {
+            CardDataBase cardDataBase = new CardDataBase();
+            cardDataBase.awake();
+            Game game = new Game();
+        }
+        // prueba
     }
-    // prueba
-}
 }
 // static List<int> Orden(List<int> cartas)
 //  {

@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "d:\\Escuela\\Cards Project\\Card-Game\\Card-Game.csproj": {}
+    "C:\\Mauro\\Proyectos\\ultimo 3\\Card-Game\\Card-Game.csproj": {}
   },
   "projects": {
-    "d:\\Escuela\\Cards Project\\Card-Game\\Card-Game.csproj": {
+    "C:\\Mauro\\Proyectos\\ultimo 3\\Card-Game\\Card-Game.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Escuela\\Cards Project\\Card-Game\\Card-Game.csproj",
+        "projectUniqueName": "C:\\Mauro\\Proyectos\\ultimo 3\\Card-Game\\Card-Game.csproj",
         "projectName": "Card-Game",
-        "projectPath": "d:\\Escuela\\Cards Project\\Card-Game\\Card-Game.csproj",
-        "packagesPath": "C:\\Users\\Alejandrito\\.nuget\\packages\\",
-        "outputPath": "d:\\Escuela\\Cards Project\\Card-Game\\obj\\",
+        "projectPath": "C:\\Mauro\\Proyectos\\ultimo 3\\Card-Game\\Card-Game.csproj",
+        "packagesPath": "C:\\Users\\mauro\\.nuget\\packages\\",
+        "outputPath": "C:\\Mauro\\Proyectos\\ultimo 3\\Card-Game\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Alejandrito\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\mauro\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -58,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

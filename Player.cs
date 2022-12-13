@@ -1,28 +1,40 @@
 using System.ComponentModel.DataAnnotations;
 using System.Reflection.Emit;
+
 namespace BattleCards
 {
     public class Player
     {
-       
         private string Name;
-        private int Health;
+        private int turns_won;
+
+        private string total_turns;
+
         public Player(string name)
         {
             Start();
             Name = name;
-            Health = 5;
+            turns_won = 0;
+            total_turns = turns_won + "/5";
             PlayerM = new List<Card>();
             PlayerR = new List<Card>();
             Cementery = new List<Card>();
-            
-
-            
-            
-            Pass = false;
+            PassTurn = false;
         }
 
-       
+        public void Point(List<Card> PlayerM, List<Card> PlayerR)
+        {
+            for (var i = 0; i < PlayerM.Count; i++)
+            {
+                TotalPoint += PlayerM[i].Power;
+            }
+            for (var i = 0; i < PlayerR.Count; i++)
+            {
+                TotalPoint += PlayerR[i].Power;
+            }
+         
+        }
+
         //         public List<Card> Stuffle(List<Card> Deck)
         // {
         //     Random rnd = new Random();
@@ -34,7 +46,7 @@ namespace BattleCards
         //         Deck[i] = Deck[RandomIndex];
         //         Deck[RandomIndex] = AuxDeck[0];
 
-                
+
         //     }
         // return Deck;
 
@@ -42,42 +54,63 @@ namespace BattleCards
         public List<Card> PlayerM; //melee row// fila de ataque cuerpo a cuerpo (max 9)
         public List<Card> PlayerR; //range row// ataque larga distancia (max 9)
 
-       // public List<Card> AuxDeck = new List<Card>();
+        // public List<Card> AuxDeck = new List<Card>();
         public List<Card> Cementery = new List<Card>();
 
-        public List<Card> Hand = new List<Card>(); 
+        public List<Card> Hand = new List<Card>();
         public List<Card> Deck = new List<Card>();
-        public bool Pass;
 
         public int DeckSize;
         public int HandSize;
         public int XCard;
 
+        private int TotalPoint;
 
+        private bool PassTurn;
+ 
+        public void Actualizar()
+        {
+            total_turns = turns_won + "/5";
+        }
+        public void DeletePlayer()
+        {
+            PlayerM.Clear();
+            PlayerR.Clear();
+        }
+        public int Points
+        {
+            get { return TotalPoint; }
+        }
+        public bool PassedTurn
+        {
+            get { return PassTurn; }
+            set { PassTurn = value; }
+        }
 
-        
         public string GetName()
         {
             return Name;
         }
 
-        public int GetHealth()
+        public string GetTotal_turns()
         {
-            return Health;
+            return total_turns;
+        }
+
+        public int Turns_wons
+        {
+            get { return turns_won; }
+            set { turns_won = value; }
         }
 
         public int GetHand()
         {
             return Hand.Count;
-        } 
+        }
 
-public List<Card> GetHands()
+        public List<Card> GetHands()
         {
             return Hand;
-        }
-        public int GetLife()
-        {
-            return Health;
         }
 
         public int GetDeckCount()
@@ -92,31 +125,28 @@ public List<Card> GetHands()
             HandSize = 5;
             XCard = 0;
             Random rnd = new Random();
-            for (var i = 0; i < DeckSize ; i++)
+            for (var i = 0; i < DeckSize; i++)
             {
-            
                 XCard = rnd.Next(0, CardDB.Count);
                 Deck.Add(CardDB[XCard]);
                 CardDB.RemoveAt(XCard);
-                
             }
         }
-      public  void Update() {   //cambio de turno
 
-            if (Deck.Count == DeckSize){
-
+        public void Update()
+        { //cambio de turno
+            if (Deck.Count == DeckSize)
+            {
                 Stuffle();
                 for (var i = 0; i < HandSize; i++)
                 {
                     DrawCard();
                 }
             }
-            else {
-                
+            else
+            {
                 DrawCard();
-
             }
-            
         }
 
         public void Stuffle()
@@ -125,18 +155,12 @@ public List<Card> GetHands()
             var AuxCard = new Card();
             for (var i = 0; i < Deck.Count; i++)
             {
-                
                 AuxCard = Deck[i];
                 int RandomIndex = rnd.Next(0, Deck.Count);
                 Deck[i] = Deck[RandomIndex];
                 Deck[RandomIndex] = AuxCard;
-
-                
             }
-        
-
         }
-       
 
         public void DrawCard()
         {
@@ -146,7 +170,5 @@ public List<Card> GetHands()
                 Deck.RemoveAt(0);
             }
         }
-
-    
-    }   
+    }
 }

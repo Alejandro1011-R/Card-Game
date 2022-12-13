@@ -5,21 +5,20 @@ namespace BattleCards
         public bool IsYourTurn;
         public int YourTurn;
         public int EnemyTurn;
-        
 
-        void Start ()
+        void Start()
         {
             IsYourTurn = true;
             YourTurn = 1;
             EnemyTurn = 0;
         }
 
-        void Update ()
+        void Update()
         {
             if (IsYourTurn)
             {
                 //Escribir
+            }
         }
     }
-}
 }

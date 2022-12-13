@@ -1,7 +1,7 @@
 ﻿using System.Reflection.Emit;
+
 namespace BattleCards
 {
-    
     public class Card
     {
         public int Id;
@@ -9,12 +9,11 @@ namespace BattleCards
         public string Description;
         public int BasePower;
         public int Power;
-       
+
         public int CardType;
         public int Faction;
-       
+
         public bool Passive;
-        
 
         public Card()
         {
@@ -23,31 +22,33 @@ namespace BattleCards
             Description = "Default";
             Power = 0;
             CardType = 0;
-            Faction=0;
+            Faction = 0;
             Passive = false;
-            BasePower=0;
-            
+            BasePower = 0;
         }
 
-        public Card(int id, string name, string description, int power, int cardType, int faction,bool passive)
+        public Card(
+            int id,
+            string name,
+            string description,
+            int power,
+            int cardType,
+            int faction,
+            bool passive
+        )
         {
             Id = id;
             Name = name;
             Description = description;
-            BasePower=power;
+            BasePower = power;
             Power = power;
-           
+
             CardType = cardType;
             Faction = faction;
-         
-            Passive =passive;
-            
+
+            Passive = passive;
         }
-
     }
 
-    public class EffectCard 
-    {
-        
-    }
+    public class EffectCard { }
 }
