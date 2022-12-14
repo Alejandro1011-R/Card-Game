@@ -244,6 +244,7 @@ namespace BattleCards
             bool correcto = true;
             while (correcto)
             {
+                
                 ConsoleKeyInfo option = Console.ReadKey();
                 if (option.KeyChar == '6')
                 {
@@ -264,10 +265,30 @@ namespace BattleCards
                     || option.KeyChar == '5' //arreglar esta posibilidad
                 )
                 {
+                     int index=0;
+                        switch(option.KeyChar)
+                        {
+                            case '1':
+                                index = 0;
+                                break;
+                            case '2':
+                                index = 1;
+                                break;
+                            case '3':
+                                index = 2;
+                                break;
+                            case '4':
+                                index = 3;
+                                break;
+                            case '5':
+                                index = 4;
+                                break;
+                        }
                     correcto = false;
                     if (id == 1)
                     {
-                        int index = (48 - ((int)option.Key)) * (-1); //Esto lo puse asi xq el option me da x ejemplo 49 '1' y no vi otra via pa hacerlo si quieres modifica
+                       
+                        //Esto lo puse asi xq el option me da x ejemplo 49 '1' y no vi otra via pa hacerlo si quieres modifica
 
                         for (var i = 0; i < 2; i++)
                         {
@@ -295,7 +316,7 @@ namespace BattleCards
                     }
                     else if (id == 2)
                     {
-                        int index = (48 - ((int)option.Key)) * (-1);
+                     
                         for (var i = Board.board.GetLength(0) - 1; i > 2; i--)
                         {
                             for (var j = Board.board.GetLength(1) - 1; j >= 0; j--)
