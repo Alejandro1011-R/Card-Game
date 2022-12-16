@@ -6,20 +6,20 @@ namespace BattleCards
     public class Player
     {
         private string Name;
-        private int turns_won;
+        private int RaundsWon;
 
-        private string total_turns;
+        private string TotalRounds;
 
         public Player(string name)
         {
             Start();
             Name = name;
-            turns_won = 0;
-            total_turns = turns_won + "/5";
-            PlayerM = new List<Card>();
-            PlayerR = new List<Card>();
+            RaundsWon = 0;
+            TotalRounds = RaundsWon + "/5";
+            PlayerM = new List<Card>(5);
+            PlayerR = new List<Card>(5);
             Cementery = new List<Card>();
-            PassTurn = false;
+            PassRound = false;
         }
 
         public void Point(List<Card> PlayerM, List<Card> PlayerR)
@@ -35,22 +35,7 @@ namespace BattleCards
          
         }
 
-        //         public List<Card> Stuffle(List<Card> Deck)
-        // {
-        //     Random rnd = new Random();
-        //     for (var i = 0; i < Deck.Count; i++)
-        //     {
-        //         AuxDeck = Deck;
-        //         AuxDeck[0] = Deck[i];
-        //         int RandomIndex = rnd.Next(0, Deck.Count);
-        //         Deck[i] = Deck[RandomIndex];
-        //         Deck[RandomIndex] = AuxDeck[0];
-
-
-        //     }
-        // return Deck;
-
-        // }
+        
         public List<Card> PlayerM; //melee row// fila de ataque cuerpo a cuerpo (max 9)
         public List<Card> PlayerR; //range row// ataque larga distancia (max 9)
 
@@ -66,11 +51,11 @@ namespace BattleCards
 
         private int TotalPoint;
 
-        private bool PassTurn;
+        private bool PassRound;
  
         public void Actualizar()
         {
-            total_turns = turns_won + "/5";
+            TotalRounds = RaundsWon + "/5";
         }
         public void DeletePlayer()
         {
@@ -81,10 +66,10 @@ namespace BattleCards
         {
             get { return TotalPoint; }
         }
-        public bool PassedTurn
+        public bool PassedRound
         {
-            get { return PassTurn; }
-            set { PassTurn = value; }
+            get { return PassRound; }
+            set { PassRound = value; }
         }
 
         public string GetName()
@@ -92,15 +77,15 @@ namespace BattleCards
             return Name;
         }
 
-        public string GetTotal_turns()
+        public string GetTotalRounds()
         {
-            return total_turns;
+            return TotalRounds;
         }
 
-        public int Turns_wons
+        public int GetRoundsWon
         {
-            get { return turns_won; }
-            set { turns_won = value; }
+            get { return RaundsWon; }
+            set { RaundsWon = value; }
         }
 
         public int GetHand()

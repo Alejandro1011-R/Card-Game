@@ -2,26 +2,29 @@ namespace BattleCards
 {
     public class Board
     {
-        public static string[,] board =
-        {
+        public static string[,] board = new string[5, 5] {
             { "[  ]", "[  ]", "[  ]", "[  ]", "[  ]" },
             { "[  ]", "[  ]", "[  ]", "[  ]", "[  ]" },
-            { "--", "--", "--", "--", "--" },
+            { "---", "---", "---", "---", "---" },
             { "[  ]", "[  ]", "[  ]", "[  ]", "[  ]" },
             { "[  ]", "[  ]", "[  ]", "[  ]", "[  ]" }
+
+            
         };
+        
+        
         private int turn;
 
-        public static Dictionary<Card, int> CardsInGame = new Dictionary<Card, int>();
-        private int player1health { get; set; }
-        private int player2health { get; set; }
+        public static Dictionary<Card, int> CardsInGame = new Dictionary<Card, int>();//Recuerdame modificar esto-- Es mejor llamar al del GameStatus
+        // private int player1health { get; set; }
+        // private int player2health { get; set; }
 
-        public Board(Player player1, Player player2)
+        public Board()
         {
-            BoardInfo(player1, player2);
+            
         }
 
-        public void PrintBoard()
+        public static void PrintBoard()
         {
             for (int i = 0; i < board.GetLength(0); i++)
             {
@@ -29,6 +32,7 @@ namespace BattleCards
                 {
                     if (i <= 1)
                     {
+                        //Console.BackgroundColor = ConsoleColor.DarkGray;
                         Console.ForegroundColor = ConsoleColor.DarkRed;
                         System.Console.Write(board[i, j]);
                         if (j == 4)
@@ -43,6 +47,7 @@ namespace BattleCards
                     }
                     else
                     {
+                        //Console.BackgroundColor = ConsoleColor.DarkGray;
                         Console.ForegroundColor = ConsoleColor.DarkGreen;
                         System.Console.Write(board[i, j]);
                         if (j == 4)
@@ -55,7 +60,7 @@ namespace BattleCards
             }
         }
 
-        public void BoardInfo(Player player1, Player player2)
+        public static void BoardInfo(Player player1, Player player2)
         {
             System.Console.WriteLine("Tablero de juego:");
             PrintBoard();
@@ -68,7 +73,7 @@ namespace BattleCards
                     + "         Cartas en mano: "
                     + player2.GetHand()
             );
-                   System.Console.WriteLine( "Turnos ganados: "+ player1.GetTotal_turns() + "         Turnos ganados: "+ player2.GetTotal_turns());
+                   System.Console.WriteLine( "Rondas ganadas: "+ player1.GetRoundsWon + "         Rondas ganadas: "+ player2.GetRoundsWon);
             // System.Console.WriteLine("Vida: "+ player1.GetHealth() + "                   Vida: "+ player2.GetHealth());
             System.Console.WriteLine("");
             for (var i = 0; i < CardsInGame.Count; i++)
@@ -77,17 +82,19 @@ namespace BattleCards
                 System.Console.WriteLine("Cartas en juego:");
                 System.Console.WriteLine(
                     card.Value
-                        + ": "
+                        + ". "
                         + card.Key.Name
-                        + " "
+                        + ": "
                         + card.Key.Description
-                        + " "
+                        + ", Power: "
                         + card.Key.Power
-                        + " "
+                        + ", Faction: "
                         + card.Key.Faction
                 );
             }
             
         }
+
+        
     }
 }
