@@ -182,7 +182,7 @@ namespace BattleCards
                     }
                 }
             }
- 
+
             Console.ForegroundColor = ConsoleColor.Yellow;
             System.Console.WriteLine("Presione cualquier tecla para comenzar...");
             System.Console.ReadKey();
@@ -434,12 +434,20 @@ namespace BattleCards
             Board.CardsInGame.Clear();
             player1.PassedRound = false;
             player2.PassedRound = false;
-            player1.Point(player1.PlayerM, player2.PlayerR);
-            player2.Point(player2.PlayerM, player1.PlayerR);
+            player1.Point(player1.PlayerM, player1.PlayerR);
+            player2.Point(player2.PlayerM, player2.PlayerR);
             player1.DeletePlayer();
             player2.DeletePlayer();
-
-            if (player1.Points > player2.Points)
+            if (player1.Points == player2.Points)
+            {
+                player1.Actualizar();
+                player2.Actualizar();
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Green;
+                System.Console.WriteLine("Empate!");
+                Console.ResetColor();
+            }
+            else if (player1.Points > player2.Points)
             {
                 player1.GetRoundsWon++;
                 player1.Actualizar();
