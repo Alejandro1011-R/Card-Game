@@ -117,9 +117,12 @@ namespace BattleCards
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             System.Console.WriteLine("Ingrese el nombre del primer jugador:");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             string player1Name = System.Console.ReadLine().Trim();
             System.Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Yellow;
             System.Console.WriteLine("Ingrese el nombre del segundo jugador:");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             string player2Name = System.Console.ReadLine().Trim();
             System.Console.Clear();
             Player player1 = new Player(player1Name);
@@ -133,7 +136,7 @@ namespace BattleCards
                         + player1.GetName()
                         + " y "
                         + player2.GetName()
-                        + "! a continuacion se elegira al hazar quien comenzara el juego."
+                        + "! a continuacion se elegira al azar quien comenzara el juego."
                 );
                 System.Console.WriteLine(player1.GetName() + " elija cara o cruz:");
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
@@ -179,17 +182,7 @@ namespace BattleCards
                     }
                 }
             }
-            /*
-            else
-            {
-                System.Console.WriteLine(
-                    "Opcion invalida, presione cualquier tecla para volver al menu..."
-                );
-                System.Console.ReadKey();
-                System.Console.Clear();
-                Game game = new Game();
-            }
-            */       
+ 
             Console.ForegroundColor = ConsoleColor.Yellow;
             System.Console.WriteLine("Presione cualquier tecla para comenzar...");
             System.Console.ReadKey();
@@ -210,8 +203,6 @@ namespace BattleCards
             Console.ForegroundColor = ConsoleColor.White;
         }
 
-        
-
         static string CaraoCruz()
         {
             Random rnd = new Random();
@@ -226,13 +217,15 @@ namespace BattleCards
             }
         }
 
-        static void CheckPlayerInGame (Player player1, Player player2, int turn)
+        static void CheckPlayerInGame(Player player1, Player player2, int turn)
         {
-            if (turn % 2 == 0) {
+            if (turn % 2 == 0)
+            {
                 GameRun.PlayerInTurn = player2;
                 GameRun.PlayerOpposing = player1;
             }
-            else{
+            else
+            {
                 GameRun.PlayerInTurn = player1;
                 GameRun.PlayerOpposing = player2;
             }
@@ -241,153 +234,146 @@ namespace BattleCards
         static void GameLoop(Player player1, Player player2, int turn)
         {
             //     if(EndGame(player1, player2)) return;
-            CheckPlayerInGame (player1, player2, turn);
+            CheckPlayerInGame(player1, player2, turn);
             if (player1.PassedRound == false)
             {
-                
                 bool correctOrder = true;
-                PlayNow (player1, player2, turn, correctOrder);
+                PlayNow(player1, player2, turn, correctOrder);
                 turn++;
-                
             }
-            else turn++;
+            else
+                turn++;
 
-            CheckPlayerInGame (player1, player2, turn);
+            CheckPlayerInGame(player1, player2, turn);
             if (player2.PassedRound == false)
             {
-                
                 bool correctOrder = false;
-                PlayNow (player2, player1, turn, correctOrder);
+                PlayNow(player2, player1, turn, correctOrder);
                 turn++;
             }
-            else turn++;
-                
+            else
+                turn++;
+
             //      System.Console.WriteLine("Presione cualquier tecla para continuar...");
 
-            if (player1.PassedRound == true && player2.PassedRound == true) GameRule(player1, player2);
-            
+            if (player1.PassedRound == true && player2.PassedRound == true)
+                GameRule(player1, player2);
+
             EndGame(player1, player2);
             GameLoop(player1, player2, turn);
         }
 
-        static void PlayNow (Player playerInGame, Player playerOpposing, int turn, bool correctOrder)
+        static void PlayNow(Player playerInGame, Player playerOpposing, int turn, bool correctOrder)
         {
             //Console.ForegroundColor = ConsoleColor.Yellow;
-                System.Console.WriteLine("Turno de " + playerInGame.GetName());
-                // Board board = new Board();
-                // board.BoardInfo(player1, player2);
-                int id = 0;
-                bool FullHand = false;
-                if(playerInGame.Hand.Count == 5)
-                {
-                    FullHand = true;
-                }
-                else
-                    playerInGame.Update();
-                    
+            System.Console.WriteLine("Turno de " + playerInGame.GetName());
+            // Board board = new Board();
+            // board.BoardInfo(player1, player2);
+            int id = 0;
+            bool FullHand = false;
+            if (playerInGame.Hand.Count == 5)
+            {
+                FullHand = true;
+            }
+            else
+                playerInGame.Update();
 
-                if (correctOrder){
-                    
-                    id = 1;
-                    Board.BoardInfo(playerInGame, playerOpposing, FullHand);
-                }
-                else {
-
-                    id = 2;
-                    Board.BoardInfo(playerOpposing, playerInGame, FullHand);
-                }
-                PrintTurnInfo(playerInGame, turn);
-                ConsoleKeyInfo option = Console.ReadKey();
-               // System.Console.Clear();
-                bool correct = true;
-                while (correct)
+            if (correctOrder)
+            {
+                id = 1;
+                Board.BoardInfo(playerInGame, playerOpposing, FullHand);
+            }
+            else
+            {
+                id = 2;
+                Board.BoardInfo(playerOpposing, playerInGame, FullHand);
+            }
+            PrintTurnInfo(playerInGame, turn);
+            ConsoleKeyInfo option = Console.ReadKey();
+            // System.Console.Clear();
+            bool correct = true;
+            while (correct)
+            {
+                correct = false;
+                if (option.KeyChar == '6')
                 {
-                    
                     correct = false;
-                    if (option.KeyChar == '6')
+                    playerInGame.PassedRound = true;
+                    System.Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    System.Console.WriteLine("Turno pasado");
+                    System.Console.ReadKey();
+                    System.Console.Clear();
+                }
+                else if (
+                    option.KeyChar == '1'
+                    || option.KeyChar == '2'
+                    || option.KeyChar == '3'
+                    || option.KeyChar == '4'
+                    || option.KeyChar == '5' //arreglar esta posibilidad
+                )
+                {
+                    int index = 0;
+                    switch (option.KeyChar)
                     {
-                        correct = false;
-                        playerInGame.PassedRound = true;
-                        System.Console.Clear();
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        System.Console.WriteLine("Turno pasado");
-                        System.Console.ReadKey();
-                        System.Console.Clear();
+                        case '1':
+                            index = 0;
+                            break;
+                        case '2':
+                            index = 1;
+                            break;
+                        case '3':
+                            index = 2;
+                            break;
+                        case '4':
+                            index = 3;
+                            break;
+                        case '5':
+                            index = 4;
+                            break;
                     }
-                    else if (
-                        option.KeyChar == '1'
-                        || option.KeyChar == '2'
-                        || option.KeyChar == '3'
-                        || option.KeyChar == '4'
-                        || option.KeyChar == '5' //arreglar esta posibilidad
-                    )
+                    if (GameRun.CheckBoard(playerInGame, id))
                     {
-                        int index=0;
-                            switch(option.KeyChar)
-                            {
-                                case '1':
-                                    index = 0;
-                                    break;
-                                case '2':
-                                    index = 1;
-                                    break;
-                                case '3':
-                                    index = 2;
-                                    break;
-                                case '4':
-                                    index = 3;
-                                    break;
-                                case '5':
-                                    index = 4;
-                                    break;
-                            }
-                            if (GameRun.CheckBoard(playerInGame, id))
-                            {
-                                System.Console.WriteLine("Todas las casillas estan ocupadas, seleccione otra opcion");
-                                option = System.Console.ReadKey();
-                                correct = true;
-                            }
-                            else
-                            {    GameRun.SystemGame(playerInGame, turn, id, option, index);
-                                GameStatus gameStatus = new GameStatus();
-                                gameStatus.UpdateGameStatus(playerInGame, playerOpposing, turn);
-                                GameRun.AddItems(gameStatus, turn, playerInGame);
-                                // if (correctOrder)
-                                //     Board.BoardInfo(playerInGame, playerOpposing, FullHand);
-                                // else Board.BoardInfo(playerOpposing, playerInGame, FullHand);
-                                 //Board.BoardInfo(playerInGame, playerOpposing);
-                            }
-                
-
+                        System.Console.WriteLine(
+                            "Todas las casillas estan ocupadas, seleccione otra opcion"
+                        );
+                        option = System.Console.ReadKey();
+                        correct = true;
                     }
                     else
-                        {
-                            System.Console.WriteLine(
-                                "Opcion invalida, seleccione una opcion valida"
-                            );
-                            option = System.Console.ReadKey();
-                            correct = true;
-                            
-                        }
+                    {
+                        GameRun.SystemGame(playerInGame, turn, id, option, index);
+                        GameStatus gameStatus = new GameStatus();
+                        gameStatus.UpdateGameStatus(playerInGame, playerOpposing, turn);
+                        GameRun.AddItems(gameStatus, turn, playerInGame);
+                        // if (correctOrder)
+                        //     Board.BoardInfo(playerInGame, playerOpposing, FullHand);
+                        // else Board.BoardInfo(playerOpposing, playerInGame, FullHand);
+                        //Board.BoardInfo(playerInGame, playerOpposing);
+                    }
                 }
-                    
+                else
+                {
+                    System.Console.WriteLine("Opcion invalida, seleccione una opcion valida");
+                    option = System.Console.ReadKey();
+                    correct = true;
+                }
+            }
 
-                
-               // System.Console.ReadKey();
-                System.Console.Clear();
-
+            // System.Console.ReadKey();
+            System.Console.Clear();
         }
 
         static void PrintTurnInfo(Player player, int turn)
         {
             if (turn == 1)
-                {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    System.Console.WriteLine(
-                        player.GetName()
-                            + " Ha recibido 5 cartas, Seleccione una carta para jugar o 6 para pasar turno"
-                    );
-                }
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                System.Console.WriteLine(
+                    player.GetName()
+                        + " Ha recibido 5 cartas, Seleccione una carta para jugar o 6 para pasar turno"
+                );
+            }
 
             for (int i = 0; i < player.GetHand(); i++) // imprime las cartas en mano del jugador que este jugando
             {
@@ -410,8 +396,6 @@ namespace BattleCards
             Console.ForegroundColor = ConsoleColor.Red;
             System.Console.WriteLine("6: Pasar turno");
             Console.ForegroundColor = ConsoleColor.White;
-
-            
         }
 
         static void Write(int val, string text)
@@ -423,62 +407,58 @@ namespace BattleCards
             }
         }
 
-        static void NewBoard ()
+        static void NewBoard()
         {
             for (var i = 0; i < Board.board.GetLength(0); i++)
             {
-                if(i == 2){
+                if (i == 2)
+                {
                     for (var j = 0; j < Board.board.GetLength(1); j++)
                     {
-                        Board.board[i,j] = "----";
-                        
+                        Board.board[i, j] = "----";
                     }
                 }
                 else
                     for (var j = 0; j < Board.board.GetLength(1); j++)
                     {
-                        Board.board[i,j] = "[  ]";
-                        
+                        Board.board[i, j] = "[  ]";
                     }
-                
             }
         }
 
         static void GameRule(Player player1, Player player2)
         {
-             //si los 2 se pasan, termina ese turno y se elige el ganador de acuerdo a la cantidad de poder en el campo
-            
-                NewBoard();
-                Board.CardsInGame.Clear();
-                player1.PassedRound = false;
-                player2.PassedRound = false;
-                player1.Point(player1.PlayerM, player2.PlayerR);
-                player2.Point(player2.PlayerM, player1.PlayerR);
-                player1.DeletePlayer();
-                player2.DeletePlayer();
+            //si los 2 se pasan, termina ese turno y se elige el ganador de acuerdo a la cantidad de poder en el campo
 
-                if (player1.Points > player2.Points)
-                {
-                    player1.GetRoundsWon++;
-                    player1.Actualizar();
+            NewBoard();
+            Board.CardsInGame.Clear();
+            player1.PassedRound = false;
+            player2.PassedRound = false;
+            player1.Point(player1.PlayerM, player2.PlayerR);
+            player2.Point(player2.PlayerM, player1.PlayerR);
+            player1.DeletePlayer();
+            player2.DeletePlayer();
 
-                    Console.Clear();
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    System.Console.WriteLine(player1.GetName() + " ha ganado el turno!");
-                    Console.ResetColor();
-                }
-                else if (player2.Points > player1.Points)
-                {
-                    player2.GetRoundsWon++;
-                    player2.Actualizar();
+            if (player1.Points > player2.Points)
+            {
+                player1.GetRoundsWon++;
+                player1.Actualizar();
 
-                    Console.Clear();
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    System.Console.WriteLine(player2.GetName() + " ha ganado el turno!");
-                    Console.ResetColor();
-                }
-                
-            
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Green;
+                System.Console.WriteLine(player1.GetName() + " ha ganado el turno!");
+                Console.ResetColor();
+            }
+            else if (player2.Points > player1.Points)
+            {
+                player2.GetRoundsWon++;
+                player2.Actualizar();
+
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Green;
+                System.Console.WriteLine(player2.GetName() + " ha ganado el turno!");
+                Console.ResetColor();
+            }
         }
 
         static bool EndGame(Player player1, Player player2) //Condiciones de fin de juego
@@ -509,7 +489,7 @@ namespace BattleCards
             }
             else if (player1.GetDeckCount() == 0 && player2.GetDeckCount() == 0)
             {
-                if(player1.GetRoundsWon > player2.GetRoundsWon)
+                if (player1.GetRoundsWon > player2.GetRoundsWon)
                 {
                     System.Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Green;
@@ -520,7 +500,6 @@ namespace BattleCards
                     System.Console.Clear();
                     Game game = new Game();
                     return true;
-
                 }
                 else if (player2.GetRoundsWon > player1.GetRoundsWon)
                 {
@@ -534,7 +513,8 @@ namespace BattleCards
                     Game game = new Game();
                     return true;
                 }
-                else{
+                else
+                {
                     System.Console.WriteLine("Empate!");
                     System.Console.WriteLine("Presione cualquier tecla para volver al menu...");
                     System.Console.ReadKey();

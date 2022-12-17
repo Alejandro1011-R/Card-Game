@@ -59,7 +59,7 @@ namespace BattleCards
         }
         public void DeletePlayer()
         {
-            
+            Cementery=PlayerM.Concat(PlayerR).ToList();
             PlayerM.Clear();
             PlayerR.Clear();
         }
