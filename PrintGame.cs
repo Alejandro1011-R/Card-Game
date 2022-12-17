@@ -136,7 +136,7 @@ namespace BattleCards
                         + player1.GetName()
                         + " y "
                         + player2.GetName()
-                        + "! a continuacion se elegira al hazar quien comenzara el juego."
+                        + "! a continuacion se elegira al azar quien comenzara el juego."
                 );
                 System.Console.WriteLine(player1.GetName() + " elija cara o cruz:");
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
