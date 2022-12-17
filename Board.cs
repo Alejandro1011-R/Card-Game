@@ -5,7 +5,7 @@ namespace BattleCards
         public static string[,] board = new string[5, 5] {
             { "[  ]", "[  ]", "[  ]", "[  ]", "[  ]" },
             { "[  ]", "[  ]", "[  ]", "[  ]", "[  ]" },
-            { "---", "---", "---", "---", "---" },
+            { "----", "----", "----", "----", "----" },
             { "[  ]", "[  ]", "[  ]", "[  ]", "[  ]" },
             { "[  ]", "[  ]", "[  ]", "[  ]", "[  ]" }
 
@@ -19,10 +19,10 @@ namespace BattleCards
         // private int player1health { get; set; }
         // private int player2health { get; set; }
 
-        public Board()
-        {
+        // public Board()
+        // {
             
-        }
+        // }
 
         public static void PrintBoard()
         {
@@ -60,8 +60,9 @@ namespace BattleCards
             }
         }
 
-        public static void BoardInfo(Player player1, Player player2)
+        public static void BoardInfo(Player player1, Player player2, bool FullHand)
         {
+            if (FullHand) System.Console.WriteLine("Tu mano esta llena, no puedes robar mas cartas");
             System.Console.WriteLine("Tablero de juego:");
             PrintBoard();
             System.Console.WriteLine(

@@ -59,6 +59,7 @@ namespace BattleCards
         }
         public void DeletePlayer()
         {
+            
             PlayerM.Clear();
             PlayerR.Clear();
         }
