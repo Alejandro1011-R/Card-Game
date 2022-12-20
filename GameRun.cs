@@ -6,20 +6,20 @@ namespace BattleCards;
 
 public class GameRun
 {
-    public static Dictionary<GameStatus, (int, Player)> GameStatuses ;
+    public static Dictionary<GameStatus, int> GameStatuses ;
 
     public static Player PlayerInTurn {get; set;}
 
     public static Player PlayerOpposing {get; set;}
 
-    public static Dictionary<GameStatus, (int,Player)> GetGameStatuses
+    public static Dictionary<GameStatus, int> GetGameStatuses
     {
         get { return GameStatuses; }
     }
 
     public GameRun(Player playerInTurn, Player playerOpposing)
     {
-        GameStatuses = new Dictionary<GameStatus, (int, Player)>();
+        GameStatuses = new Dictionary<GameStatus, int>();
         PlayerInTurn = playerInTurn;
         PlayerOpposing = playerOpposing;
         
@@ -27,7 +27,7 @@ public class GameRun
 
     public static void AddItems (GameStatus gameStatus, int turn, Player player)
     {
-        GameStatuses.Add(gameStatus, (turn, player));
+        GameStatuses.Add(gameStatus, turn);
     }
     
     public static void SystemGame(Player player, int turn, int id, ConsoleKeyInfo option, int index) //asere que hace el 1er parametro, el player player??? no le veo sentido a eso
