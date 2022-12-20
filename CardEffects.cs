@@ -21,7 +21,7 @@ namespace BattleCards
             if(GameRun.PlayerOpposing.Hand.Count()>0)
             {
                 int id=int.Parse(Console.ReadLine()!);
-                foreach(var carta in GameRun.PlayerOpposing.Hand)
+                foreach(var carta in GameRun.PlayerOpposing.PlayerM)
                 {
                     if(carta.Id==id)
                     {
@@ -47,7 +47,7 @@ namespace BattleCards
         {
             
             int id=int.Parse(Console.ReadLine()!);
-            foreach(var carta in GameRun.PlayerInTurn.Hand)
+            foreach(var carta in GameRun.PlayerInTurn.PlayerM)
             {
                 if(carta.Id==id)
                 {

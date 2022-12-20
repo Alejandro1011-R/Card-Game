@@ -15,9 +15,12 @@ namespace BattleCards
             {
                 if(Tokens.tokens[i].Tipo==TokenTypes.name)
                 {
+
                     ParsedCard.Name=Tokens.tokens[i].Info;
                     continue;
+
                 }
+                
                 if(Tokens.tokens[i].Tipo==TokenTypes.info)
                 {
                     ParsedCard.Description=Tokens.tokens[i].Info;
@@ -29,11 +32,35 @@ namespace BattleCards
                     ParsedCard.Power=ParsedCard.BasePower;
                     continue;
                 }
+                
                 if(Tokens.tokens[i].Tipo==TokenTypes.faction)
                 {
                     ParsedCard.Faction=int.Parse(Tokens.tokens[i].Info);
                     continue;
                 }
+                
+                if(Tokens.tokens[i].Tipo==TokenTypes.effect_quitapoder)
+                {
+                    var effect = new QuitarPower(int.Parse(Tokens.tokens[i].Info));
+                    ParsedCard.Efectos.Add(effect);
+                    continue;
+                }
+
+                if(Tokens.tokens[i].Tipo==TokenTypes.effect_quitapoder)
+                {
+                    var effect = new QuitarPower(int.Parse(Tokens.tokens[i].Info));
+                    ParsedCard.Efectos.Add(effect);
+                    continue;
+                }
+                
+                if(Tokens.tokens[i].Tipo==TokenTypes.effect_subepoder)
+                {
+                    var effect = new SubirPoder(int.Parse(Tokens.tokens[i].Info));
+                    ParsedCard.Efectos.Add(effect);
+                    continue;
+                }
+
+
             }
             return ParsedCard;
         }
