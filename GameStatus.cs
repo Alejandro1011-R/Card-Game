@@ -94,7 +94,7 @@ public class GameStatus
     }
     public static List<(Card,Player)> CardsPlayed()
     {
-        Dictionary<GameStatus, (int, Player)> GameStatuses = GameRun.GetGameStatuses;
+        Dictionary<GameStatus, int> GameStatuses = GameRun.GetGameStatuses;
         
 
 
@@ -118,9 +118,9 @@ public class GameStatus
 
             for (var k = 0; k < GameStatuses.Count; k++)
             {
-                KeyValuePair<GameStatus, (int, Player)> gameStatus = GameStatuses.ElementAt(k);
+                KeyValuePair<GameStatus, int> gameStatus = GameStatuses.ElementAt(k);
                 
-                if (gameStatus.Value.Item1 == turn - 1)
+                if (gameStatus.Value == turn - 1)
                 {
                     for (var i = 0; i < gameStatus.Key.GetCardsInHand.Count; i++)
                     {
