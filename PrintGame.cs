@@ -144,6 +144,7 @@ namespace BattleCards
                 System.Console.WriteLine("2. Cruz");
                 ConsoleKey option = Console.ReadKey().Key;
                 System.Console.Clear();
+                //me aburro
 
                 if (option == ConsoleKey.D1 || option == ConsoleKey.D2)
                 {
