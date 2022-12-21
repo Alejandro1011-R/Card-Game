@@ -106,7 +106,7 @@ namespace BattleCards
         public void Start()
         {
             var CardDB = CardDataBase.CardList.ToList();
-            DeckSize = 15;
+            DeckSize = 20;
             HandSize = 5;
             XCard = 0;
             Random rnd = new Random();

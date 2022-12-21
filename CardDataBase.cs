@@ -43,11 +43,17 @@ namespace BattleCards
             }
             for (var j = 0; j < stuffed.Count; j++)
             {
-                string[] aux = stuffed[j].Split('\n'); 
+                string[] aux = stuffed[j].Split('\n', '\r'); 
                 for (var i = 0; i < aux.Length; i++)
                 {
-                    CardList.Add(createCard(aux[i]));
+                    if (aux[i] != "")
+                       CardList.Add(createCard(aux[i]));
                 }
+            }
+            for (var i = 0; i < CardList.Count; i++)
+            {
+                CardList[i].Id = i;
+                
             }
             
         }

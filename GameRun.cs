@@ -47,7 +47,7 @@ public class GameRun
             player.PlayerM.Add(player.GetHands()[index]);
             player.Hand.Remove(player.GetHands()[index]);
 
-            if (player == PlayerInTurn)
+            if (turn % 2 != 0)
             {
                 for (var i = 0; i < 2; i++)
                 {
@@ -66,7 +66,7 @@ public class GameRun
                     
                 }
             }
-            else if (player == PlayerOpposide)
+            else 
             {
                 for (var i = BBoard.GetLength(0) - 1; i > 2; i--)
                 {
@@ -89,7 +89,7 @@ public class GameRun
 
     public static bool FinalCheck (Player player1, Player player2)
     {
-        if (player1.GetRoundsWon == 3 || player2.GetRoundsWon == 3 || (player1.GetDeckCount() == 0 && player2.GetDeckCount() == 0))
+        if (player1.GetRoundsWon == 3 || player2.GetRoundsWon == 3 || player1.GetHand() == 0 || player2.GetHand() == 0)
         {
             
             return true;
@@ -103,10 +103,10 @@ public class GameRun
 
     
 
-    public static bool CheckBoard (Player player, int id)
+    public static bool CheckBoard (Player player, int turn)
     {
         bool temp = true;
-        if (id == 1)
+        if (turn % 2 != 0)
         {
             for (var i = 0; i < 2; i++)
             {
@@ -124,7 +124,7 @@ public class GameRun
                 }
             }
         }
-        else if (id == 2)
+        else
         {
             for (var i = BBoard.GetLength(0) - 1; i > 2; i--)
             {

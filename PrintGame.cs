@@ -7,7 +7,7 @@ namespace BattleCards
     {
         public Game()
         {
-            new CardDataBase();
+            //new CardDataBase();
             Presentation();
         }
 
@@ -259,12 +259,13 @@ namespace BattleCards
             //      System.Console.WriteLine("Presione cualquier tecla para continuar...");
 
             if (player1.PassedRound == true && player2.PassedRound == true)
+            {   
                 GameRun.GameRule(player1, player2);
                 RoundResult(player1, player2);
+            }
                 
 
-            if(GameRun.FinalCheck(player1, player2))
-                EndGame(player1, player2);
+            if(GameRun.FinalCheck(player1, player2)) EndGame(player1, player2);
             
             GameLoop(player1, player2, turn);
         }
@@ -275,7 +276,6 @@ namespace BattleCards
             System.Console.WriteLine("Turno de " + playerInGame.GetName());
             // Board board = new Board();
             // board.BoardInfo(player1, player2);
-            int id = 0;
             bool FullHand = false;
             if (playerInGame.Hand.Count == 5)
             {
@@ -286,12 +286,10 @@ namespace BattleCards
 
             if (correctOrder)
             {
-                id = 1;
                 Board.BoardInfo(playerInGame, playerOpposing, FullHand);
             }
             else
             {
-                id = 2;
                 Board.BoardInfo(playerOpposing, playerInGame, FullHand);
             }
             PrintTurnInfo(playerInGame, turn);
@@ -338,7 +336,7 @@ namespace BattleCards
                             index = 4;
                             break;
                     }
-                    if (GameRun.CheckBoard(playerInGame, id))
+                    if (GameRun.CheckBoard(playerInGame, turn))
                     {
                         System.Console.WriteLine(
                             "Todas las casillas estan ocupadas, seleccione otra opcion"
@@ -372,7 +370,7 @@ namespace BattleCards
         private static void PrintBoardPerTurn (Player player, int turn, int index)
         {
             bool temp = true;
-            if (player == GameRun.PlayerInTurn)
+            if (turn % 2 != 0)
             {
                 for (var i = 0; i < 2; i++)
                 {
@@ -391,7 +389,7 @@ namespace BattleCards
                     
                 }
             }
-            else if (player == GameRun.PlayerOpposide)
+            else 
             {
                 for (var i = Board.board.GetLength(0) - 1; i > 2; i--)
                 {
@@ -531,7 +529,7 @@ namespace BattleCards
                 Game game = new Game();
                 return true;
             }
-            else if (player1.GetDeckCount() == 0 && player2.GetDeckCount() == 0)
+            else if (player1.GetHand() == 0 || player2.GetHand() == 0)
             {
                 if (player1.GetRoundsWon > player2.GetRoundsWon)
                 {

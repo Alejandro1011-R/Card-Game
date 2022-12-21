@@ -23,8 +23,8 @@ namespace BattleCards
         private void GetInfo()
         {
             var aux = getText('[',']',Text);
-            tokens.Add(new Tokens(TokenTypes.name,aux));
-            Text= Text.Substring(aux.Length+1);
+            tokens.Add(new Tokens(TokenTypes.info,aux));
+            Text= Text.Substring(Text.IndexOf(']')+1, Text.Length-Text.IndexOf(']')-1);
         }
 
         private void GetStatsAndEffects()
@@ -53,7 +53,7 @@ namespace BattleCards
                     ControlFaction++;
                     if(int.TryParse(TextoLimpio[i+1],out int intValue))
                     {
-                        if(0<=int.Parse(TextoLimpio[i+1])&&int.Parse(TextoLimpio[i+1])<3)
+                        if(0 < int.Parse(TextoLimpio[i+1]) && int.Parse(TextoLimpio[i+1]) <= 4)
                         {
                             var faction = new Tokens(TokenTypes.faction, TextoLimpio[i+1]);
                             tokens.Add(faction);
