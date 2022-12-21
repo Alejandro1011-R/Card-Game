@@ -1,0 +1,52 @@
+(Draug) [Aterrador poder que hace temblar a todo el campo] power 2 faccion 1 que QuitePoder 3 SubePoder 1
+(Vampiro: katakan) [Lo ultimo de la nueva generacion] power 4 faccion 1 que QuitePoder 6 SubePoder 1
+(Vampiro: garkain) [Lo ultimo de la nueva generacion] power 4 faccion 1 que QuitePoder 6 SubePoder 1
+(Vampiro: fleder) [Lo ultimo de la nueva generacion] power 4 faccion 1 que QuitePoder 6 SubePoder 1
+(Arachas) [Lo ultimo de la nueva generacion] power 4 faccion 1 que QuitePoder 6 SubePoder 1
+(Arachas descomunal) [Aterrador poder que hace temblar a todo el campo] power 2 faccion 1 que QuitePoder 3 SubePoder 1
+(Almeja) [Lo ultimo de la nueva generacion] power 4 faccion 1 que QuitePoder 6 SubePoder 1
+(Leshen) [Lo ultimo de la nueva generacion] power 4 faccion 1 que QuitePoder 6 SubePoder 1
+(Moira: Guisadora) [Lo ultimo de la nueva generacion] power 4 faccion 1 que QuitePoder 6 SubePoder 1
+(Moira: Tejedora) [Lo ultimo de la nueva generacion] power 4 faccion 1 que QuitePoder 6 SubePoder 1
+
+(John Natalis) [Aterrador poder que hace temblar a todo el campo] power 2 faccion 2 que QuitePoder 3 SubePoder 1
+(Esterad Thyssen) [Lo ultimo de la nueva generacion] power 4 faccion 2 que QuitePoder 6 SubePoder 1
+(Vernon Roche) [Lo ultimo de la nueva generacion] power 4 faccion 2 que QuitePoder 6 SubePoder 1
+(Philippa Eilhart) [Lo ultimo de la nueva generacion] power 4 faccion 2 que QuitePoder 6 SubePoder 1
+(Cazadragones Saqueadores de Cinfrid) [Lo ultimo de la nueva generacion] power 4 faccion 2 que QuitePoder 6 SubePoder 1
+(Catapulta) [Aterrador poder que hace temblar a todo el campo] power 2 faccion 0 que QuitePoder 3 SubePoder 1
+(Imlerith) [Lo ultimo de la nueva generacion] power 4 faccion 2 que QuitePoder 6 SubePoder 1
+(Ciri) [Lo ultimo de la nueva generacion] power 4 faccion 2 que QuitePoder 6 SubePoder 1
+(Lugos El Loco) [Lo ultimo de la nueva generacion] power 4 faccion 2 que QuitePoder 6 SubePoder 1
+(Geralt) [Lo ultimo de la nueva generacion] power 4 faccion 2 que QuitePoder 6 SubePoder 1
+
+(Letho de Guleta) [Aterrador poder que hace temblar a todo el campo] power 3 faccion 3 que QuitePoder 3 SubePoder 1
+(Emisario joven) [Lo ultimo de la nueva generacion] power 4 faccion 3 que QuitePoder 6 SubePoder 1
+(Brigada Impera) [Lo ultimo de la nueva generacion] power 4 faccion 3 que QuitePoder 6 SubePoder 1
+(Escorpión de fuego pesado de Zerrikania) [Lo ultimo de la nueva generacion] power 4 faccion 3 que QuitePoder 6 SubePoder 1
+(Arquero de la Infantería Negra) [Lo ultimo de la nueva generacion] power 4 faccion 3 que QuitePoder 6 SubePoder 1
+(Arquero de apoyo) [Aterrador poder que hace temblar a todo el campo] power 3 faccion 3 que QuitePoder 3 SubePoder 1
+(Stefan Skellen) [Lo ultimo de la nueva generacion] power 4 faccion 3 que QuitePoder 6 SubePoder 1
+(Tibor Eggebracht) [Lo ultimo de la nueva generacion] power 4 faccion 3 que QuitePoder 6 SubePoder 1
+(Morvran Voorhis) [Lo ultimo de la nueva generacion] power 4 faccion 3 que QuitePoder 6 SubePoder 1
+(Menno Coehoorn) [Lo ultimo de la nueva generacion] power 4 faccion 3 que QuitePoder 6 SubePoder 1
+
+(Eithné) [Aterrador poder que hace temblar a todo el campo] power 2 faccion 4 que QuitePoder 3 SubePoder 1
+(Saskia) [Lo ultimo de la nueva generacion] power 4 faccion 4 que QuitePoder 6 SubePoder 1
+(Saesenthessis) [Lo ultimo de la nueva generacion] power 4 faccion 4 que QuitePoder 6 SubePoder 1
+(Isengrim Faoiltiarna) [Lo ultimo de la nueva generacion] power 4 faccion 4 que QuitePoder 6 SubePoder 1
+(Almeja) [Lo ultimo de la nueva generacion] power 4 faccion 4 que QuitePoder 6 SubePoder 1
+(Iorveth) [Aterrador poder que hace temblar a todo el campo] power 2 faccion 4 que QuitePoder 3 SubePoder 1
+(Milva) [Lo ultimo de la nueva generacion] power 4 faccion 4 que QuitePoder 6 SubePoder 1
+(Yaevinn) [Lo ultimo de la nueva generacion] power 4 faccion 4 que QuitePoder 6 SubePoder 1
+(Médico hav’caaren) [Lo ultimo de la nueva generacion] power 4 faccion 4 que QuitePoder 6 SubePoder 1
+(Kayran) [Lo ultimo de la nueva generacion] power 4 faccion 4 que QuitePoder 6 SubePoder 1
+
+
+ 
+
+
+
+
+
+
