@@ -18,10 +18,10 @@ namespace BattleCards
 
         public override void effect(GameRun game)
         {
-            if(GameRun.PlayerOpposing.Hand.Count()>0)
+            if(GameRun.PlayerOpposide.Hand.Count()>0)
             {
                 int id=int.Parse(Console.ReadLine()!);
-                foreach(var carta in GameRun.PlayerOpposing.PlayerM)
+                foreach(var carta in GameRun.PlayerOpposide.PlayerM)
                 {
                     if(carta.Id==id)
                     {

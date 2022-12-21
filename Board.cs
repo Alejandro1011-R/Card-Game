@@ -15,7 +15,7 @@ namespace BattleCards
         
         private int turn;
 
-        public static Dictionary<Card, int> CardsInGame = new Dictionary<Card, int>();//Recuerdame modificar esto-- Es mejor llamar al del GameStatus
+        //Recuerdame modificar esto-- Es mejor llamar al del GameStatus
         // private int player1health { get; set; }
         // private int player2health { get; set; }
 
@@ -77,9 +77,9 @@ namespace BattleCards
                    System.Console.WriteLine( "Rondas ganadas: "+ player1.GetRoundsWon + "         Rondas ganadas: "+ player2.GetRoundsWon);
             // System.Console.WriteLine("Vida: "+ player1.GetHealth() + "                   Vida: "+ player2.GetHealth());
             System.Console.WriteLine("");
-            for (var i = 0; i < CardsInGame.Count; i++)
+            for (var i = 0; i < GameRun.CardsInGame.Count; i++)
             {
-                KeyValuePair<Card, int> card = CardsInGame.ElementAt(i);
+                KeyValuePair<Card, int> card = GameRun.CardsInGame.ElementAt(i);
                 System.Console.WriteLine("Cartas en juego:");
                 System.Console.WriteLine(
                     card.Value
