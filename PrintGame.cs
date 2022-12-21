@@ -263,8 +263,9 @@ namespace BattleCards
                 RoundResult(player1, player2);
                 
 
-
-            EndGame(player1, player2);
+            if(GameRun.FinalCheck(player1, player2))
+                EndGame(player1, player2);
+            
             GameLoop(player1, player2, turn);
         }
 

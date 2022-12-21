@@ -13,13 +13,8 @@ namespace BattleCards
             addCards();
         }
 
-
-        // public void awake()
-        // { 
-        //     var aux = new tokenizer("(Almeja) [Lo ultimo de la nueva generacion] power 4 faccion 2 que QuitePoder 6 SubePoder 1");
-        //     var aux2= new parser(aux);
-            
-
+        
+        
         //     CardList.Add(aux2.CreateCard());
             
         //      //int id, string name, string description, int power, int armour, int cardType, int faction, int colour

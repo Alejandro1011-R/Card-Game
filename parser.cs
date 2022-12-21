@@ -67,15 +67,15 @@ namespace BattleCards
 
 
     }
-    class Program
-    {
-        public static void Main(string[] args)
-        {
-            var test =new tokenizer("(Salvaje)[Una carta super tixa que baja lo ultimo que trajo el barco] poder 5 que SubePoder 2");
-            for(int i=0 ; i<test.tokens.Count();i++)
-            {
-                Console.WriteLine(test.tokens[i].Tipo + "  --  " + test.tokens[i].Info);
-            }
-        }
-    }
+    // class Program
+    // {
+    //     public static void Main(string[] args)
+    //     {
+    //         var test =new tokenizer("(Salvaje)[Una carta super tixa que baja lo ultimo que trajo el barco] poder 5 que SubePoder 2");
+    //         for(int i=0 ; i<test.tokens.Count();i++)
+    //         {
+    //             Console.WriteLine(test.tokens[i].Tipo + "  --  " + test.tokens[i].Info);
+    //         }
+    //     }
+    // }
 }

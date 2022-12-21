@@ -61,7 +61,6 @@ namespace BattleCards
         {
             Cementery=PlayerM.Concat(PlayerR).ToList();
             PlayerM.Clear();
-            PlayerR.Clear();
         }
         public int Points
         {

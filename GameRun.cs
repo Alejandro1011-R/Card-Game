@@ -87,9 +87,18 @@ public class GameRun
                           
     }
 
-    public void Final ()
+    public static bool FinalCheck (Player player1, Player player2)
     {
-        new Game();
+        if (player1.GetRoundsWon == 3 || player2.GetRoundsWon == 3 || (player1.GetDeckCount() == 0 && player2.GetDeckCount() == 0))
+        {
+            
+            return true;
+            
+        }
+        else
+        {
+            return false;
+        }
     }
 
     
