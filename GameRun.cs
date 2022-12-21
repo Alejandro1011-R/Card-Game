@@ -6,102 +6,93 @@ namespace BattleCards;
 
 public class GameRun
 {
-    public static Dictionary<GameStatus, int> GameStatuses ;
-
+    //public static Dictionary<GameStatus, int> GameStatuses ;
+    public static Card[,] BBoard;
     public static Player PlayerInTurn {get; set;}
 
-    public static Player PlayerOpposing {get; set;}
+    public static Player PlayerOpposide {get; set;}
 
-    public static Dictionary<GameStatus, int> GetGameStatuses
-    {
-        get { return GameStatuses; }
-    }
+    public static Dictionary<Card, int> CardsInGame;
 
-    public GameRun(Player playerInTurn, Player playerOpposing)
+    // public static Dictionary<GameStatus, int> GetGameStatuses
+    // {
+    //     get { return GameStatuses; }
+    // }
+
+    public GameRun(Player playerInTurn, Player playerOpposide)
     {
-        GameStatuses = new Dictionary<GameStatus, int>();
+        CardsInGame =  new Dictionary<Card, int>();
+        BBoard = new Card[5,5];
         PlayerInTurn = playerInTurn;
-        PlayerOpposing = playerOpposing;
+        PlayerOpposide = playerOpposide;
         
     }
 
-    public static void AddItems (GameStatus gameStatus, int turn, Player player)
-    {
-        GameStatuses.Add(gameStatus, turn);
-    }
+    // public static void AddItems (GameStatus gameStatus, int turn, Player player)
+    // {
+    //     GameStatuses.Add(gameStatus, turn);
+    // }
     
-    public static void SystemGame(Player player, int turn, int id, ConsoleKeyInfo option, int index) //asere que hace el 1er parametro, el player player??? no le veo sentido a eso
+    public static void SystemGame(Player player, int turn, int index) //asere que hace el 1er parametro, el player player??? no le veo sentido a eso
     {
             //player.Update(); // En cada turno repartir carta en cada turno
             bool temp = true;
-              
+            
+            KeyValuePair<Card, int> ACardInGame = new KeyValuePair<Card, int>(player.GetHands()[index],player.GetHands()[index].Id);                           
+                if (!CardsInGame.Contains(ACardInGame))
+                CardsInGame.Add(
+                    player.GetHands()[index],
+                    player.GetHands()[index].Id
+                );
+            player.PlayerM.Add(player.GetHands()[index]);
+            player.Hand.Remove(player.GetHands()[index]);
+
+            if (player == PlayerInTurn)
+            {
+                for (var i = 0; i < 2; i++)
+                {
+                    for (var j = 0; j < BBoard.GetLength(1); j++)
+                    {
+                        if (BBoard[i, j] == null)
+                        {
+                            BBoard[i, j] = player.PlayerM[player.PlayerM.Count - 1];
+                            temp = false;
+                            break;
+                        }
+                        
+                    }
+                    if (temp == false)
+                        break;
                     
-                    if (id == 1)
+                }
+            }
+            else if (player == PlayerOpposide)
+            {
+                for (var i = BBoard.GetLength(0) - 1; i > 2; i--)
+                {
+                    for (var j = BBoard.GetLength(1) - 1; j >= 0; j--)
                     {
-                       
-                        //Esto lo puse asi xq el option me da x ejemplo 49 '1' y no vi otra via pa hacerlo si quieres modifica
-
-                        for (var i = 0; i < 2; i++)
+                        if (BBoard[i, j] == null)
                         {
-                            for (var j = 0; j < Board.board.GetLength(1); j++)
-                            {
-                                if (Board.board[i, j] == "[  ]")
-                                {
-                                    Board.board[i, j] =
-                                        "[" + player.GetHands()[index].Id.ToString() + "]";
-                                    
-                                    KeyValuePair<Card, int> ACardInGame = new KeyValuePair<Card, int>(player.GetHands()[index],player.GetHands()[index].Id);
-                                        
-                                    if (!Board.CardsInGame.Contains(ACardInGame))
-                                    Board.CardsInGame.Add(
-                                        player.GetHands()[index],
-                                        player.GetHands()[index].Id
-                                    );
-                                    player.PlayerM.Add(player.GetHands()[index]);
-                                    player.Hand.Remove(player.GetHands()[index]);
-                                    temp = false;
-                                    break;
-                                }
-                            }
-                            if (temp == false)
-                            {
-                                break;
-                            }
+                            BBoard[i, j] = player.PlayerM[player.PlayerM.Count - 1];
+                            temp = false;
+                            break;
                         }
-                    }
-                    else if (id == 2)
-                    {
-                     
-                        for (var i = Board.board.GetLength(0) - 1; i > 2; i--)
-                        {
-                            for (var j = Board.board.GetLength(1) - 1; j >= 0; j--)
-                            {
-                                if (Board.board[i, j] == "[  ]")
-                                {
-                                    Board.board[i, j] =
-                                        "[" + player.GetHands()[index].Id.ToString() + "]";
 
-                                        KeyValuePair<Card, int> ACardInGame = new KeyValuePair<Card, int>(player.GetHands()[index],player.GetHands()[index].Id);
-                                        
-                                    if (!Board.CardsInGame.Contains(ACardInGame))
-                                    Board.CardsInGame.Add(
-                                        player.GetHands()[index],
-                                        player.GetHands()[index].Id
-                                    );
-                                    player.PlayerM.Add(player.GetHands()[index]);
-                                    player.Hand.Remove(player.GetHands()[index]);
-                                    temp = false;
-                                    break;
-                                }
-                            }
-                            if (temp == false)
-                            {
-                                break;
-                            }
-                        }
                     }
+                    if (temp == false)
+                        break;
+                }
+            }
                           
     }
+
+    public void Final ()
+    {
+        new Game();
+    }
+
+    
 
     public static bool CheckBoard (Player player, int id)
     {
@@ -110,9 +101,9 @@ public class GameRun
         {
             for (var i = 0; i < 2; i++)
             {
-                for (var j = 0; j < Board.board.GetLength(1); j++)
+                for (var j = 0; j < BBoard.GetLength(1); j++)
                 {
-                    if (Board.board[i, j] == "[  ]")
+                    if (BBoard[i, j] == null)
                     {
                         temp = false;
                         break;
@@ -126,11 +117,11 @@ public class GameRun
         }
         else if (id == 2)
         {
-            for (var i = Board.board.GetLength(0) - 1; i > 2; i--)
+            for (var i = BBoard.GetLength(0) - 1; i > 2; i--)
             {
-                for (var j = Board.board.GetLength(1) - 1; j >= 0; j--)
+                for (var j = BBoard.GetLength(1) - 1; j >= 0; j--)
                 {
-                    if (Board.board[i, j] == "[  ]")
+                    if (BBoard[i, j] == null)
                     {
                         temp = false;
                         break;
@@ -145,6 +136,40 @@ public class GameRun
 
         return temp;
     }
+    public static void GameRule(Player player1, Player player2)
+        {
+            //si los 2 se pasan, termina ese turno y se elige el ganador de acuerdo a la cantidad de poder en el campo
+
+            
+            GameRun.BBoard = new Card[5, 5];
+            GameRun.CardsInGame.Clear();
+            player1.PassedRound = false;
+            player2.PassedRound = false;
+            player1.Point(player1.PlayerM);
+            player2.Point(player2.PlayerM);
+            player1.DeletePlayer();
+            player2.DeletePlayer();
+            if (player1.Points == player2.Points)
+            {
+                player1.Actualizar();
+                player2.Actualizar();
+            
+            }
+            else if (player1.Points > player2.Points)
+            {
+                player1.GetRoundsWon++;
+                player1.Actualizar();
+
+                
+            }
+            else if (player2.Points > player1.Points)
+            {
+                player2.GetRoundsWon++;
+                player2.Actualizar();
+
+                
+            }
+        }
     
 }
 

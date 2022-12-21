@@ -7,6 +7,7 @@ namespace BattleCards
     {
         public Game()
         {
+            new CardDataBase();
             Presentation();
         }
 
@@ -223,12 +224,12 @@ namespace BattleCards
             if (turn % 2 == 0)
             {
                 GameRun.PlayerInTurn = player2;
-                GameRun.PlayerOpposing = player1;
+                GameRun.PlayerOpposide = player1;
             }
             else
             {
                 GameRun.PlayerInTurn = player1;
-                GameRun.PlayerOpposing = player2;
+                GameRun.PlayerOpposide = player2;
             }
         }
 
@@ -258,7 +259,10 @@ namespace BattleCards
             //      System.Console.WriteLine("Presione cualquier tecla para continuar...");
 
             if (player1.PassedRound == true && player2.PassedRound == true)
-                GameRule(player1, player2);
+                GameRun.GameRule(player1, player2);
+                RoundResult(player1, player2);
+                
+
 
             EndGame(player1, player2);
             GameLoop(player1, player2, turn);
@@ -343,14 +347,13 @@ namespace BattleCards
                     }
                     else
                     {
-                        GameRun.SystemGame(playerInGame, turn, id, option, index);
-                        GameStatus gameStatus = new GameStatus();
-                        gameStatus.UpdateGameStatus(playerInGame, playerOpposing, turn);
-                        GameRun.AddItems(gameStatus, turn, playerInGame);
-                        // if (correctOrder)
-                        //     Board.BoardInfo(playerInGame, playerOpposing, FullHand);
-                        // else Board.BoardInfo(playerOpposing, playerInGame, FullHand);
-                        //Board.BoardInfo(playerInGame, playerOpposing);
+                        GameRun.SystemGame(playerInGame, turn, index);
+                        
+                        PrintBoardPerTurn(playerInGame, turn, index);
+                        //GameStatus gameStatus = new GameStatus();
+                        // gameStatus.UpdateGameStatus(playerInGame, playerOpposing, turn);
+                        // GameRun.AddItems(gameStatus, turn, playerInGame);
+                        
                     }
                 }
                 else
@@ -363,6 +366,50 @@ namespace BattleCards
 
             // System.Console.ReadKey();
             System.Console.Clear();
+        }
+
+        private static void PrintBoardPerTurn (Player player, int turn, int index)
+        {
+            bool temp = true;
+            if (player == GameRun.PlayerInTurn)
+            {
+                for (var i = 0; i < 2; i++)
+                {
+                    for (var j = 0; j < Board.board.GetLength(1); j++)
+                    {
+                        if (Board.board[i, j] == "[  ]")
+                        {
+                            Board.board[i, j] =
+                                "[" + player.PlayerM[player.PlayerM.Count - 1].Id.ToString() + "]";
+                            temp = false;
+                            break;
+                        }
+                    }
+                    if (temp == false)
+                        break;
+                    
+                }
+            }
+            else if (player == GameRun.PlayerOpposide)
+            {
+                for (var i = Board.board.GetLength(0) - 1; i > 2; i--)
+                {
+                    for (var j = Board.board.GetLength(1) - 1; j >= 0; j--)
+                    {
+                        if (Board.board[i, j] == "[  ]")
+                        {
+                            Board.board[i, j] =
+                                "[" + player.PlayerM[player.PlayerM.Count - 1].Id.ToString() + "]";
+                            temp = false;
+                            break;
+
+                        }
+
+                    }
+                    if (temp == false)
+                        break;
+                }
+            }
         }
 
         static void PrintTurnInfo(Player player, int turn)
@@ -427,48 +474,35 @@ namespace BattleCards
             }
         }
 
-        static void GameRule(Player player1, Player player2)
+        static void RoundResult (Player player1, Player player2)
         {
-            //si los 2 se pasan, termina ese turno y se elige el ganador de acuerdo a la cantidad de poder en el campo
-
             NewBoard();
-            Board.CardsInGame.Clear();
-            player1.PassedRound = false;
-            player2.PassedRound = false;
-            player1.Point(player1.PlayerM, player1.PlayerR);
-            player2.Point(player2.PlayerM, player2.PlayerR);
-            player1.DeletePlayer();
-            player2.DeletePlayer();
             if (player1.Points == player2.Points)
             {
-                player1.Actualizar();
-                player2.Actualizar();
-                Console.Clear();
+                System.Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Green;
                 System.Console.WriteLine("Empate!");
                 Console.ResetColor();
             }
             else if (player1.Points > player2.Points)
             {
-                player1.GetRoundsWon++;
-                player1.Actualizar();
-
-                Console.Clear();
+                System.Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Green;
                 System.Console.WriteLine(player1.GetName() + " ha ganado el turno!");
                 Console.ResetColor();
+                
             }
             else if (player2.Points > player1.Points)
             {
-                player2.GetRoundsWon++;
-                player2.Actualizar();
-
-                Console.Clear();
+                System.Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Green;
+                System.Console.WriteLine(player2.GetName() + " puntos: " + player2.Points);
                 System.Console.WriteLine(player2.GetName() + " ha ganado el turno!");
                 Console.ResetColor();
             }
         }
+
+        
 
         static bool EndGame(Player player1, Player player2) //Condiciones de fin de juego
         {

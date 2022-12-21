@@ -22,16 +22,16 @@ namespace BattleCards
             PassRound = false;
         }
 
-        public void Point(List<Card> PlayerM, List<Card> PlayerR)
+        public void Point(List<Card> PlayerM)
         {
             for (var i = 0; i < PlayerM.Count; i++)
             {
                 TotalPoint += PlayerM[i].Power;
             }
-            for (var i = 0; i < PlayerR.Count; i++)
-            {
-                TotalPoint += PlayerR[i].Power;
-            }
+            // for (var i = 0; i < PlayerR.Count; i++)
+            // {
+            //     TotalPoint += PlayerR[i].Power;
+            // }
          
         }
 
