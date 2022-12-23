@@ -15,16 +15,16 @@ namespace BattleCards
         static void Presentation()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            /*    Write(
-                    1,
-                    @"
-                    ██████  ██ ███████ ███    ██ ██    ██ ███████ ███    ██ ██ ██████   ██████       █████      ██████   █████  ████████ ████████ ██      ███████  ██████  █████  ██████  ██████  ███████ ██
-                    ██   ██ ██ ██      ████   ██ ██    ██ ██      ████   ██ ██ ██   ██ ██    ██     ██   ██     ██   ██ ██   ██    ██       ██    ██      ██      ██      ██   ██ ██   ██ ██   ██ ██      ██
-                    ██████  ██ █████   ██ ██  ██ ██    ██ █████   ██ ██  ██ ██ ██   ██ ██    ██     ███████     ██████  ███████    ██       ██    ██      █████   ██      ███████ ██████  ██   ██ ███████ ██
-                    ██   ██ ██ ██      ██  ██ ██  ██  ██  ██      ██  ██ ██ ██ ██   ██ ██    ██     ██   ██     ██   ██ ██   ██    ██       ██    ██      ██      ██      ██   ██ ██   ██ ██   ██      ██
-                    ██████  ██ ███████ ██   ████   ████   ███████ ██   ████ ██ ██████   ██████      ██   ██     ██████  ██   ██    ██       ██    ███████ ███████  ██████ ██   ██ ██   ██ ██████  ███████ ██
-                    "
-               );*/
+Write(
+    1,
+    @"
+    ████████ ██   ██ ███████      ██████ ██       █████  ███    ███     ██████   ██████   █████  ████████ 
+       ██    ██   ██ ██          ██      ██      ██   ██ ████  ████     ██   ██ ██    ██ ██   ██    ██    
+       ██    ███████ █████       ██      ██      ███████ ██ ████ ██     ██████  ██    ██ ███████    ██    
+       ██    ██   ██ ██          ██      ██      ██   ██ ██  ██  ██     ██   ██ ██    ██ ██   ██    ██    
+       ██    ██   ██ ███████      ██████ ███████ ██   ██ ██      ██     ██████   ██████  ██   ██    ██
+    "
+);
             Console.ForegroundColor = ConsoleColor.Yellow;
             System.Console.WriteLine("Presione cualquier tecla para continuar...");
             System.Console.ReadKey();
@@ -110,7 +110,7 @@ namespace BattleCards
         static void StartGameComputerVsComputer()
         {
             string pront="Elija el primer adversario:";
-string[] options = new string[] {"Writer_02", "The_Creation", "Artagos"};
+            string[] options = new string[] {"Writer_02", "The_Creation", "Artagos"};
             Menu menu = new Menu(pront, options);
 
             Console.ForegroundColor = ConsoleColor.White;
