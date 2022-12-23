@@ -9,6 +9,9 @@ namespace BattleCards
         public int HandSize = 5;
         public Player(string name)
         {
+            Deck = new List<Card>();
+            Hand = new List<Card>();
+
             GetDeck();
             Name = name;
             RaundsWon = 0;

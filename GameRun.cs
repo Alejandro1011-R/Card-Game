@@ -182,7 +182,7 @@ public class GameRun
             }
         }
 
-        #region DealingCards
+    #region DealingCards
     public static void Update(Player player)
     { 
         if (player.Deck.Count == player.DeckSize)

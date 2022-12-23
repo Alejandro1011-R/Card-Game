@@ -52,7 +52,9 @@ namespace BattleCards
             }
             for (var i = 0; i < CardList.Count; i++)
             {
-                CardList[i].Id = i;
+                if (i < 10) CardList[i].Id = int.Parse("0" + i);
+                else CardList[i].Id = i;
+                
                 
             }
             

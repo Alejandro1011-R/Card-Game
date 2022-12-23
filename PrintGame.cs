@@ -346,7 +346,7 @@ namespace BattleCards
                     {
                         GameRun.SystemGame(playerInGame, turn, index);
                         
-                        PrintBoardPerTurn(playerInGame, turn, index);
+                        PrintBoardPerTurn();
                         //GameStatus gameStatus = new GameStatus();
                         // gameStatus.UpdateGameStatus(playerInGame, playerOpposing, turn);
                         // GameRun.AddItems(gameStatus, turn, playerInGame);
@@ -365,47 +365,20 @@ namespace BattleCards
             System.Console.Clear();
         }
 
-        private static void PrintBoardPerTurn (Player player, int turn, int index)
+        private static void PrintBoardPerTurn ()
         {
-            bool temp = true;
-            if (turn % 2 != 0)
+            for (var i = 0; i < Board.board.GetLength(0); i++)
             {
-                for (var i = 0; i < 2; i++)
+                for (var j = 0; j < Board.board.GetLength(1); j++)
                 {
-                    for (var j = 0; j < Board.board.GetLength(1); j++)
-                    {
-                        if (GameRun.BBoard[i, j] == null)
+                    if (GameRun.BBoard[i, j] != null)
                         {
                             Board.board[i, j] =
-                                "[" + player.PlayerM[player.PlayerM.Count - 1].Id.ToString() + "]";
-                            temp = false;
-                            break;
+                                "[" + GameRun.BBoard[i, j].Id.ToString() + "]";
+                            
                         }
-                    }
-                    if (temp == false)
-                        break;
-                    
                 }
-            }
-            else 
-            {
-                for (var i = Board.board.GetLength(0) - 1; i > 2; i--)
-                {
-                    for (var j = Board.board.GetLength(1) - 1; j >= 0; j--)
-                    {
-                        if (GameRun.BBoard[i, j] == null)
-                        {
-                            Board.board[i, j] =
-                                "[" + player.PlayerM[player.PlayerM.Count - 1].Id.ToString() + "]";
-                            temp = false;
-                            break;
-
-                        }
-
-                    }
-                    if (temp == false)
-                        break;
-                }
+                
             }
         }
 
@@ -454,20 +427,22 @@ namespace BattleCards
 
         static void NewBoard()
         {
-            for (var i = 0; i < Board.board.GetLength(0); i++)
+            for (var i = 0; i < GameRun.BBoard.GetLength(0); i++)
             {
                 if (i == 2)
                 {
-                    for (var j = 0; j < Board.board.GetLength(1); j++)
+                    for (var j = 0; j < GameRun.BBoard.GetLength(1); j++)
                     {
                         Board.board[i, j] = "----";
                     }
                 }
                 else
-                    for (var j = 0; j < Board.board.GetLength(1); j++)
+                {
+                    for (var j = 0; j < GameRun.BBoard.GetLength(1); j++)
                     {
                         Board.board[i, j] = "[  ]";
                     }
+                }
             }
         }
 
