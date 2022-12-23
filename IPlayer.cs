@@ -11,4 +11,6 @@ public abstract class IPlayer
     public List<Card> Deck { get; set; }
     public int TotalPoint { get; set; }
     public bool PassRound { get; set; }
+
+    public bool PlayerIsaBot { get; set; }
 }
