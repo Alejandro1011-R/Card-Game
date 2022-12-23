@@ -32,16 +32,14 @@ namespace BattleCards
             // bool correcto = true;
             // while (correcto)
             // {
-            System.Console.WriteLine(
-                "Hola, a continuación podrá seleccionar lo que desea hacer en el juego:"
-            );
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
 
-            Write(25, "1. Jugar ");
-            Write(25, "2. Instrucciones");
-            Write(25, "3. Salir");
-            
-            int option = Number(1, 3);
+            string pront= "Hola, a continuación podrá seleccionar lo que desea hacer en el juego:";
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            string [] options = new string[] {"Jugar", "Instrucciones", "Salir"};
+            Menu menu = new Menu(pront, options);
+          int option=  menu.Run()+1;
+
+           // int option = Number(1, 3);
             // ConsoleKey option = Console.ReadKey().Key;
             System.Console.Clear();
 
@@ -53,14 +51,12 @@ namespace BattleCards
                 // while (correctD1)
                 // {
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                System.Console.WriteLine("Seleccione el modo de juego?");
-                Console.ForegroundColor = ConsoleColor.DarkCyan;
-                System.Console.WriteLine("1. Player vs Player");
-                System.Console.WriteLine("2. Player vs PC");
-                System.Console.WriteLine("3. PC vs PC");
+                string pront1="Seleccione el modo de juego?";
+                string [] options1 = new string[] {"Jugador vs Jugador", "Jugador vs PC", "PC vs PC"};
+                Menu menu1 = new Menu(pront1, options1);
                 // ConsoleKeyInfo option2 = Console.ReadKey();
 
-                int option2 = Number(1, 3);
+                int option2 = menu1.Run()+1;
                 System.Console.Clear();
                 if (option2 == 1)
                 {
@@ -113,31 +109,20 @@ namespace BattleCards
 
         static void StartGameComputerVsComputer()
         {
-            System.Console.WriteLine("Elija el primer adversario:");
-
-            Console.ForegroundColor = ConsoleColor.Red;
-            Write(50, "1. Writer_02");
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Write(50, "2. The_Creation");
-
-            Console.ForegroundColor = ConsoleColor.Green;
-            Write(50, "3. Artagos");
+            string pront="Elija el primer adversario:";
+string[] options = new string[] {"Writer_02", "The_Creation", "Artagos"};
+            Menu menu = new Menu(pront, options);
 
             Console.ForegroundColor = ConsoleColor.White;
-            int option = Number(1, 3);
+            int option = menu.Run()+1;
             System.Console.Clear();
             if (option == 1)
             {
-                System.Console.WriteLine("Elija el segundo adversario:");
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Write(50, "1. The_Creation");
-
-                Console.ForegroundColor = ConsoleColor.Green;
-                Write(50, "2. Artagos");
-
+                string pront1="Elija el segundo adversario:";
+                string[] options1 = new string[] {"The_Creation", "Artagos"};
+                Menu menu1 = new Menu(pront1, options1);
                 Console.ForegroundColor = ConsoleColor.White;
-                int option2 = Number(1, 2);
+                int option2 = menu1.Run()+1;
                 System.Console.Clear();
                 if (option2 == 1)
                 {
@@ -162,16 +147,13 @@ namespace BattleCards
             }
             else if (option == 2)
             {
-                System.Console.WriteLine("Elija el segundo adversario:");
-                Console.ForegroundColor = ConsoleColor.Red;
-                Write(50, "1. Writer_02");
-
-                Console.ForegroundColor = ConsoleColor.Green;
-                Write(50, "2. Artagos");
-
+                string pront1="Elija el segundo adversario:";
+                string[] options1 = new string[] {"Writer_02", "Artagos"};
+                Menu menu1 = new Menu(pront1, options1);
                 Console.ForegroundColor = ConsoleColor.White;
-                int option2 = Number(1, 2);
-                System.Console.Clear();
+                int option2 = menu1.Run()+1;
+           
+          System.Console.Clear();
                 if (option2 == 1)
                 {
                     Player player1 = new Player("The_Creation");
@@ -195,15 +177,12 @@ namespace BattleCards
             }
             else if (option == 3)
             {
-                System.Console.WriteLine("Elija el segundo adversario:");
-                Console.ForegroundColor = ConsoleColor.Red;
-                Write(50, "1. Writer_02");
-
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Write(50, "2. The_Creation");
-
+                string pront1="Elija el segundo adversario:";
+                string[] options1 = new string[] {"Writer_02", "The_Creation"};
+                Menu menu1 = new Menu(pront1, options1);
                 Console.ForegroundColor = ConsoleColor.White;
-                int option2 = Number(1, 2);
+                int option2 = menu1.Run()+1;
+
                 System.Console.Clear();
                 if (option2 == 1)
                 {
@@ -253,14 +232,17 @@ namespace BattleCards
                     + player2.Name
                     + "! a continuacion se elegira al azar quien comenzara el juego."
             );
-            System.Console.WriteLine(player1.Name + " elija cara o cruz:");
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
-            System.Console.WriteLine("1. Cara");
-            System.Console.WriteLine("2. Cruz");
+            
+            string pront= player1.Name + " elija cara o cruz:";
+            string[] options = new string[] {"Cara", "Cruz"};
+            Menu menu = new Menu(pront, options);
+            Console.ForegroundColor = ConsoleColor.White;
+            int option = menu.Run()+1;
+          
             // ConsoleKey option = Console.ReadKey().Key;
 
             //me aburro
-            int option = Number(1, 2);
+           
             System.Console.Clear();
             string optionString = " ";
             if (option == 1)
@@ -309,16 +291,14 @@ namespace BattleCards
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             string player1Name = System.Console.ReadLine().Trim();
             System.Console.Clear();
-            System.Console.WriteLine("Elija el adversario contra el que desea jugar");
-            System.Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Red;
-            Write(100, "1. Writer_02");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Write(100, "2. The_Creation");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Write(100, "3. Artagos");
+
+            string pront="Elija el adversario contra el que desea jugar";
+            string[] options = new string[] {"Writer_02", "The_Creation", "Artagos"};
+            Menu menu = new Menu(pront, options);
             Console.ForegroundColor = ConsoleColor.White;
-            int option = Number(1, 3);
+            int option = menu.Run()+1;
+
+           
             System.Console.Clear();
             if (option == 1)
             {
