@@ -10,10 +10,7 @@ namespace BattleCards
         public int BasePower;
         public int Power;
         public int Faction;
-        // Faction 1 : Monstruos
-        // Faction 2 : Reinos del Norte
-        // Faction 3 : Nilfgaard
-        // Faction 4 : Scoia’tael
+        
         public bool Passive;
         public List<effecto> Efectos;
         

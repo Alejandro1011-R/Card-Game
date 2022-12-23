@@ -38,14 +38,14 @@ public class GameRun
             //player.Update(); // En cada turno repartir carta en cada turno
             bool temp = true;
             
-            KeyValuePair<Card, int> ACardInGame = new KeyValuePair<Card, int>(player.GetHands()[index],player.GetHands()[index].Id);                           
+            KeyValuePair<Card, int> ACardInGame = new KeyValuePair<Card, int>(player.Hand[index],player.Hand[index].Id);                           
                 if (!CardsInGame.Contains(ACardInGame))
                 CardsInGame.Add(
-                    player.GetHands()[index],
-                    player.GetHands()[index].Id
+                    player.Hand[index],
+                    player.Hand[index].Id
                 );
-            player.PlayerM.Add(player.GetHands()[index]);
-            player.Hand.Remove(player.GetHands()[index]);
+            player.PlayerM.Add(player.Hand[index]);
+            player.Hand.Remove(player.Hand[index]);
 
             if (turn % 2 != 0)
             {
@@ -87,9 +87,11 @@ public class GameRun
                           
     }
 
+    
+
     public static bool FinalCheck (Player player1, Player player2)
     {
-        if (player1.GetRoundsWon == 3 || player2.GetRoundsWon == 3 || player1.GetHand() == 0 || player2.GetHand() == 0)
+        if (player1.RaundsWon == 3 || player2.RaundsWon == 3 || player1.Hand.Count == 0 || player2.Hand.Count == 0)
         {
             
             return true;
@@ -152,33 +154,72 @@ public class GameRun
             
             GameRun.BBoard = new Card[5, 5];
             GameRun.CardsInGame.Clear();
-            player1.PassedRound = false;
-            player2.PassedRound = false;
+            player1.PassRound = false;
+            player2.PassRound = false;
             player1.Point(player1.PlayerM);
             player2.Point(player2.PlayerM);
-            player1.DeletePlayer();
-            player2.DeletePlayer();
-            if (player1.Points == player2.Points)
+            player1.PlayerM.Clear();
+            player2.PlayerM.Clear();
+            if (player1.TotalPoint == player2.TotalPoint)
             {
-                player1.Actualizar();
-                player2.Actualizar();
+                player1.Update();
+                player2.Update();
             
             }
-            else if (player1.Points > player2.Points)
+            else if (player1.TotalPoint > player2.TotalPoint)
             {
-                player1.GetRoundsWon++;
-                player1.Actualizar();
+                player1.RaundsWon++;
+                player1.Update();
 
                 
             }
-            else if (player2.Points > player1.Points)
+            else if (player2.TotalPoint > player1.TotalPoint)
             {
-                player2.GetRoundsWon++;
-                player2.Actualizar();
+                player2.RaundsWon++;
+                player2.Update();
 
                 
             }
         }
+
+        #region DealingCards
+    public static void Update(Player player)
+    { 
+        if (player.Deck.Count == player.DeckSize)
+        {
+            Stuffle(player);
+            for (var i = 0; i < player.HandSize; i++)
+            {
+                DrawCard(player);
+            }
+        }
+        else
+        {
+            DrawCard(player);
+        }
+    }
+    public static void Stuffle(Player player)
+    {
+        Random rnd = new Random();
+        var AuxCard = new Card();
+        for (var i = 0; i < player.Deck.Count; i++)
+        {
+            AuxCard = player.Deck[i];
+            int RandomIndex = rnd.Next(0, player.Deck.Count);
+            player.Deck[i] = player.Deck[RandomIndex];
+            player.Deck[RandomIndex] = AuxCard;
+        }
+    }
+
+    public static void DrawCard(Player player)
+    {
+        if (player.Deck.Count > 0)
+        {
+           player.Hand.Add(player.Deck[0]);
+            player.Deck.RemoveAt(0);
+        }
+    }
+    #endregion
     
 }
 

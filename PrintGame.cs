@@ -1,6 +1,4 @@
-using System.Runtime.InteropServices;
-using System.Linq;
-
+using GameRun = BattleCards.GameRun;
 namespace BattleCards
 {
     public class Game
@@ -15,14 +13,14 @@ namespace BattleCards
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Write(
-                1,
-                @"
-██████  ██ ███████ ███    ██ ██    ██ ███████ ███    ██ ██ ██████   ██████       █████      ██████   █████  ████████ ████████ ██      ███████  ██████  █████  ██████  ██████  ███████ ██ 
-██   ██ ██ ██      ████   ██ ██    ██ ██      ████   ██ ██ ██   ██ ██    ██     ██   ██     ██   ██ ██   ██    ██       ██    ██      ██      ██      ██   ██ ██   ██ ██   ██ ██      ██ 
-██████  ██ █████   ██ ██  ██ ██    ██ █████   ██ ██  ██ ██ ██   ██ ██    ██     ███████     ██████  ███████    ██       ██    ██      █████   ██      ███████ ██████  ██   ██ ███████ ██ 
-██   ██ ██ ██      ██  ██ ██  ██  ██  ██      ██  ██ ██ ██ ██   ██ ██    ██     ██   ██     ██   ██ ██   ██    ██       ██    ██      ██      ██      ██   ██ ██   ██ ██   ██      ██    
-██████  ██ ███████ ██   ████   ████   ███████ ██   ████ ██ ██████   ██████      ██   ██     ██████  ██   ██    ██       ██    ███████ ███████  ██████ ██   ██ ██   ██ ██████  ███████ ██ 
-  "
+                                1,
+                                @"
+                ██████  ██ ███████ ███    ██ ██    ██ ███████ ███    ██ ██ ██████   ██████       █████      ██████   █████  ████████ ████████ ██      ███████  ██████  █████  ██████  ██████  ███████ ██ 
+                ██   ██ ██ ██      ████   ██ ██    ██ ██      ████   ██ ██ ██   ██ ██    ██     ██   ██     ██   ██ ██   ██    ██       ██    ██      ██      ██      ██   ██ ██   ██ ██   ██ ██      ██ 
+                ██████  ██ █████   ██ ██  ██ ██    ██ █████   ██ ██  ██ ██ ██   ██ ██    ██     ███████     ██████  ███████    ██       ██    ██      █████   ██      ███████ ██████  ██   ██ ███████ ██ 
+                ██   ██ ██ ██      ██  ██ ██  ██  ██  ██      ██  ██ ██ ██ ██   ██ ██    ██     ██   ██     ██   ██ ██   ██    ██       ██    ██      ██      ██      ██   ██ ██   ██ ██   ██      ██    
+                ██████  ██ ███████ ██   ████   ████   ███████ ██   ████ ██ ██████   ██████      ██   ██     ██████  ██   ██    ██       ██    ███████ ███████  ██████ ██   ██ ██   ██ ██████  ███████ ██ 
+                "
             );
             Console.ForegroundColor = ConsoleColor.Yellow;
             System.Console.WriteLine("Presione cualquier tecla para continuar...");
@@ -134,12 +132,12 @@ namespace BattleCards
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 System.Console.WriteLine(
                     "Hola "
-                        + player1.GetName()
+                        + player1.Name
                         + " y "
-                        + player2.GetName()
+                        + player2.Name
                         + "! a continuacion se elegira al azar quien comenzara el juego."
                 );
-                System.Console.WriteLine(player1.GetName() + " elija cara o cruz:");
+                System.Console.WriteLine(player1.Name + " elija cara o cruz:");
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 System.Console.WriteLine("1. Cara");
                 System.Console.WriteLine("2. Cruz");
@@ -160,7 +158,7 @@ namespace BattleCards
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         System.Console.WriteLine("El resultado fue " + moneda + "!");
-                        System.Console.WriteLine(player1.GetName() + " comenzara el juego!");
+                        System.Console.WriteLine(player1.Name + " comenzara el juego!");
 
                         System.Console.WriteLine("Presione cualquier tecla para continuar...");
                         System.Console.ReadKey();
@@ -173,7 +171,7 @@ namespace BattleCards
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         System.Console.WriteLine("El resultado fue " + moneda + "!");
-                        System.Console.WriteLine(player2.GetName() + " comenzara el juego!");
+                        System.Console.WriteLine(player2.Name + " comenzara el juego!");
 
                         System.Console.WriteLine("Presione cualquier tecla para continuar...");
                         System.Console.ReadKey();
@@ -237,7 +235,7 @@ namespace BattleCards
         {
             //     if(EndGame(player1, player2)) return;
             CheckPlayerInGame(player1, player2, turn);
-            if (player1.PassedRound == false)
+            if (player1.PassRound == false)
             {
                 bool correctOrder = true;
                 PlayNow(player1, player2, turn, correctOrder);
@@ -247,7 +245,7 @@ namespace BattleCards
                 turn++;
 
             CheckPlayerInGame(player1, player2, turn);
-            if (player2.PassedRound == false)
+            if (player2.PassRound == false)
             {
                 bool correctOrder = false;
                 PlayNow(player2, player1, turn, correctOrder);
@@ -258,7 +256,7 @@ namespace BattleCards
 
             //      System.Console.WriteLine("Presione cualquier tecla para continuar...");
 
-            if (player1.PassedRound == true && player2.PassedRound == true)
+            if (player1.PassRound == true && player2.PassRound == true)
             {   
                 GameRun.GameRule(player1, player2);
                 RoundResult(player1, player2);
@@ -273,7 +271,7 @@ namespace BattleCards
         static void PlayNow(Player playerInGame, Player playerOpposing, int turn, bool correctOrder)
         {
             //Console.ForegroundColor = ConsoleColor.Yellow;
-            System.Console.WriteLine("Turno de " + playerInGame.GetName());
+            System.Console.WriteLine("Turno de " + playerInGame.Name);
             // Board board = new Board();
             // board.BoardInfo(player1, player2);
             bool FullHand = false;
@@ -282,7 +280,7 @@ namespace BattleCards
                 FullHand = true;
             }
             else
-                playerInGame.Update();
+                GameRun.Update(playerInGame);
 
             if (correctOrder)
             {
@@ -302,7 +300,7 @@ namespace BattleCards
                 if (option.KeyChar == '6')
                 {
                     correct = false;
-                    playerInGame.PassedRound = true;
+                    playerInGame.PassRound = true;
                     System.Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Red;
                     System.Console.WriteLine("Turno pasado");
@@ -376,7 +374,7 @@ namespace BattleCards
                 {
                     for (var j = 0; j < Board.board.GetLength(1); j++)
                     {
-                        if (Board.board[i, j] == "[  ]")
+                        if (GameRun.BBoard[i, j] == null)
                         {
                             Board.board[i, j] =
                                 "[" + player.PlayerM[player.PlayerM.Count - 1].Id.ToString() + "]";
@@ -395,7 +393,7 @@ namespace BattleCards
                 {
                     for (var j = Board.board.GetLength(1) - 1; j >= 0; j--)
                     {
-                        if (Board.board[i, j] == "[  ]")
+                        if (GameRun.BBoard[i, j] == null)
                         {
                             Board.board[i, j] =
                                 "[" + player.PlayerM[player.PlayerM.Count - 1].Id.ToString() + "]";
@@ -417,27 +415,27 @@ namespace BattleCards
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 System.Console.WriteLine(
-                    player.GetName()
+                    player.Name
                         + " Ha recibido 5 cartas, Seleccione una carta para jugar o 6 para pasar turno"
                 );
             }
 
-            for (int i = 0; i < player.GetHand(); i++) // imprime las cartas en mano del jugador que este jugando
+            for (int i = 0; i < player.Hand.Count; i++) // imprime las cartas en mano del jugador que este jugando
             {
                 // var dic = new Dictionary<Card, int>();
-                // dic.Add(player.GetHands()[i], i + 1);
+                // dic.Add(player.Hand[i], i + 1);
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 System.Console.WriteLine(
                     i
                         + 1
                         + ". "
-                        + player.GetHands()[i].Name
+                        + player.Hand[i].Name
                         + ": "
-                        + player.GetHands()[i].Description
+                        + player.Hand[i].Description
                         + ", Power: "
-                        + player.GetHands()[i].Power
+                        + player.Hand[i].Power
                         + ", Faction: "
-                        + player.GetHands()[i].Faction
+                        + player.Hand[i].Faction
                 );
             }
             Console.ForegroundColor = ConsoleColor.Red;
@@ -476,27 +474,27 @@ namespace BattleCards
         static void RoundResult (Player player1, Player player2)
         {
             NewBoard();
-            if (player1.Points == player2.Points)
+            if (player1.TotalPoint == player2.TotalPoint)
             {
                 System.Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Green;
                 System.Console.WriteLine("Empate!");
                 Console.ResetColor();
             }
-            else if (player1.Points > player2.Points)
+            else if (player1.TotalPoint > player2.TotalPoint)
             {
                 System.Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Green;
-                System.Console.WriteLine(player1.GetName() + " ha ganado el turno!");
+                System.Console.WriteLine(player1.Name + " ha ganado el turno!");
                 Console.ResetColor();
                 
             }
-            else if (player2.Points > player1.Points)
+            else if (player2.TotalPoint > player1.TotalPoint)
             {
                 System.Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Green;
-                System.Console.WriteLine(player2.GetName() + " puntos: " + player2.Points);
-                System.Console.WriteLine(player2.GetName() + " ha ganado el turno!");
+                System.Console.WriteLine(player2.Name + " puntos: " + player2.TotalPoint);
+                System.Console.WriteLine(player2.Name + " ha ganado el turno!");
                 Console.ResetColor();
             }
         }
@@ -505,11 +503,11 @@ namespace BattleCards
 
         static bool EndGame(Player player1, Player player2) //Condiciones de fin de juego
         {
-            if (player1.GetRoundsWon == 3)
+            if (player1.RaundsWon == 3)
             {
                 System.Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Green;
-                System.Console.WriteLine(player1.GetName() + " ha ganado la partida!");
+                System.Console.WriteLine(player1.Name + " ha ganado la partida!");
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 System.Console.WriteLine("Presione cualquier tecla para volver al menu...");
                 System.Console.ReadKey();
@@ -517,11 +515,11 @@ namespace BattleCards
                 Game game = new Game();
                 return true;
             }
-            else if (player2.GetRoundsWon == 3)
+            else if (player2.RaundsWon == 3)
             {
                 System.Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Green;
-                System.Console.WriteLine(player2.GetName() + " ha ganado la partida!");
+                System.Console.WriteLine(player2.Name + " ha ganado la partida!");
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 System.Console.WriteLine("Presione cualquier tecla para volver al menu...");
                 System.Console.ReadKey();
@@ -529,13 +527,13 @@ namespace BattleCards
                 Game game = new Game();
                 return true;
             }
-            else if (player1.GetHand() == 0 || player2.GetHand() == 0)
+            else if (player1.Hand.Count == 0 || player2.Hand.Count == 0)
             {
-                if (player1.GetRoundsWon > player2.GetRoundsWon)
+                if (player1.RaundsWon > player2.RaundsWon)
                 {
                     System.Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Green;
-                    System.Console.WriteLine(player1.GetName() + " ha ganado la partida!");
+                    System.Console.WriteLine(player1.Name + " ha ganado la partida!");
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     System.Console.WriteLine("Presione cualquier tecla para volver al menu...");
                     System.Console.ReadKey();
@@ -543,11 +541,11 @@ namespace BattleCards
                     Game game = new Game();
                     return true;
                 }
-                else if (player2.GetRoundsWon > player1.GetRoundsWon)
+                else if (player2.RaundsWon > player1.RaundsWon)
                 {
                     System.Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Green;
-                    System.Console.WriteLine(player2.GetName() + " ha ganado la partida!");
+                    System.Console.WriteLine(player2.Name + " ha ganado la partida!");
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     System.Console.WriteLine("Presione cualquier tecla para volver al menu...");
                     System.Console.ReadKey();

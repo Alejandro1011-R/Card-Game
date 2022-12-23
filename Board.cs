@@ -66,15 +66,15 @@ namespace BattleCards
             System.Console.WriteLine("Tablero de juego:");
             PrintBoard();
             System.Console.WriteLine(
-                  player1.GetName()    +"                             "     + player2.GetName()
+                  player1.Name    +"                             "     + player2.Name
             );
             System.Console.WriteLine(
                 "Cartas en mano: "
-                    + player1.GetHand()
+                    + player1.Hand.Count
                     + "         Cartas en mano: "
-                    + player2.GetHand()
+                    + player2.Hand.Count
             );
-                   System.Console.WriteLine( "Rondas ganadas: "+ player1.GetRoundsWon + "         Rondas ganadas: "+ player2.GetRoundsWon);
+                   System.Console.WriteLine( "Rondas ganadas: "+ player1.RaundsWon + "         Rondas ganadas: "+ player2.RaundsWon);
             // System.Console.WriteLine("Vida: "+ player1.GetHealth() + "                   Vida: "+ player2.GetHealth());
             System.Console.WriteLine("");
             for (var i = 0; i < GameRun.CardsInGame.Count; i++)
