@@ -19,16 +19,25 @@ namespace BattleCards
             PlayerM = new List<Card>(5);
             Graveyard = new List<Card>();
             PassRound = false;
+            PlayerIsaBot = false;
+            
         }
         public void Point(List<Card> PlayerM)
         {
+            int point=0;
             for (var i = 0; i < PlayerM.Count; i++)
             {
-                TotalPoint += PlayerM[i].Power;
+                point += PlayerM[i].Power;
             }
+            TotalPoint = point;
+        }
+        public void ResetPoint()
+        {
+            TotalPoint = 0;
         }
         public void Update()
         {
+           
             TotalRounds = RaundsWon + "/5";
         }
         public void GetDeck()
