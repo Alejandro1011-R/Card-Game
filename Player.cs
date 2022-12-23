@@ -31,9 +31,13 @@ namespace BattleCards
             }
             TotalPoint = point;
         }
-        public void Update()
+        public void ResetPoint()
         {
             TotalPoint = 0;
+        }
+        public void Update()
+        {
+           
             TotalRounds = RaundsWon + "/5";
         }
         public void GetDeck()
