@@ -4,8 +4,10 @@ namespace BattleCards
 {
     public class Game
     {
+       
         public Game()
         {
+            
             //new CardDataBase();
             Presentation();
         }
@@ -35,9 +37,10 @@ namespace BattleCards
             );
             Console.ForegroundColor = ConsoleColor.DarkCyan;
 
-            System.Console.WriteLine("1. Jugar ");
-            System.Console.WriteLine("2. Salir");
-            System.Console.WriteLine("3. Instrucciones");
+            Write(25, "1. Jugar ");
+            Write(25, "2. Instrucciones");
+            Write(25, "3. Salir");
+            
             int option = Number(1, 3);
             // ConsoleKey option = Console.ReadKey().Key;
             System.Console.Clear();
@@ -74,7 +77,7 @@ namespace BattleCards
                     StartGameComputerVsComputer();
                 }
             }
-            else if (option == 2)
+            else if (option == 3)
             {
                 //  correcto = false;
                 Console.ForegroundColor = ConsoleColor.Yellow;
@@ -83,7 +86,7 @@ namespace BattleCards
                 System.Console.ReadKey();
                 System.Console.Clear();
             }
-            else if (option == 3)
+            else if (option == 2)
             {
                 //  correcto = false;
                 Console.ForegroundColor = ConsoleColor.Yellow;
@@ -111,16 +114,16 @@ namespace BattleCards
         static void StartGameComputerVsComputer()
         {
             System.Console.WriteLine("Elija el primer adversario:");
-         
+
             Console.ForegroundColor = ConsoleColor.Red;
             Write(50, "1. Writer_02");
-            System.Console.WriteLine();
+
             Console.ForegroundColor = ConsoleColor.Blue;
             Write(50, "2. The_Creation");
-            System.Console.WriteLine();
+
             Console.ForegroundColor = ConsoleColor.Green;
             Write(50, "3. Artagos");
-            System.Console.WriteLine();
+
             Console.ForegroundColor = ConsoleColor.White;
             int option = Number(1, 3);
             System.Console.Clear();
@@ -129,10 +132,10 @@ namespace BattleCards
                 System.Console.WriteLine("Elija el segundo adversario:");
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Write(50, "1. The_Creation");
-                System.Console.WriteLine();
+
                 Console.ForegroundColor = ConsoleColor.Green;
                 Write(50, "2. Artagos");
-                System.Console.WriteLine();
+
                 Console.ForegroundColor = ConsoleColor.White;
                 int option2 = Number(1, 2);
                 System.Console.Clear();
@@ -162,10 +165,10 @@ namespace BattleCards
                 System.Console.WriteLine("Elija el segundo adversario:");
                 Console.ForegroundColor = ConsoleColor.Red;
                 Write(50, "1. Writer_02");
-                System.Console.WriteLine();
+
                 Console.ForegroundColor = ConsoleColor.Green;
                 Write(50, "2. Artagos");
-                System.Console.WriteLine();
+
                 Console.ForegroundColor = ConsoleColor.White;
                 int option2 = Number(1, 2);
                 System.Console.Clear();
@@ -189,17 +192,16 @@ namespace BattleCards
                     Board board = new Board();
                     GameLoop(player1, player2, 1);
                 }
-                
             }
-           else if(option==3)
-           {
+            else if (option == 3)
+            {
                 System.Console.WriteLine("Elija el segundo adversario:");
                 Console.ForegroundColor = ConsoleColor.Red;
                 Write(50, "1. Writer_02");
-                System.Console.WriteLine();
+
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Write(50, "2. The_Creation");
-                System.Console.WriteLine();
+
                 Console.ForegroundColor = ConsoleColor.White;
                 int option2 = Number(1, 2);
                 System.Console.Clear();
@@ -223,8 +225,7 @@ namespace BattleCards
                     Board board = new Board();
                     GameLoop(player1, player2, 1);
                 }
-           }
-
+            }
         }
 
         static void StartGameVsPerson()
@@ -304,7 +305,7 @@ namespace BattleCards
         static void StartGameVsComputer()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Write(100, "Ingrese el nombre del jugador:");
+            Write(25, "Ingrese el nombre del jugador:");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             string player1Name = System.Console.ReadLine().Trim();
             System.Console.Clear();
@@ -600,6 +601,7 @@ namespace BattleCards
                 System.Console.Write(text[i]);
                 Thread.Sleep(val);
             }
+            System.Console.WriteLine();
         }
 
         static void NewBoard()
@@ -630,23 +632,46 @@ namespace BattleCards
             {
                 System.Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Green;
-                System.Console.WriteLine("Empate!");
+                Write(25, player1.Name + " puntos: " + player1.TotalPoint);
+
+                Write(25, player2.Name + " puntos: " + player2.TotalPoint);
+
+                player1.ResetPoint();
+                player2.ResetPoint();
+                Write(50, "Empate!");
                 Console.ResetColor();
+                System.Console.ReadKey();
+                Console.Clear();
             }
             else if (player1.TotalPoint > player2.TotalPoint)
             {
                 System.Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Green;
-                System.Console.WriteLine(player1.Name + " ha ganado el turno!");
+                Write(25, player1.Name + " puntos: " + player1.TotalPoint);
+
+                Write(25, player2.Name + " puntos: " + player2.TotalPoint);
+
+                player1.ResetPoint();
+                player2.ResetPoint();
+                Write(50, player1.Name + " ha ganado el turno!");
                 Console.ResetColor();
+                System.Console.ReadKey();
+                Console.Clear();
             }
             else if (player2.TotalPoint > player1.TotalPoint)
             {
                 System.Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Green;
-                System.Console.WriteLine(player2.Name + " puntos: " + player2.TotalPoint);
-                System.Console.WriteLine(player2.Name + " ha ganado el turno!");
+                Write(25, player1.Name + " puntos: " + player1.TotalPoint);
+
+                Write(25, player2.Name + " puntos: " + player2.TotalPoint);
+
+                player1.ResetPoint();
+                player2.ResetPoint();
+                Write(50, player2.Name + " ha ganado el turno!");
                 Console.ResetColor();
+                System.Console.ReadKey();
+                Console.Clear();
             }
         }
 
