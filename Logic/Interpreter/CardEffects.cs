@@ -5,7 +5,7 @@ namespace BattleCards
 {
     public abstract class effecto{
         public List<Comprobacion> comprobaciones;
-        public virtual void effect(GameRun game){}
+        public virtual void effect(Player playerInTurn, Player playerOpposide){}
     }
 
     public class ComposicionDeEfectos :effecto
@@ -16,11 +16,11 @@ namespace BattleCards
             effects = new List<effecto>();
             comprobaciones = new List<Comprobacion>();
         }
-        public override void effect(GameRun game)
+        public override void effect(Player playerInTurn, Player playerOpposide)
         {
             foreach( var effect in effects)
             {
-                effect.effect(game);
+                effect.effect(playerInTurn, playerOpposide);
             }
         }
     }
@@ -33,14 +33,14 @@ namespace BattleCards
             comprobaciones = new List<Comprobacion>(); 
         }
 
-        public override void effect(GameRun game)
+        public override void effect(Player playerInTurn, Player playerOpposide)
         {
             if(comprobaciones.Count()==0)
             {
-                if(GameRun.PlayerOpposide.Hand.Count()>0)
+                if(playerOpposide.Hand.Count()>0)
                 {
                     int id=int.Parse(Console.ReadLine()!);
-                    foreach(var carta in GameRun.PlayerOpposide.PlayerM)
+                    foreach(var carta in playerOpposide.PlayerM)
                     {
                         if(carta.Id==id)
                         {
@@ -52,7 +52,7 @@ namespace BattleCards
             }
             else
             {
-                foreach(var carta in GameRun.PlayerOpposide.PlayerM)
+                foreach(var carta in playerOpposide.PlayerM)
                 {
                     for(int i=0;i<comprobaciones.Count();i++)
                     {
@@ -80,12 +80,12 @@ namespace BattleCards
             CantPower=power;
             comprobaciones = new List<Comprobacion>(); 
         }
-        public override void effect(GameRun game)
+        public override void effect(Player playerInTurn, Player playerOpposide)
         {
             if(comprobaciones.Count()==0)
             {
                 int id=int.Parse(Console.ReadLine()!);
-                foreach(var carta in GameRun.PlayerInTurn.PlayerM)
+                foreach(var carta in playerInTurn.PlayerM)
                 {
                     if(carta.Id==id)
                     {
@@ -96,7 +96,7 @@ namespace BattleCards
             }
             else
             {
-                foreach(var carta in GameRun.PlayerInTurn.PlayerM)
+                foreach(var carta in playerInTurn.PlayerM)
                 {
                     for(int i=0;i<comprobaciones.Count();i++)
                     {
