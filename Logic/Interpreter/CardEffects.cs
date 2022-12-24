@@ -39,6 +39,7 @@ namespace BattleCards
             {
                 if(playerOpposide.Hand.Count()>0)
                 {
+                    
                     int id=int.Parse(Console.ReadLine()!);
                     foreach(var carta in playerOpposide.PlayerM)
                     {
@@ -84,15 +85,19 @@ namespace BattleCards
         {
             if(comprobaciones.Count()==0)
             {
-                int id=int.Parse(Console.ReadLine()!);
-                foreach(var carta in playerInTurn.PlayerM)
-                {
-                    if(carta.Id==id)
+                    
+                    int id=int.Parse(Console.ReadLine()!);
+                    foreach(var carta in playerInTurn.PlayerM)
                     {
-                        carta.Power+=CantPower;
-                        return;
+                        if(carta.Id==id)
+                        {
+                            carta.Power+=CantPower;
+                            return;
+                        }
                     }
-                }
+                
+                
+               
             }
             else
             {

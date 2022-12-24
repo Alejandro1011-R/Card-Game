@@ -4,22 +4,21 @@ namespace BattleCards
     {
        public static bool PassTurn(Player player, Player Bot)
        {
-        if(player.PassRound==true)
-        {
-          
-          if(Bot.TotalPoint>player.TotalPoint)
-          {
-            return true;
-          }
+            if(player.PassRound==true)
+            {      
+                if(Bot.TotalPoint>player.TotalPoint)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
             else
             {
                 return false;
             }
-        }
-        else
-        {
-            return false;
-        }
        }
         public static int BestcardIndex(Player player1)
         {
