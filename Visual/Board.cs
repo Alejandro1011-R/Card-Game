@@ -14,14 +14,6 @@ namespace BattleCards
         
 
 
-        //Recuerdame modificar esto-- Es mejor llamar al del GameStatus
-        // private int player1health { get; set; }
-        // private int player2health { get; set; }
-
-        // public Board()
-        // {
-            
-        // }
 
         public static void PrintBoard()
         {
@@ -74,7 +66,7 @@ namespace BattleCards
                     + player2.Hand.Count
             );
                    System.Console.WriteLine( "Rondas ganadas: "+ player1.RaundsWon + "         Rondas ganadas: "+ player2.RaundsWon);
-            // System.Console.WriteLine("Vida: "+ player1.GetHealth() + "                   Vida: "+ player2.GetHealth());
+            
             System.Console.WriteLine("");
             System.Console.WriteLine("Cartas en juego:");
             for (var i = 0; i < GameRun.CardsInGame.Count; i++)

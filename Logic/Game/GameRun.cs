@@ -5,7 +5,6 @@ namespace BattleCards;
 
 public class GameRun
 {
-    //public static Dictionary<GameStatus, int> GameStatuses ;
     public static Card[,] BBoard;
     public static Player PlayerInTurn { get; set; }
 
@@ -13,10 +12,7 @@ public class GameRun
 
     public static Dictionary<Card, int> CardsInGame;
 
-    // public static Dictionary<GameStatus, int> GetGameStatuses
-    // {
-    //     get { return GameStatuses; }
-    // }
+
 
     public GameRun(Player playerInTurn, Player playerOpposide)
     {
@@ -26,14 +22,10 @@ public class GameRun
         PlayerOpposide = playerOpposide;
     }
 
-    // public static void AddItems (GameStatus gameStatus, int turn, Player player)
-    // {
-    //     GameStatuses.Add(gameStatus, turn);
-    // }
 
-    public static void SystemGame(Player player, int turn, int index) //asere que hace el 1er parametro, el player player??? no le veo sentido a eso
+    public static void SystemGame(Player player, int turn, int index) 
     {
-        //player.Update(); // En cada turno repartir carta en cada turno
+        
         bool temp = true;
         PassiveEffect();
         DeleteCard();
@@ -194,7 +186,7 @@ public class GameRun
 
     public static void GameRule(Player player1, Player player2)
     {
-        //si los 2 se pasan, termina ese turno y se elige el ganador de acuerdo a la cantidad de poder en el campo
+       
 
 
         GameRun.BBoard = new Card[5, 5];
