@@ -87,6 +87,8 @@ namespace BattleCards
                         + card.Key.Name
                         + ": "
                         + card.Key.Description
+                        + ", BasePower: "
+                        + card.Key.BasePower
                         + ", Power: "
                         + card.Key.Power
                         + ", Faction: "

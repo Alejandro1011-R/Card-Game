@@ -35,6 +35,8 @@ public class GameRun
     {
         //player.Update(); // En cada turno repartir carta en cada turno
         bool temp = true;
+        PassiveEffect();
+        DeleteCard();
 
         KeyValuePair<Card, int> ACardInGame = new KeyValuePair<Card, int>(
             player.Hand[index],
@@ -44,6 +46,16 @@ public class GameRun
             CardsInGame.Add(player.Hand[index], player.Hand[index].Id);
         player.PlayerM.Add(player.Hand[index]);
         player.Hand.Remove(player.Hand[index]);
+
+        foreach (var item in ACardInGame.Key.Efectos)
+        {
+            item.effect(PlayerInTurn, PlayerOpposide);
+        }
+
+        
+
+        
+        
 
         if (turn % 2 != 0)
         {
@@ -57,6 +69,8 @@ public class GameRun
                         temp = false;
                         break;
                     }
+                   
+                    
                 }
                 if (temp == false)
                     break;
@@ -74,6 +88,7 @@ public class GameRun
                         temp = false;
                         break;
                     }
+                    
                 }
                 if (temp == false)
                     break;
@@ -139,6 +154,42 @@ public class GameRun
         }
 
         return temp;
+    }
+
+    public static void PassiveEffect ()
+    {
+        for (var i = 0; i < BBoard.GetLength(0); i++)
+        {
+            for (var j = 0; j < BBoard.GetLength(1); j++)
+            {
+                if (BBoard[i, j] != null)
+                {
+                    if (BBoard[i, j].Passive && BBoard[i, j].Power > 0)
+                    foreach (var item in BBoard[i, j].Efectos)
+                    { 
+                        item.effect(PlayerInTurn, PlayerOpposide);   
+                    }
+                }
+            }
+            
+        }
+    }
+    public static void DeleteCard ()
+    {
+        for (var i = 0; i < BBoard.GetLength(0); i++)
+        {
+            for (var j = 0; j < BBoard.GetLength(1); j++)
+            {
+                if (BBoard[i, j] != null)
+                {
+                    if (BBoard[i, j].Power <= 0)
+                    {
+                        BBoard[i, j] = null;
+                    }
+                }
+            }
+            
+        }
     }
 
     public static void GameRule(Player player1, Player player2)
