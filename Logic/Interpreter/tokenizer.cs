@@ -97,7 +97,6 @@ namespace BattleCards
                         {
                             var conjuncion= new Tokens(TokenTypes.ComposicionDeEfectos,"");
                             tokens.Add(conjuncion);
-                            j++;
                             continue;
                         }
 
@@ -105,14 +104,12 @@ namespace BattleCards
                         {
                             var condicion= new Tokens(TokenTypes.cuando,"");
                             tokens.Add(condicion);
-                            j++;
                             continue;
                         }
                         if(TextoLimpio[j]=="siemprecuando")
                         {
                             var condicion= new Tokens(TokenTypes.siemprecuando,"");
                             tokens.Add(condicion);
-                            j++;
                             continue;
                         }
                         if(TextoLimpio[j]=="MasPoderQue")
@@ -167,6 +164,24 @@ namespace BattleCards
                             }
                             else{
                                 throw new Exception("MenosPoderQue must receive an integer");
+                            }
+
+                        }
+                        if(TextoLimpio[j]=="faccion")
+                        {
+                            if(j==TextoLimpio.Length-1)
+                            {
+                                throw new Exception("faccion must receive an integer");
+                            }
+                            if(int.TryParse(TextoLimpio[j+1],out int intValue))
+                            {
+                                var condicionfaccion= new Tokens(TokenTypes.condicionfaccion,TextoLimpio[j+1]);
+                                tokens.Add(condicionfaccion);
+                                j++;
+                                continue;
+                            }
+                            else{
+                                throw new Exception("faccion must receive an integer");
                             }
 
                         }

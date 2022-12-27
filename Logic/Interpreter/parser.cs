@@ -39,12 +39,12 @@ namespace BattleCards
                     continue;
                 }
                 
-                if(Tokens.tokens[i].Tipo==TokenTypes.effect_quitapoder)
+                /*if(Tokens.tokens[i].Tipo==TokenTypes.effect_quitapoder)
                 {
                     var effect = new QuitarPower(int.Parse(Tokens.tokens[i].Info));
                     ParsedCard.Efectos.Add(effect);
                     continue;
-                }
+                }*/
 
                 if(Tokens.tokens[i].Tipo==TokenTypes.effect_quitapoder)
                 {
@@ -67,7 +67,7 @@ namespace BattleCards
                     i+=aux;
                     continue;
                 }
-                if(Tokens.tokens[i].Tipo==TokenTypes.siemprecuando)
+                if(Tokens.tokens[i].Tipo==TokenTypes.cuando)
                 {
                     if(Tokens.tokens[i-1].Tipo!=TokenTypes.effect_quitapoder&&Tokens.tokens[i-1].Tipo!=TokenTypes.effect_subepoder)
                     {

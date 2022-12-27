@@ -18,7 +18,7 @@
 (Imlerith) [Lo ultimo de la nueva generacion] poder 4 faccion 2 que QuitePoder 6 SubePoder 1
 (Ciri) [Lo ultimo de la nueva generacion] poder 4 faccion 2 que QuitePoder 6 SubePoder 1
 (Lugos El Loco) [Lo ultimo de la nueva generacion] poder 4 faccion 2 que QuitePoder 6 SubePoder 1
-(Geralt) [Lo ultimo de la nueva generacion] poder 4 faccion 2 que QuitePoder 6 SubePoder 1
+(Geralt) [Lo ultimo de la nueva generacion] poder 4 faccion 2 que QuitePoder 6 SubePoder 1 
 
 (Letho de Guleta) [Aterrador poder que hace temblar a todo el campo] poder 3 faccion 3 que QuitePoder 3 SubePoder 1
 (Emisario joven) [Lo ultimo de la nueva generacion] poder 4 faccion 3 que QuitePoder 6 SubePoder 1

@@ -4,8 +4,15 @@
     {
         public static void Main()
         {
-            CardDataBase cardDataBase = new CardDataBase();
-            Game game = new Game();
+            /*CardDataBase cardDataBase = new CardDataBase();
+            Game game = new Game();*/
+            var aux = new tokenizer("(Vampiro: katakan) [Lo ultimo de la nueva generacion] poder 4 faccion 1 que QuitePoder 6 cuando MenosPoderQue 2 MasPoderQue 0 SubePoder 1 cuando MasPoderQue 2 faccion 2");
+            var aux2= new parser(aux);
+            var a = aux2.CreateCard();
+            foreach (var ll in a.Efectos)
+            {
+               Console.WriteLine (ll.comprobaciones.Count());
+            }
         }
         // prueba
     }
