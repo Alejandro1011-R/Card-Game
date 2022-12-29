@@ -37,7 +37,6 @@ namespace BattleCards
         }
         public void Update()
         {
-           
             TotalRounds = RaundsWon + "/5";
         }
         public void GetDeck()

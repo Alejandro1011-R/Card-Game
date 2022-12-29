@@ -4,7 +4,6 @@ namespace BattleCards
 {
     public class Game
     {
-       
         public Game()
         {
             Presentation();
@@ -13,51 +12,49 @@ namespace BattleCards
         static void Presentation()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-Write(
-    1,
-    @"
+            Write(
+                1,
+                @"
     ████████ ██   ██ ███████      ██████ ██       █████  ███    ███     ██████   ██████   █████  ████████ 
        ██    ██   ██ ██          ██      ██      ██   ██ ████  ████     ██   ██ ██    ██ ██   ██    ██    
        ██    ███████ █████       ██      ██      ███████ ██ ████ ██     ██████  ██    ██ ███████    ██    
        ██    ██   ██ ██          ██      ██      ██   ██ ██  ██  ██     ██   ██ ██    ██ ██   ██    ██    
        ██    ██   ██ ███████      ██████ ███████ ██   ██ ██      ██     ██████   ██████  ██   ██    ██
     "
-);
+            );
             Console.ForegroundColor = ConsoleColor.Yellow;
             System.Console.WriteLine("Presione cualquier tecla para continuar...");
             System.Console.ReadKey();
             System.Console.Clear();
-           
 
-            string pront= "Hola, a continuación podrá seleccionar lo que desea hacer en el juego:";
+            string pront = "Hola, a continuación podrá seleccionar lo que desea hacer en el juego:";
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            string [] options = new string[] {"Jugar", "Instrucciones", "Salir"};
+            string[] options = new string[] { "Jugar", "Instrucciones", "Salir" };
             Menu menu = new Menu(pront, options);
-          int option=  menu.Run()+1;
+            int option = menu.Run() + 1;
 
-          
             System.Console.Clear();
 
-         
             if (option == 1)
             {
-               
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                string pront1="Seleccione el modo de juego?";
-                string [] options1 = new string[] {"Jugador vs Jugador", "Jugador vs PC", "PC vs PC"};
+                string pront1 = "Seleccione el modo de juego?";
+                string[] options1 = new string[]
+                {
+                    "Jugador vs Jugador",
+                    "Jugador vs PC",
+                    "PC vs PC"
+                };
                 Menu menu1 = new Menu(pront1, options1);
-              
 
-                int option2 = menu1.Run()+1;
+                int option2 = menu1.Run() + 1;
                 System.Console.Clear();
                 if (option2 == 1)
                 {
-                  
                     StartGameVsPerson();
                 }
                 else if (option2 == 2)
                 {
-                   
                     StartGameVsComputer();
                 }
                 else if (option2 == 3)
@@ -67,7 +64,6 @@ Write(
             }
             else if (option == 3)
             {
-        
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 System.Console.WriteLine("Gracias por jugar!");
                 System.Console.WriteLine("Presione cualquier tecla para salir...");
@@ -76,7 +72,6 @@ Write(
             }
             else if (option == 2)
             {
-     
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 System.Console.WriteLine("Reglas del juego: ");
                 System.Console.WriteLine("1. Cada jugador tiene 5 cartas en su mano.");
@@ -84,27 +79,24 @@ Write(
                 System.Console.WriteLine("3. Cada turno se juega una carta.");
                 System.Console.WriteLine("4. Cada carta tiene un poder y una faccion.");
             }
-          
         }
-
-  
 
         static void StartGameComputerVsComputer()
         {
-            string pront="Elija el primer adversario:";
-            string[] options = new string[] {"Writer_02", "The_Creation", "Artagos"};
+            string pront = "Elija el primer adversario:";
+            string[] options = new string[] { "Writer_02", "The_Creation", "Artagos" };
             Menu menu = new Menu(pront, options);
 
             Console.ForegroundColor = ConsoleColor.White;
-            int option = menu.Run()+1;
+            int option = menu.Run() + 1;
             System.Console.Clear();
             if (option == 1)
             {
-                string pront1="Elija el segundo adversario:";
-                string[] options1 = new string[] {"The_Creation", "Artagos"};
+                string pront1 = "Elija el segundo adversario:";
+                string[] options1 = new string[] { "The_Creation", "Artagos" };
                 Menu menu1 = new Menu(pront1, options1);
                 Console.ForegroundColor = ConsoleColor.White;
-                int option2 = menu1.Run()+1;
+                int option2 = menu1.Run() + 1;
                 System.Console.Clear();
                 if (option2 == 1)
                 {
@@ -129,13 +121,13 @@ Write(
             }
             else if (option == 2)
             {
-                string pront1="Elija el segundo adversario:";
-                string[] options1 = new string[] {"Writer_02", "Artagos"};
+                string pront1 = "Elija el segundo adversario:";
+                string[] options1 = new string[] { "Writer_02", "Artagos" };
                 Menu menu1 = new Menu(pront1, options1);
                 Console.ForegroundColor = ConsoleColor.White;
-                int option2 = menu1.Run()+1;
-           
-          System.Console.Clear();
+                int option2 = menu1.Run() + 1;
+
+                System.Console.Clear();
                 if (option2 == 1)
                 {
                     Player player1 = new Player("The_Creation");
@@ -159,11 +151,11 @@ Write(
             }
             else if (option == 3)
             {
-                string pront1="Elija el segundo adversario:";
-                string[] options1 = new string[] {"Writer_02", "The_Creation"};
+                string pront1 = "Elija el segundo adversario:";
+                string[] options1 = new string[] { "Writer_02", "The_Creation" };
                 Menu menu1 = new Menu(pront1, options1);
                 Console.ForegroundColor = ConsoleColor.White;
-                int option2 = menu1.Run()+1;
+                int option2 = menu1.Run() + 1;
 
                 System.Console.Clear();
                 if (option2 == 1)
@@ -203,7 +195,7 @@ Write(
             System.Console.Clear();
             Player player1 = new Player(player1Name);
             Player player2 = new Player(player2Name);
-         
+
             Console.ForegroundColor = ConsoleColor.Yellow;
             System.Console.WriteLine(
                 "Hola "
@@ -212,29 +204,37 @@ Write(
                     + player2.Name
                     + "! a continuacion se elegira al azar quien comenzara el juego."
             );
-            
-            string pront= player1.Name + " elija cara o cruz:";
-            string[] options = new string[] {"Cara", "Cruz"};
+
+            string pront = player1.Name + " elija cara o cruz:";
+            string[] options = new string[] { "Cara", "Cruz" };
             Menu menu = new Menu(pront, options);
             Console.ForegroundColor = ConsoleColor.White;
-            int option = menu.Run()+1;
-          
-           
-           
+            int option = menu.Run() + 1;
+
             System.Console.Clear();
             string optionString = " ";
             if (option == 1)
                 optionString = "Cara";
             else
                 optionString = "Cruz";
-        
+
             string moneda = CaraoCruz();
             if (moneda == optionString)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 System.Console.WriteLine("El resultado fue " + moneda + "!");
                 System.Console.WriteLine(player1.Name + " comenzara el juego!");
-                System.Console.WriteLine("Presione cualquier tecla para continuar...");
+                  System.Console.ReadKey();
+                string pronts = (player1.Name + " desea utilizar un deck personalizado? (s/n)");
+                string[] optionss = new string[] { "Si", "No" };
+                Menu menus = new Menu(pronts, optionss);
+                Console.ForegroundColor = ConsoleColor.White;
+                int optionsss = menus.Run() + 1;
+                if(optionsss == 1)
+                {
+                    System.Console.Clear();
+                   CreateDeck(player1); 
+                }
                 System.Console.ReadKey();
                 System.Console.Clear();
                 GameRun game = new GameRun(player1, player2);
@@ -246,8 +246,17 @@ Write(
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 System.Console.WriteLine("El resultado fue " + moneda + "!");
                 System.Console.WriteLine(player2.Name + " comenzara el juego!");
-
-                System.Console.WriteLine("Presione cualquier tecla para continuar...");
+                System.Console.ReadKey();
+                string pronts = (player2.Name + " desea utilizar un deck personalizado? (s/n)");
+                string[] optionss = new string[] { "Si", "No" };
+                Menu menus = new Menu(pronts, optionss);
+                Console.ForegroundColor = ConsoleColor.White;
+                int optionsss = menus.Run() + 1;
+                if (optionsss == 1)
+                {
+                    System.Console.Clear();
+                    CreateDeck(player2);
+                }
                 System.Console.ReadKey();
                 System.Console.Clear();
                 GameRun game = new GameRun(player2, player1);
@@ -259,7 +268,6 @@ Write(
             System.Console.WriteLine("Presione cualquier tecla para comenzar...");
             System.Console.ReadKey();
             System.Console.Clear();
-        
         }
 
         static void StartGameVsComputer()
@@ -270,13 +278,12 @@ Write(
             string player1Name = System.Console.ReadLine().Trim();
             System.Console.Clear();
 
-            string pront="Elija el adversario contra el que desea jugar";
-            string[] options = new string[] {"Writer_02", "The_Creation", "Artagos"};
+            string pront = "Elija el adversario contra el que desea jugar";
+            string[] options = new string[] { "Writer_02", "The_Creation", "Artagos" };
             Menu menu = new Menu(pront, options);
             Console.ForegroundColor = ConsoleColor.White;
-            int option = menu.Run()+1;
+            int option = menu.Run() + 1;
 
-           
             System.Console.Clear();
             if (option == 1)
             {
@@ -305,6 +312,54 @@ Write(
                 Board board = new Board();
                 GameLoop(player1, player2, 1);
             }
+        }
+
+        static void CreateDeck(Player player)
+        {
+            var CardDB = CardDataBase.CardList.ToList();
+            player.Deck.Clear();
+            for (int i = 0; i < 30; i++)
+            {
+                string Pront = "Elija una carta para agregar a su mazo";
+                string[] options = new string[CardDB.Count];
+                for (int j = 0; j < CardDB.Count; j++)
+                {
+                    options[j] = CardDB[j].Name + ": " + CardDB[j].Description + ", Power: " + CardDB[j].Power + ", Faction: " + CardDB[j].Faction ;
+                }
+                /* + 1
+                        + ". "
+                        + player.Hand[i].Name
+                        + ": "
+                        + player.Hand[i].Description
+                        + ", Power: "
+                        + player.Hand[i].Power
+                        + ", Faction: "
+                        + player.Hand[i].Faction*/
+                Menu menu = new Menu(Pront, options);
+                Console.ForegroundColor = ConsoleColor.White;
+                int option = menu.Run()  ;
+                player.Deck.Add(CardDB[option]);
+                CardDB.RemoveAt(option);
+                 System.Console.WriteLine(" ");
+                   Console.ForegroundColor = ConsoleColor.Yellow;
+                    System.Console.WriteLine("Cartas en el deck: ("+ player.Deck.Count + "/30)");
+                for(int j = 0; j < player.Deck.Count; j++)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    System.Console.WriteLine(player.Deck[j].Name+ ": " + player.Deck[j].Description + ", Power: " + player.Deck[j].Power + ", Faction: " + player.Deck[j].Faction);
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+                 Console.ForegroundColor = ConsoleColor.Yellow;
+                System.Console.WriteLine("Presione cualquier tecla para continuar...");
+                Console.ForegroundColor = ConsoleColor.White;
+                System.Console.ReadKey();
+                System.Console.Clear();
+            }
+              Console.ForegroundColor = ConsoleColor.Yellow;
+                    System.Console.WriteLine("Deck creado con exito!");
+                    System.Console.WriteLine("Presione cualquier tecla para continuar...");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    System.Console.ReadKey();
         }
 
         static string CaraoCruz()
@@ -337,7 +392,6 @@ Write(
 
         static void GameLoop(Player player1, Player player2, int turn)
         {
-            
             CheckPlayerInGame(player1, player2, turn);
             if (player1.PassRound == false)
             {
@@ -358,8 +412,6 @@ Write(
             else
                 turn++;
 
-            
-
             if (player1.PassRound == true && player2.PassRound == true)
             {
                 GameRun.GameRule(player1, player2);
@@ -378,21 +430,19 @@ Write(
 
             int number = (int)option - 48;
             if (number >= a && number <= b)
-            { 
+            {
                 return number;
             }
             else
             {
-              
                 return Number(a, b);
             }
         }
 
         static void PlayNow(Player playerInGame, Player playerOpposing, int turn, bool correctOrder)
         {
-      
             System.Console.WriteLine("Turno de " + playerInGame.Name);
-          
+
             bool FullHand = false;
             if (playerInGame.Hand.Count == 5)
             {
@@ -412,14 +462,13 @@ Write(
                 Board.BoardInfo(playerOpposing, playerInGame, FullHand);
             }
             PrintTurnInfo(playerInGame, turn);
-         
+
             if (playerInGame.PlayerIsaBot == false)
             {
                 int option = Number(1, 6);
-               
+
                 if (option == 6)
                 {
-                   
                     playerInGame.PassRound = true;
                     System.Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -455,14 +504,12 @@ Write(
                         System.Console.WriteLine(
                             "Todas las casillas estan ocupadas, seleccione otra opcion"
                         );
-                   
                     }
                     else
                     {
                         GameRun.SystemGame(playerInGame, turn, index);
                         playerInGame.Point(playerInGame.PlayerM);
                         PrintBoardPerTurn();
-                       
                     }
                 }
                 else
@@ -492,8 +539,6 @@ Write(
             }
         }
 
-     
-
         private static void PrintBoardPerTurn()
         {
             for (var i = 0; i < Board.board.GetLength(0); i++)
@@ -519,7 +564,7 @@ Write(
                 );
             }
 
-            for (int i = 0; i < player.Hand.Count; i++) 
+            for (int i = 0; i < player.Hand.Count; i++)
             {
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 System.Console.WriteLine(
@@ -621,7 +666,7 @@ Write(
             }
         }
 
-        static bool EndGame(Player player1, Player player2) 
+        static bool EndGame(Player player1, Player player2)
         {
             if (player1.RaundsWon == 3)
             {
