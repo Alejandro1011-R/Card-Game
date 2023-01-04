@@ -12,8 +12,7 @@
 (Arpía celaeno) [Las arpías comunes se alimentan de carroña. Las arpías celaeno, de sueños.] poder 5 faccion 1 
 (Moira: Guisadora) [Te cortaremos en trocitos, chico. Haremos un buen caldo.] poder 4 faccion 1 
 (Moira: Tejedora) [Percibo tu dolor. Veo tu miedo.] poder 3 faccion 1
-(Moira: Susurradora) [Sería tu media naranja… y la última.] power 2 faccion 1
-
+(Moira: Susurradora) [Sería tu media naranja… y la última.] poder 2 faccion 1
 (John Natalis) [Esa plaza debe llevar los nombres de mis soldados, de los muertos. No el mio...dismuniye en 5 el power de las carta Scoia'tael] poder 1 faccion 2 que QuitePoder 5 cuando faccion 4
 (Esterad Thyssen) Como todos los hombres de Thyssen, era alto, de contextura poderosa y criminalmente guapo... dismuniye en 2 el power de las cartas Scoia'tael con power mayor a 5] poder 4 faccion 2 que QuitePoder 2 cuando faccion 4 MasPoderQue 5
 (Vernon Roche) [Un patriota... y un auténtico hijo de p*ta...dismuniye en 6 el power de las cartas Scoia'tael y aumenta en 2 las cartas Neutral] poder 4 faccion 2 que SubePoder 2 cuando faccion 2 QuitePoder 6 cuando faccion 4 
@@ -25,11 +24,10 @@
 (Lugos: El Loco) [Los brujos nunca mueren en sus camas.] poder 4 faccion 2
 (Triss: Lluvia de meteoritos) [«La próxima vez que creas que voy a cabrear a Geralt, dame una buena colleja»] poder 4 faccion 2
 (Eltibaldo) [Torturador, agorero y demente. Eltibaldo fue el primer mago en indagar en los secretos de la maldición del sol negro... dio comienzo a la cacería generalizada de las niñas malditas] poder 5 faccion 2 
-(Jaskier: Poeta) [La pluma es más poderosa que la espada.] power 2 faccion 2
+(Jaskier: Poeta) [La pluma es más poderosa que la espada.] poder 2 faccion 2
 (Armadura viviente) [Es cara, eso está claro. Pero teniendo en cuenta lo que te ahorras en pensión completa, amortizarás la inversión antes de que acabe el siglo.] poder 4 faccion 2
-(Radeyah) [Se pueden ocultar muchas cosas tras una hermosa sonrisa.] power 2 faccion 2
+(Radeyah) [Se pueden ocultar muchas cosas tras una hermosa sonrisa.] poder 2 faccion 2
 (Avallac'h) [Los humanos tenéis gustos… peculiares.] poder 3 faccion 2
-
 (Albrich) [¿Una bola de fuego? Por supuesto. Lo que Su Majestad Imperial desee... dismuniye en 5 el power de las carta Neutral] poder 1 faccion 3 que QuitePoder 5 cuando faccion 2
 (Assire var Anahid) [Los magos nilfgaardianos tienen una opción: la sumisión servil o la horca... dismuniye en 2 el power de las cartas Neutral con power mayor a 5] poder 4 faccion 3 que QuitePoder 2 cuando faccion 2 MasPoderQue 5
 (Infanteria esclava) [Un hombre libre tiene elección. Las elecciones de un esclavo las toman por él...dismuniye en 6 el power de las cartas Neutral y aumenta en 2 las cartas Nilfgard] poder 4 faccion 3 que SubePoder 2 cuando faccion 3 QuitePoder 6 cuando faccion 2 
@@ -41,11 +39,10 @@
 (Menno Coehoorn) [Tomaré una unidad de reconocimiento atenta sobre una buena brigada de caballería cualquier día.] poder 4 faccion 3
 (Morteisen) [Ningún piquero nordico ni lanceros enanos puede aspirar a ser la caballería mejor entrenada.] poder 4 faccion 3
 (Eltibaldo) [Torturador, agorero y demente. Eltibaldo fue el primer mago en indagar en los secretos de la maldición del sol negro... dio comienzo a la cacería generalizada de las niñas malditas] poder 5 faccion 3
-(Morvran Voorhis) [Sol de verano reflejándose en las tranquilas aguas del Alba: eso es Nilfgaard para mí.] power 2 faccion 3
+(Morvran Voorhis) [Sol de verano reflejándose en las tranquilas aguas del Alba: eso es Nilfgaard para mí.] poder 2 faccion 3
 (Nausicaa Cavalry Rider) [El Emperador enseñará la disciplina del Norte] poder 4 faccion 3
-(Puttkammer) [Aprendí mucho en la Academia Militar de Braibant. Cómo fregar patatas, por ejemplo.] power 2 faccion 3
+(Puttkammer) [Aprendí mucho en la Academia Militar de Braibant. Cómo fregar patatas, por ejemplo.] poder 2 faccion 3
 (Stefan Skellen) [Mi marca deja cicatrices en el rostro de nuestra futura emperatriz. Ese es mi logro más orgulloso.] poder 3 faccion 3
-
 (Barclay Els) [Nuestro hidromiel huele a orina, ¿verdad? Fácil de arreglar: ¡te romperé la p*ta nariz!... dismuniye en 5 el power de las carta Monster] poder 1 faccion 4 que QuitePoder 5 cuando faccion 1
 (Ciaran aep Easnillien) [El camino a la libertad está pavimentado con sangre, no con tinta.... dismuniye en 2 el power de las cartas Monster con power mayor a 5] poder 4 faccion 4 que QuitePoder 2 cuando faccion 1 MasPoderQue 5
 (Dennis Cranmer) [Sé cómo llevar a cabo las órdenes, así que puedes empujar tus consejos por la tolva de carbón....dismuniye en 6 el power de las cartas Monster y aumenta en 2 las cartas Scoia'tael] poder 4 faccion 4 que SubePoder 2 cuando faccion 4 QuitePoder 6 cuando faccion 1 
@@ -57,7 +54,7 @@
 (Havekar Healer) [Es hora de mirar a la muerte a la cara.] poder 4 faccion 4
 (Iorveth) [Rey o mendigo, ¿cuál es la diferencia? Un dh'oiné menos.] poder 4 faccion 4
 (Isengrim Faoiltiarna) [Se dan cuenta una vez que notan mi cicatriz: una realización de muerte inminente.... dio comienzo a la cacería generalizada de las niñas malditas] poder 5 faccion 4
-(Milva) [Con cada flecha que suelto, pienso en mi pa. Estaría orgulloso. Pienso.] power 2 faccion 4
+(Milva) [Con cada flecha que suelto, pienso en mi pa. Estaría orgulloso. Pienso.] poder 2 faccion 4
 (Riordain) [Míralos a los ojos, festeja con su terror. Entonces ve a matar.] poder 4 faccion 4
-(Saesenthessis) [Hermoso, puro, feroz: el ícono perfecto para una rebelión.] power 2 faccion 4
+(Saesenthessis) [Hermoso, puro, feroz: el ícono perfecto para una rebelión.] poder 2 faccion 4
 (Toruviel) [Con mucho gusto te mataría de cerca, mirarte a los ojos... Pero apestas, humano.] poder 3 faccion 4
