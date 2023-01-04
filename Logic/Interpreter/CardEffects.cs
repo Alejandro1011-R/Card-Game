@@ -3,6 +3,14 @@ using System.Reflection.Emit;
 
 namespace BattleCards
 {
+
+    /*
+    	monster     Neutral	   Nilfgard	  Scoia'tael
+monster 	0	      -1          1	        -1
+Neutral  	1          0         -1          1                     en total hay 60 cartas, 15 por cada faccion, de ellas 8 con efectos y 7 sin efectos
+Nilfgard   -1	       1 	      0	        -1
+Scoia'tael	1	      -1          1          0
+ */
     public abstract class effecto{
         public List<Comprobacion> comprobaciones;
         public virtual void effect(Player playerInTurn, Player playerOpposide){}
