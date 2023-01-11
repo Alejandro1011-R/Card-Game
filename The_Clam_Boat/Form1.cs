@@ -24,6 +24,7 @@ namespace The_Clam_Boat
 
         private void Salir_Click(object sender, EventArgs e)
         {
+            this.Close();
                            
         }
 
@@ -53,8 +54,8 @@ namespace The_Clam_Boat
             selecc.Multiplayer = Multiplayer;
             selecc.Show();
             
-            
-            
+
+
         }
 
         private void JvsPC_Click(object sender, EventArgs e)

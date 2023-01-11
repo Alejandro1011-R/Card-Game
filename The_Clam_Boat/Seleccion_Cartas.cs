@@ -96,62 +96,119 @@ namespace The_Clam_Boat
               {
                   MessageBox.Show("Revise bien que tenga el numero correcto de cartas seleccionadas y el campo del nombre no este vacio");
               }*/
-            if (contador_cartas == 30 && NombreJugador.Texts != "" && Nombre_Jugador.Text == "Nombre Jugador 2:")
+
+            if (Multiplayer == true)
             {
-                Campo_Juego juego = new Campo_Juego();
-                juego.Show();
-
-                //ramdom select who starts
-
-
-                if (Multiplayer == true)
+                if (contador_cartas == 30 && NombreJugador.Texts != "" && Nombre_Jugador.Text == "Nombre Jugador 2:")
                 {
-                    nombre_jugador2 = NombreJugador.Texts;
+                    Campo_Juego juego = new Campo_Juego();
+                    juego.Show();
 
-                    player1.Name = nombre_jugador1;
+                    //ramdom select who starts
 
-                    player2.Name = nombre_jugador2;
+
+                    
+                        nombre_jugador2 = NombreJugador.Texts;
+
+                        player1.Name = nombre_jugador1;
+
+                        player2.Name = nombre_jugador2;
+
+                        Random random = new Random();
+                        int randomInt = random.Next(0, 2);
+                        if (randomInt == 0)
+                        {
+                            RealOrden = true;
+                            juego.NombreJ1.Text = nombre_jugador1;
+                            juego.NombreJ2.Text = nombre_jugador2;
+                        }
+                        else
+                        {
+                            RealOrden = false;
+                            juego.NombreJ1.Text = nombre_jugador2;
+                            juego.NombreJ2.Text = nombre_jugador1;
+                        }
+                        this.Close();
+
+                    
+                   
+
 
                 }
-                if (Multiplayer == false)
-                {
+                 
+                
 
-                    player1.Name = NombreJugador.Texts;
-
-                    player2.Name = "PC";
-                }
-
-                Random random = new Random();
-                int randomInt = random.Next(0, 2);
-                if (randomInt == 0)
-                {
-                    RealOrden = true;
-                    juego.NombreJ1.Text = nombre_jugador1;
-                    juego.NombreJ2.Text = nombre_jugador2;
-                }
                 else
                 {
-                    RealOrden = false;
-                    juego.NombreJ1.Text = nombre_jugador2;
-                    juego.NombreJ2.Text = nombre_jugador1;
+                    if (Nombre_Jugador.Text == "Nombre Jugador 1:")
+                    {
+                        MessageBox.Show("Usted no va a jugar solo, por favor ingrese el nombre del jugador 2");
+                    }
+                    else if (NombreJugador.Texts == "")
+                    {
+                        MessageBox.Show("El campo del nombre no puede estar vacio");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Revise bien que tenga el numero correcto de cartas seleccionadas");
+                    }
                 }
-                this.Close();
             }
-            
             else
             {
-                if (Nombre_Jugador.Text == "Nombre Jugador 1:")
+                if (contador_cartas == 30 && NombreJugador.Texts != "" && Nombre_Jugador.Text == "Nombre Jugador 1:")
                 {
-                    MessageBox.Show("Usted no va a jugar solo, por favor ingrese el nombre del jugador 2");
-                }
-                else if (NombreJugador.Texts == "")
-                {
-                    MessageBox.Show("El campo del nombre no puede estar vacio");
+                    nombre_jugador1 = NombreJugador.Texts;
+                    player1.Name = nombre_jugador1;
+
+                    player2.Name = "Kmy.IA";
+                    nombre_jugador2 = player2.Name;
+                    player2.GetDeck();
+
+
+                    Campo_Juego juego = new Campo_Juego();
+                    juego.Show();
+
+                    //ramdom select who starts
+
+
+
+                    
+                    
+
+                    Random random = new Random();
+                    int randomInt = random.Next(0, 2);
+                    if (randomInt == 0)
+                    {
+                        RealOrden = true;
+                        juego.NombreJ1.Text = nombre_jugador1;
+                        juego.NombreJ2.Text = nombre_jugador2;
+                    }
+                    else
+                    {
+                        RealOrden = false;
+                        juego.NombreJ1.Text = nombre_jugador2;
+                        juego.NombreJ2.Text = nombre_jugador1;
+                    }
+                    this.Close();
+
+
+
+
+
                 }
                 else
                 {
-                    MessageBox.Show("Revise bien que tenga el numero correcto de cartas seleccionadas");
+                    if (NombreJugador.Texts == "")
+                    {
+                        MessageBox.Show("El campo del nombre no puede estar vacio");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Revise bien que tenga el numero correcto de cartas seleccionadas");
+                    }
                 }
+
             }
             
 
