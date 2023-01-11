@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0F46E3BE-83B4-46FA-945B-3D9DA3F02A44}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>The_Clam_Boat</RootNamespace>
+    <AssemblyName>The_Clam_Boat</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CustomControls.RJControls">
+      <HintPath>..\..\Game Cead Interface\packages\CustomControls.RJControls.1.0.0\lib\net45\CustomControls.RJControls.dll</HintPath>
+    </Reference>
+    <Reference Include="FontAwesome.Sharp">
+      <HintPath>D:\DANIEL CARDGAME\Game Cead Interface\packages\FontAwesome.Sharp.6.1.1\lib\net472\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Campo_Juego.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Campo_Juego.Designer.cs">
+      <DependentUpon>Campo_Juego.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crear_Cartas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Crear_Cartas.Designer.cs">
+      <DependentUpon>Crear_Cartas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Game\Bot.cs" />
+    <Compile Include="Logic\Game\CardDataBase.cs" />
+    <Compile Include="Logic\Game\Cards.cs" />
+    <Compile Include="Logic\Game\GameRun.cs" />
+    <Compile Include="Logic\Game\IPlayer.cs" />
+    <Compile Include="Logic\Game\Player.cs" />
+    <Compile Include="Logic\Interprete\CardEffects.cs" />
+    <Compile Include="Logic\Interprete\condiciones.cs" />
+    <Compile Include="Logic\Interprete\parser.cs" />
+    <Compile Include="Logic\Interprete\tokenizer.cs" />
+    <Compile Include="Logic\Interprete\tokens.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reglas_Juego.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reglas_Juego.Designer.cs">
+      <DependentUpon>Reglas_Juego.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Seleccion_Cartas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seleccion_Cartas.Designer.cs">
+      <DependentUpon>Seleccion_Cartas.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Campo_Juego.resx">
+      <DependentUpon>Campo_Juego.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crear_Cartas.resx">
+      <DependentUpon>Crear_Cartas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Reglas_Juego.resx">
+      <DependentUpon>Reglas_Juego.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Seleccion_Cartas.resx">
+      <DependentUpon>Seleccion_Cartas.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CardDataBase\Cartas.txt" />
+    <Content Include="images_card\IMG-20221229-WA0054.jpg" />
+    <Content Include="images_card\IMG-20221229-WA0055.jpg" />
+    <Content Include="images_card\IMG-20221229-WA0056.jpg" />
+    <Content Include="images_card\IMG-20221229-WA0057.jpg" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
