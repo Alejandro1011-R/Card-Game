@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -33,6 +35,7 @@ namespace The_Clam_Boat
             CompleteHand();
             GameRun.Update(Seleccion_Cartas.player1);
             GameRun.Update(Seleccion_Cartas.player2);
+            ShowHandOrNot();    
             //AsociarHand();
 
         }
@@ -138,6 +141,98 @@ namespace The_Clam_Boat
                 HandP2[i].Image = null;
                 HandP2[i].Name = HandP2[i].Name.Substring(0, 8);
             }
+
+        }
+
+        public static void ShowHandOrNot()
+        {
+            string url = Directory.GetCurrentDirectory();
+            if (turn % 2 != 0)
+            {
+                if (Seleccion_Cartas.RealOrden)
+                {
+                    for (int i = 0, k = 0; i < HandP1.Count; i++)
+                    {
+                        if (HandP1[i].Image != null)
+                        {
+                            HandP1[i].Image = Seleccion_Cartas.player1.Hand[k].image.Image; k++;
+                        }
+                            
+
+                    }
+                    for (int i = 0; i < HandP2.Count; i++)
+                    {
+                        if (HandP2[i].Image != null)
+                            HandP2[i].Image = Image.FromFile(url.Substring(0, url.Length - 10) + "\\images\\backcard.jpg");
+
+                    }
+
+                }
+                else
+                {
+                    for (int i = 0, k = 0; i < HandP1.Count; i++)
+                    {
+                        if (HandP1[i].Image != null)
+                        {
+                            HandP1[i].Image = Seleccion_Cartas.player2.Hand[k].image.Image; k++;
+                        }
+                            
+
+                    }
+                    for (int i = 0; i < HandP2.Count; i++)
+                    {
+                        if (HandP2[i].Image != null)
+                            HandP2[i].Image = Image.FromFile(url.Substring(0, url.Length - 10) + "\\images\\backcard.jpg");
+
+                    }
+
+                }
+            }
+            else
+            {
+                if (Seleccion_Cartas.RealOrden)
+                {
+                    for (int i = 0, k = 0; i < HandP2.Count; i++)
+                    {
+                        if (HandP2[i].Image != null)
+                        {
+                            HandP2[i].Image = Seleccion_Cartas.player2.Hand[k].image.Image; k++;
+                        }
+                            
+                        
+
+                    }
+                    for (int i = 0; i < HandP1.Count; i++)
+                    {
+                        if (HandP1[i].Image != null)
+                            HandP1[i].Image = Image.FromFile(url.Substring(0, url.Length - 10) + "\\images\\backcard.jpg");
+
+                    }
+
+                }
+                else
+                {
+                    for (int i = 0, k = 0; i < HandP2.Count; i++)
+                    {
+                        if (HandP2[i].Image != null)
+                        {
+                            HandP2[i].Image = Seleccion_Cartas.player1.Hand[k].image.Image; k++;
+                        }
+                            
+
+                    }
+                    for (int i = 0; i < HandP1.Count; i++)
+                    {
+                        if (HandP1[i].Image != null)
+                            HandP1[i].Image = Image.FromFile(url.Substring(0, url.Length - 10) + "\\images\\backcard.jpg");
+
+                    }
+
+                }
+
+            }
+
+
 
         }
         
@@ -286,79 +381,88 @@ namespace The_Clam_Boat
 
         private void Jugar_Carta(object sender, EventArgs e)
         {
+            
             if (((PictureBox)sender).Name.Contains("P1") && turn % 2 != 0 )
             {   
                
-                    if (Seleccion_Cartas.RealOrden)
+                if (Seleccion_Cartas.RealOrden)
+                {
+                    GameRun.SystemGame(Seleccion_Cartas.player1, BoardP1, sender);
+                    if (Seleccion_Cartas.player2.PassRound == true)
                     {
-                        GameRun.SystemGame(Seleccion_Cartas.player1, BoardP1, sender);
-                        if (Seleccion_Cartas.player2.PassRound == true)
-                        {
-                            turn += 2;
-                            CheckGame();
-                            GameRun.Update(Seleccion_Cartas.player1);
-                        }
-                        else
-                        {
-                            turn++;
-                            CheckGame();
-                            GameRun.Update(Seleccion_Cartas.player2);
-                        }
+                        turn += 2;
+                        CheckGame();
+                        ShowHandOrNot();
+                        GameRun.Update(Seleccion_Cartas.player1);
                     }
                     else
                     {
-                        GameRun.SystemGame(Seleccion_Cartas.player2, BoardP1, sender);
-                        if (Seleccion_Cartas.player1.PassRound == true)
-                        {
-                            turn += 2;
-                            CheckGame();
-                            GameRun.Update(Seleccion_Cartas.player2);
-                        }
-                        else
-                        {
-                            turn++;
-                            CheckGame();
-                            GameRun.Update(Seleccion_Cartas.player1);
-                        }
+                        turn++;
+                        CheckGame();
+                        ShowHandOrNot();
+                        GameRun.Update(Seleccion_Cartas.player2);
                     }
+                }
+                else
+                {
+                    GameRun.SystemGame(Seleccion_Cartas.player2, BoardP1, sender);
+                    if (Seleccion_Cartas.player1.PassRound == true)
+                    {
+                        turn += 2;
+                        CheckGame();
+                        ShowHandOrNot();
+                        GameRun.Update(Seleccion_Cartas.player2);
+                    }
+                    else
+                    {
+                        turn++;
+                        CheckGame();
+                        ShowHandOrNot();
+                        GameRun.Update(Seleccion_Cartas.player1);
+                    }
+                }
                 
                 
             }
             else if (((PictureBox)sender).Name.Contains("P2") && turn % 2 == 0)
             {
                
-                    if (Seleccion_Cartas.RealOrden)
+                if (Seleccion_Cartas.RealOrden)
+                {
+                    GameRun.SystemGame(Seleccion_Cartas.player2, BoardP2, sender);
+                    if (Seleccion_Cartas.player1.PassRound == true)
                     {
-                        GameRun.SystemGame(Seleccion_Cartas.player2, BoardP2, sender);
-                        if (Seleccion_Cartas.player1.PassRound == true)
-                        {
-                            turn += 2;
-                            CheckGame();
-                            GameRun.Update(Seleccion_Cartas.player2);
-                        }
-                        else
-                        {
-                            turn++;
-                            CheckGame();
-                            GameRun.Update(Seleccion_Cartas.player1);
-                        }
+                        turn += 2;
+                        CheckGame();
+                        ShowHandOrNot();
+                        GameRun.Update(Seleccion_Cartas.player2);
                     }
                     else
                     {
-                        GameRun.SystemGame(Seleccion_Cartas.player1, BoardP2, sender);
-                        if (Seleccion_Cartas.player2.PassRound == true)
-                        {
-                            turn += 2;
-                            CheckGame();
-                            GameRun.Update(Seleccion_Cartas.player1);
-                        }
-                        else
-                        {
-                            turn++;
-                            CheckGame();
-                            GameRun.Update(Seleccion_Cartas.player2);
-                        }
+                        turn++;
+                        CheckGame();
+                        ShowHandOrNot();
+                        GameRun.Update(Seleccion_Cartas.player1);
                     }
+                }
+                else
+                {
+                    GameRun.SystemGame(Seleccion_Cartas.player1, BoardP2, sender);
+                    if (Seleccion_Cartas.player2.PassRound == true)
+                    {
+                        turn += 2;
+                        CheckGame();
+                        ShowHandOrNot();
+                        GameRun.Update(Seleccion_Cartas.player1);
+                    }
+                    else
+                    {
+                        turn++;
+                        CheckGame();
+                        ShowHandOrNot();
+                        GameRun.Update(Seleccion_Cartas.player2);
+                    }
+                }
                
                 
             }
