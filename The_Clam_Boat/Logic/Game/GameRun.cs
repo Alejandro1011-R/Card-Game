@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Text;
 using System.Windows.Forms;
 using The_Clam_Boat;
 
@@ -31,11 +32,12 @@ namespace BattleCards
         }
 
 
-        public static void SystemGame(Player player, PictureBox[,] visualBoard, object index)
+        public static void SystemGame(Player player, Player playerOpposide, PictureBox[,] visualBoard, Card card)
         {
-
+           
+                
             bool temp = true; //comprobar si jugo la carta
-            Card card = CardDataBase.CardList.Find(x => x.image.Image == ((PictureBox)index).Image);
+            ;
             //PassiveEffect();
             
 
@@ -50,15 +52,16 @@ namespace BattleCards
 
             player.PlayerM.Add(card);
             player.Hand.Remove(card);
-            Campo_Juego.DeleteVisualHand(card, player);
+            if(!player.PlayerIsaBot)
+                Campo_Juego.DeleteVisualHand(card, player);
 
 
             foreach (var item in ACardInGame.Key.Efectos)
             {
-                item.effect(PlayerInTurn, PlayerOpposide);
+                item.effect(player, playerOpposide);
             }
             
-            DeleteCard(PlayerInTurn, PlayerOpposide);
+            DeleteCard(player, playerOpposide);
 
 
 
@@ -88,7 +91,7 @@ namespace BattleCards
                     player.Hand.Add(card);
                     Campo_Juego.AddVisualCardToHand(card, player);
                     player.PlayerM.Remove(card);
-                    MessageBox.Show("No hay espacio en el tablero el/la ecobi@");
+                    MessageBox.Show("No hay espacio en el tablero el tablero, pasa la ronda");
                     //aqui se debe de poner un mensaje de que no hay espacio en el tablero
                 }
             }
@@ -179,28 +182,33 @@ namespace BattleCards
         }*/
         public static void DeleteCard(Player playerInTurn, Player playerOpposide)
         {
+            playerInTurn.TotalPoint = 0;
+            playerOpposide.TotalPoint = 0;
             for (var i = 0; i < playerInTurn.BoardSeccion.GetLength(0); i++)
             {
                 for (var j = 0; j < playerInTurn.BoardSeccion.GetLength(1); j++)
                 {
                     if (playerInTurn.BoardSeccion[i, j] != null)
                     {
+                        playerInTurn.TotalPoint += playerInTurn.BoardSeccion[i, j].Power;
                         if (playerInTurn.BoardSeccion[i, j].Power <= 0)
                         {
+
                             playerInTurn.PlayerM.Remove(playerInTurn.BoardSeccion[i, j]);
+                            playerInTurn.TotalPoint -= playerInTurn.BoardSeccion[i, j].Power;
                             if (Seleccion_Cartas.RealOrden)
                             {
                                 if (playerInTurn == Seleccion_Cartas.player1)
-                                    Campo_Juego.DeleteBoardCard(0, i, j);
+                                    Campo_Juego.DeleteBoardCard(0, playerInTurn.BoardSeccion[i, j]);
                                 else
-                                    Campo_Juego.DeleteBoardCard(1, i, j);
+                                    Campo_Juego.DeleteBoardCard(1, playerInTurn.BoardSeccion[i, j]);
                             }
                             else
                             {
                                 if (playerInTurn == Seleccion_Cartas.player1)
-                                    Campo_Juego.DeleteBoardCard(1, i, j);
+                                    Campo_Juego.DeleteBoardCard(1, playerInTurn.BoardSeccion[i, j]);
                                 else
-                                    Campo_Juego.DeleteBoardCard(0, i, j);
+                                    Campo_Juego.DeleteBoardCard(0, playerInTurn.BoardSeccion[i, j]);
 
                             }
                             playerInTurn.BoardSeccion[i, j] = null;
@@ -209,29 +217,33 @@ namespace BattleCards
 
 
                         }
+                        
                     }
                     else if (playerOpposide.BoardSeccion[i, j] != null)
                     {
+                        playerOpposide.TotalPoint += playerOpposide.BoardSeccion[i, j].Power;
                         if (playerOpposide.BoardSeccion[i, j].Power <= 0 )
                         {
                             playerOpposide.PlayerM.Remove(playerOpposide.BoardSeccion[i, j]);
+                            playerOpposide.TotalPoint -= playerOpposide.BoardSeccion[i, j].Power;
                             if (Seleccion_Cartas.RealOrden)
                             {
                                 if (playerOpposide == Seleccion_Cartas.player1)
-                                    Campo_Juego.DeleteBoardCard(0, i, j);
+                                    Campo_Juego.DeleteBoardCard(0, playerOpposide.BoardSeccion[i, j]);
                                 else
-                                    Campo_Juego.DeleteBoardCard(1, i, j);
+                                    Campo_Juego.DeleteBoardCard(1, playerOpposide.BoardSeccion[i, j]);
                             }
                             else
                             {
                                 if (playerOpposide == Seleccion_Cartas.player1)
-                                    Campo_Juego.DeleteBoardCard(1, i, j);
+                                    Campo_Juego.DeleteBoardCard(1, playerOpposide.BoardSeccion[i, j]);
                                 else
-                                    Campo_Juego.DeleteBoardCard(0, i, j);
+                                    Campo_Juego.DeleteBoardCard(0, playerOpposide.BoardSeccion[i, j]);
 
                             }
                             playerOpposide.BoardSeccion[i, j] = null;
                         }
+                        
                     }
 
 
@@ -241,6 +253,7 @@ namespace BattleCards
                
                 
             }
+            
 
         }
 
@@ -290,7 +303,8 @@ namespace BattleCards
                 Campo_Juego.turn = 1;
                 Update(Seleccion_Cartas.player1);
                 Update(Seleccion_Cartas.player2);
-                
+                Campo_Juego.ShowHandOrNot();
+
             }
         }
 
@@ -303,14 +317,16 @@ namespace BattleCards
                 for (var i = 0; i < player.HandSize; i++)
                 {
                     DrawCard(player);
-                    Campo_Juego.AddVisualCardToHand(player.Hand[player.Hand.Count - 1], player);
+                    if(!player.PlayerIsaBot)
+                        Campo_Juego.AddVisualCardToHand(player.Hand[player.Hand.Count - 1], player);
                 }
             }
             else if (player.Hand.Count < player.HandSize)
-                {
-                    DrawCard(player);
+            {
+                DrawCard(player);
+                if (!player.PlayerIsaBot)
                     Campo_Juego.AddVisualCardToHand(player.Hand[player.Hand.Count - 1], player);
-                }
+            }
                 
             
         }

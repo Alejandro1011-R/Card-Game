@@ -101,34 +101,47 @@ namespace The_Clam_Boat
             {
                 if (contador_cartas == 30 && NombreJugador.Texts != "" && Nombre_Jugador.Text == "Nombre Jugador 2:")
                 {
+
+                    nombre_jugador2 = NombreJugador.Texts;
+
+                    player1.Name = nombre_jugador1;
+
+                    player2.Name = nombre_jugador2;
+
+                    Random random = new Random();
+                    int randomInt = random.Next(0, 2);
+                    if (randomInt == 0)
+                    {
+                        RealOrden = true;
+                        
+                    }
+                    else
+                    {
+                        RealOrden = false;
+                        
+                    }
                     Campo_Juego juego = new Campo_Juego();
                     juego.Show();
 
                     //ramdom select who starts
 
 
-                    
-                        nombre_jugador2 = NombreJugador.Texts;
 
-                        player1.Name = nombre_jugador1;
 
-                        player2.Name = nombre_jugador2;
-
-                        Random random = new Random();
-                        int randomInt = random.Next(0, 2);
-                        if (randomInt == 0)
+                    if (randomInt == 0)
                         {
-                            RealOrden = true;
+                            
                             juego.NombreJ1.Text = nombre_jugador1;
                             juego.NombreJ2.Text = nombre_jugador2;
                         }
                         else
                         {
-                            RealOrden = false;
+                            
                             juego.NombreJ1.Text = nombre_jugador2;
                             juego.NombreJ2.Text = nombre_jugador1;
                         }
-                        this.Close();
+                    
+                    this.Close();
 
                     
                    
@@ -156,40 +169,36 @@ namespace The_Clam_Boat
             }
             else
             {
+                player2.Name = "Kmy.IA";
+                player2.PlayerIsaBot = true;
+                player2.GetDeck();
+
                 if (contador_cartas == 30 && NombreJugador.Texts != "" && Nombre_Jugador.Text == "Nombre Jugador 1:")
                 {
                     nombre_jugador1 = NombreJugador.Texts;
                     player1.Name = nombre_jugador1;
 
-                    player2.Name = "Kmy.IA";
+
+                    RealOrden = true;
+
                     nombre_jugador2 = player2.Name;
-                    player2.GetDeck();
+
 
 
                     Campo_Juego juego = new Campo_Juego();
                     juego.Show();
+                    
+                        
+                        juego.NombreJ1.Text = nombre_jugador1;
+                        juego.NombreJ2.Text = nombre_jugador2;
+                   
+                
 
                     //ramdom select who starts
 
 
 
                     
-                    
-
-                    Random random = new Random();
-                    int randomInt = random.Next(0, 2);
-                    if (randomInt == 0)
-                    {
-                        RealOrden = true;
-                        juego.NombreJ1.Text = nombre_jugador1;
-                        juego.NombreJ2.Text = nombre_jugador2;
-                    }
-                    else
-                    {
-                        RealOrden = false;
-                        juego.NombreJ1.Text = nombre_jugador2;
-                        juego.NombreJ2.Text = nombre_jugador1;
-                    }
                     this.Close();
 
 
