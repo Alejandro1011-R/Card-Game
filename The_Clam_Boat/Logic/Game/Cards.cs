@@ -18,7 +18,7 @@ namespace BattleCards
         public PictureBox image;
         
         public bool Passive;
-        public List<effecto> Efectos;
+        public List<Effect> Effects;
         
 
         public Card()
@@ -33,7 +33,7 @@ namespace BattleCards
             image.Image = Image.FromFile(url.Substring(0, url.Length - 10) + "\\images_card\\IMG-20221229-WA0057.jpg");
             Passive = false;
             BasePower=0;
-            Efectos=new List<effecto>();
+            Effects = new List<Effect>();
             
         }
 

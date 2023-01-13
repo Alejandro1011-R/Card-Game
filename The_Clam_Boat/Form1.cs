@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
+using System.IO;
 
 namespace The_Clam_Boat
 {
@@ -15,6 +17,12 @@ namespace The_Clam_Boat
     {
         public Form1()
         {
+            SoundPlayer sound = new SoundPlayer();
+            string url = Directory.GetCurrentDirectory();
+            sound.SoundLocation = url.Substring(0, url.Length - 10) + "/audio true/opening.wav";
+            sound.Load();
+            sound.Play();
+            //sound.Stop();
             InitializeComponent();
             InstanciarDataBase();
         }
@@ -44,6 +52,11 @@ namespace The_Clam_Boat
 
         private void JvsJ_Click(object sender, EventArgs e)
         {
+            SoundPlayer sound = new SoundPlayer();
+            string url = Directory.GetCurrentDirectory();
+            sound.SoundLocation = url.Substring(0, url.Length - 10) + "/audio true/menus.wav";
+            sound.Load();
+            sound.Play();
             Multiplayer = true;
             Seleccion_Cartas selecc = new Seleccion_Cartas();
             selecc.Cambiar_Jugador.Visible = true;
@@ -60,6 +73,11 @@ namespace The_Clam_Boat
 
         private void JvsPC_Click(object sender, EventArgs e)
         {
+            SoundPlayer sound = new SoundPlayer();
+            string url = Directory.GetCurrentDirectory();
+            sound.SoundLocation = url.Substring(0, url.Length - 10) + "/audio true/menus.wav";
+            sound.Load();
+            sound.Play();
             Multiplayer = false;
             Seleccion_Cartas selecc = new Seleccion_Cartas();
             selecc.DeckAlAzar.Visible = true;
@@ -78,12 +96,22 @@ namespace The_Clam_Boat
 
         private void rjButton1_Click(object sender, EventArgs e)
         {
+            SoundPlayer sound = new SoundPlayer();
+            string url = Directory.GetCurrentDirectory();
+            sound.SoundLocation = url.Substring(0, url.Length - 10) + "/audio true/menus.wav";
+            sound.Load();
+            sound.Play();
             Crear_Cartas crear = new Crear_Cartas();
             crear.Show();
         }
 
         private void rjButton2_Click(object sender, EventArgs e)
         {
+            SoundPlayer sound = new SoundPlayer();
+            string url = Directory.GetCurrentDirectory();
+            sound.SoundLocation = url.Substring(0, url.Length - 10) + "/audio true/menus.wav";
+            sound.Load();
+            sound.Play();
             Reglas_Juego reglas = new Reglas_Juego();
             reglas.Show();
         }

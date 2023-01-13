@@ -1,4 +1,4 @@
 namespace BattleCards
 {
-    public delegate bool Comprobacion (Card carta);
+    public delegate bool Checks(Card carta);
 }

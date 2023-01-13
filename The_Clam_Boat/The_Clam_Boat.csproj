@@ -140,6 +140,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="audio true\menus.wav" />
+    <Content Include="audio true\opening.wav" />
+    <Content Include="audio true\Battle.wav" />
     <Content Include="CardDataBase\Cartas.txt" />
     <Content Include="images_card\IMG-20221229-WA0054.jpg" />
     <Content Include="images_card\IMG-20221229-WA0055.jpg" />

@@ -15,8 +15,15 @@ namespace BattleCards
         }
 
 
+        /// <summary>
+        /// Recibe un int i, que corresponde al número de la faccion correspondiente
+        /// 1: Monster
+        /// 2: Neutral
+        /// 3: Nilfgaard
+        /// 4: Scoia'tael
+        /// </summary>
 
-        public static string AsociarFaccion(int i)
+        public static string AssociateFaction(int i)
         {
             switch (i)
             {
@@ -25,13 +32,16 @@ namespace BattleCards
                 case 2:
                     return "Neutral";
                 case 3:
-                    return "Nilfgard";
+                    return "Nilfgaard";
                 case 4:
                     return "Scoia'tael";
             }
             return "Default";
         }
-
+        /// <summary>
+        /// Se encarga de añadir las cartas a la lista de cartas, para luego ser usadas en el juego, lee los archivos .txt que se encuentran en la carpeta CardDataBase
+        /// ejecuta el metodo createCard para cada una de las lines del txt
+        /// </summary>
         private static void addCards()
         {
             string url = Directory.GetCurrentDirectory(); //carga el url donde se encuentran ubicados los documentos
@@ -65,7 +75,11 @@ namespace BattleCards
             }
         }
 
-  
+
+        /// <summary>
+        /// Recibe un string con la informacion de una carta, y la separa en sus atributos, para luego crear una carta con esos atributos
+        /// todo esto a traves del tokenizer y del parser
+        /// </summary>
 
         public static Card createCard(string card)
         {

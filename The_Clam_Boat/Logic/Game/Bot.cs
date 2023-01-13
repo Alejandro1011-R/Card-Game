@@ -2,6 +2,10 @@ namespace BattleCards
 {
     public class Writer_02
     {
+        /// <summary>
+        /// Metodo encargado de verificar el estado actual de juego y decidir si se pasa turno o no
+        /// </summary>
+     
        public static bool PassTurn(Player player, Player Bot)
        {
             if(player.PassRound==true)
@@ -20,6 +24,11 @@ namespace BattleCards
                 return false;
             }
        }
+        
+        /// <summary>
+        /// Comprueba la mejor carta a jugar basandose en el power de esta
+        /// </summary>
+   
         public static int BestcardIndex(Player player1)
         {
         

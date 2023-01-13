@@ -21,7 +21,11 @@ namespace BattleCards
         
         
 
-
+        /// <summary>
+        /// Metodo empleado para saber definir el jugador que se encuentra 
+        /// jugando en este momento
+        /// </summary>
+        
 
         public GameRun(Player playerInTurn, Player playerOpposide)
         {
@@ -31,6 +35,10 @@ namespace BattleCards
             PlayerOpposide = playerOpposide;
         }
 
+        /// <summary>
+        ///   metodo encargado del manejo de las cartas en el juego, tanto las de la mano de los player
+        ///   como las que se encuentran en el tablero
+        /// </summary>
 
         public static void SystemGame(Player player, Player playerOpposide, PictureBox[,] visualBoard, Card card)
         {
@@ -56,7 +64,7 @@ namespace BattleCards
                 Campo_Juego.DeleteVisualHand(card, player);
 
 
-            foreach (var item in ACardInGame.Key.Efectos)
+            foreach (var item in ACardInGame.Key.Effects)
             {
                 item.effect(player, playerOpposide);
             }
@@ -101,6 +109,11 @@ namespace BattleCards
 
 
         }
+        /// <summary>
+        /// Metodo que comprueba el estado del juego y si se ha terminado
+        /// se considera terminado cuando alguno de los dos jugadores
+        /// ha ganado 3 rondas
+        /// </summary>
 
         public static bool FinalCheck(Player player1, Player player2)
         {
@@ -180,6 +193,11 @@ namespace BattleCards
 
             }
         }*/
+
+        /// <summary>
+        ///  Metodo que se encarga de eliminar las cartas cuyo poder se encuentre por debajo de 0
+        /// </summary>
+      
         public static void DeleteCard(Player playerInTurn, Player playerOpposide)
         {
             
@@ -257,7 +275,13 @@ namespace BattleCards
 
 
         }
-
+        /// <summary>
+        ///  Metodo encargado del manejo logico del juego, limpia el campo de juego
+        ///  Restablece todas las variables a sus valores predeterminados
+        ///  y verifica la puntuacion global de las rondas hasta el momento
+        ///  
+        /// </summary>
+    
         public static void GameRule(Player player1, Player player2)
         {
 
@@ -310,6 +334,14 @@ namespace BattleCards
         }
 
         #region DealingCards
+
+        /// <summary>
+        /// Actualiza las cartas del jugador, las barajea y
+        ///
+        /// mantiene en 5 las cartas del jugador en la mano
+        /// 
+        /// </summary>
+   
         public static void Update(Player player)
         {
             if (player.Hand.Count == 0)
@@ -332,6 +364,11 @@ namespace BattleCards
             
         }
 
+        /// <summary>
+        /// Metodo encargado de la reparticion aleatoria de las cartas en el deck
+        /// </summary>
+     
+
         public static void Stuffle(Player player)
         {
             Random rnd = new Random();
@@ -344,7 +381,10 @@ namespace BattleCards
                 player.Deck[RandomIndex] = AuxCard;
             }
         }
-
+        /// <summary>
+        /// Agrega cartas a la mano y las elimina del deck
+        /// </summary>
+         
         public static void DrawCard(Player player)
         {
             if (player.Deck.Count > 0)
@@ -353,7 +393,11 @@ namespace BattleCards
                 player.Deck.RemoveAt(0);
             }
         }
-
+        /// <summary>
+        /// Despues de cada ronda, devuelve las cartas en la mano del jugador al deck,
+        /// y luego las barajea
+        /// </summary>
+         
         public static void ReturnCardsToDeck (Player player)
         {
             for (int i = 0; i< player.Hand.Count; i++)
