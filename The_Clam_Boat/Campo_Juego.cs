@@ -116,8 +116,9 @@ namespace The_Clam_Boat
                         {
                             BoardP1[i, j].Image = null;
                             BoardP1[i, j].Name.Substring(0, 9);
-                            break;
                             k = true;
+                            break;
+                            
                         }
                         
                     }
@@ -135,8 +136,9 @@ namespace The_Clam_Boat
                         {
                             BoardP2[i, j].Image = null;
                             BoardP2[i, j].Name.Substring(0, 9);
-                            break;
                             k = true;
+                            break;
+                            
                         }
                     }
                     if (k) break;
