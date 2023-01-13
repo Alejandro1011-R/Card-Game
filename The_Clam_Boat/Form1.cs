@@ -21,10 +21,11 @@ namespace The_Clam_Boat
             string url = Directory.GetCurrentDirectory();
             sound.SoundLocation = url.Substring(0, url.Length - 10) + "/audio true/opening.wav";
             sound.Load();
-            sound.Play();
+            
             //sound.Stop();
             InitializeComponent();
             InstanciarDataBase();
+            sound.Play();
         }
         public bool Multiplayer = false;
         
