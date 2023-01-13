@@ -776,7 +776,7 @@
             // Descripcion_Carta
             // 
             this.Descripcion_Carta.BackColor = System.Drawing.Color.White;
-            this.Descripcion_Carta.Font = new System.Drawing.Font("Myanmar Text", 6F, System.Drawing.FontStyle.Bold);
+            this.Descripcion_Carta.Font = new System.Drawing.Font("Myanmar Text", 5.2F, System.Drawing.FontStyle.Bold);
             this.Descripcion_Carta.Location = new System.Drawing.Point(15, 237);
             this.Descripcion_Carta.Multiline = true;
             this.Descripcion_Carta.Name = "Descripcion_Carta";

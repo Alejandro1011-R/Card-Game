@@ -665,6 +665,7 @@ namespace The_Clam_Boat
                 }
                 GameRun.GameRule(Seleccion_Cartas.player1, Seleccion_Cartas.player2);
                 UpdateTotalPower();
+                UpdateTotalRounds();
 
             }
             

@@ -182,20 +182,19 @@ namespace BattleCards
         }*/
         public static void DeleteCard(Player playerInTurn, Player playerOpposide)
         {
-            playerInTurn.TotalPoint = 0;
-            playerOpposide.TotalPoint = 0;
+            
             for (var i = 0; i < playerInTurn.BoardSeccion.GetLength(0); i++)
             {
                 for (var j = 0; j < playerInTurn.BoardSeccion.GetLength(1); j++)
                 {
                     if (playerInTurn.BoardSeccion[i, j] != null)
                     {
-                        playerInTurn.TotalPoint += playerInTurn.BoardSeccion[i, j].Power;
+                        
                         if (playerInTurn.BoardSeccion[i, j].Power <= 0)
                         {
 
                             playerInTurn.PlayerM.Remove(playerInTurn.BoardSeccion[i, j]);
-                            playerInTurn.TotalPoint -= playerInTurn.BoardSeccion[i, j].Power;
+                            
                             if (Seleccion_Cartas.RealOrden)
                             {
                                 if (playerInTurn == Seleccion_Cartas.player1)
@@ -221,11 +220,11 @@ namespace BattleCards
                     }
                     else if (playerOpposide.BoardSeccion[i, j] != null)
                     {
-                        playerOpposide.TotalPoint += playerOpposide.BoardSeccion[i, j].Power;
+                        
                         if (playerOpposide.BoardSeccion[i, j].Power <= 0 )
                         {
                             playerOpposide.PlayerM.Remove(playerOpposide.BoardSeccion[i, j]);
-                            playerOpposide.TotalPoint -= playerOpposide.BoardSeccion[i, j].Power;
+                       
                             if (Seleccion_Cartas.RealOrden)
                             {
                                 if (playerOpposide == Seleccion_Cartas.player1)
@@ -253,7 +252,9 @@ namespace BattleCards
                
                 
             }
-            
+            playerInTurn.Point(playerInTurn.PlayerM);
+            playerOpposide.Point(playerOpposide.PlayerM);
+
 
         }
 
