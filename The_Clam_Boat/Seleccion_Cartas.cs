@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
+using System.Media;
 
 namespace The_Clam_Boat
 {
@@ -101,6 +102,12 @@ namespace The_Clam_Boat
             {
                 if (contador_cartas == 30 && NombreJugador.Texts != "" && Nombre_Jugador.Text == "Nombre Jugador 2:")
                 {
+                    SoundPlayer sound = new SoundPlayer();
+                    string url = Directory.GetCurrentDirectory();
+                    sound.SoundLocation = url.Substring(0, url.Length - 10) + "/audio true/Battle.wav";
+                    sound.Load();
+                    sound.Play();
+
 
                     nombre_jugador2 = NombreJugador.Texts;
 
@@ -169,6 +176,11 @@ namespace The_Clam_Boat
             }
             else
             {
+                SoundPlayer sound = new SoundPlayer();
+                string url = Directory.GetCurrentDirectory();
+                sound.SoundLocation = url.Substring(0, url.Length - 10) + "/audio true/Battle.wav";
+                sound.Load();
+                sound.Play();
                 player2.Name = "Kmy.IA";
                 player2.PlayerIsaBot = true;
                 player2.GetDeck();
@@ -297,7 +309,7 @@ namespace The_Clam_Boat
             {
                 Imagen_infoCarta.Image = ((PictureBox)sender).Image;
                 Nombre_Carta.Text = card.Name;
-                Faccion_Carta.Text = CardDataBase.AsociarFaccion(card.Faction);
+                Faccion_Carta.Text = CardDataBase.AssociateFaction(card.Faction); 
                 Poder_n.Text = card.Power.ToString();
                 Descripcion_Carta.Text = card.Description;
             }

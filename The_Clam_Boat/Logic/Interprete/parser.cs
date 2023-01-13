@@ -61,11 +61,11 @@ namespace BattleCards
 
                 if(Tokens.tokens[i].Tipo==TokenTypes.effect_quitapoder)
                 {
-                    var effect = new QuitarPower(int.Parse(Tokens.tokens[i].Info));
-                    var aux = new ComposicionDeEfectos();
+                    var effect = new RemovePower(int.Parse(Tokens.tokens[i].Info));
+                    var aux = new CompositionoftheEffects();
                     aux.effects.Add(effect);
-                    var aux2=comprobacionesEfecto(i+1,aux);
-                    ParsedCard.Efectos.Add(aux);
+                    var aux2= EffectChecks(i+1,aux);
+                    ParsedCard.Effects.Add(aux);
                     i+=aux2;
                     continue;
                 }
@@ -76,7 +76,7 @@ namespace BattleCards
                         throw new Exception("syntax error");
                     }
                     ParsedCard.Passive=true;
-                    var aux=comprobacionesCondicion(i+1,ParsedCard.Efectos[ParsedCard.Efectos.Count()-1].comprobaciones);
+                    var aux= ChecksCondition(i+1,ParsedCard.Effects[ParsedCard.Effects.Count()-1].checks);
                     i+=aux;
                     continue;
                 }
@@ -86,8 +86,8 @@ namespace BattleCards
                     {
                         throw new Exception("syntax error");
                     }
-                    var aux=comprobacionesCondicion(i+1,ParsedCard.Efectos[ParsedCard.Efectos.Count()-1].comprobaciones); //Modifique lo q esta a continuacion pd: TC
-                    ParsedCard.Efectos[ParsedCard.Efectos.Count() - 1].effects[ParsedCard.Efectos[ParsedCard.Efectos.Count() - 1].effects.Count() - 1].comprobaciones = ParsedCard.Efectos[ParsedCard.Efectos.Count() - 1].comprobaciones;
+                    var aux= ChecksCondition(i+1,ParsedCard.Effects[ParsedCard.Effects.Count()-1].checks); //Modifique lo q esta a continuacion pd: TC
+                    ParsedCard.Effects[ParsedCard.Effects.Count() - 1].effects[ParsedCard.Effects[ParsedCard.Effects.Count() - 1].effects.Count() - 1].checks = ParsedCard.Effects[ParsedCard.Effects.Count() - 1].checks;
                     i +=aux;
                     continue;
                 }
@@ -96,11 +96,11 @@ namespace BattleCards
 
                 if(Tokens.tokens[i].Tipo==TokenTypes.effect_subepoder)
                 {
-                    var effect = new SubirPoder(int.Parse(Tokens.tokens[i].Info));
-                    var aux = new ComposicionDeEfectos();
+                    var effect = new PowerUp(int.Parse(Tokens.tokens[i].Info));
+                    var aux = new CompositionoftheEffects();
                     aux.effects.Add(effect);
-                    var aux2=comprobacionesEfecto(i+1,aux);
-                    ParsedCard.Efectos.Add(aux);
+                    var aux2= EffectChecks(i+1,aux);
+                    ParsedCard.Effects.Add(aux);
                     i+=aux2;
                     continue;
                 }
@@ -127,7 +127,7 @@ namespace BattleCards
             }
             return ParsedCard;
         }
-        public int comprobacionesEfecto(int index,ComposicionDeEfectos efectos)
+        public int EffectChecks(int index, CompositionoftheEffects Effects)
         {
             if (index >=Tokens.tokens.Count())
             {
@@ -145,17 +145,17 @@ namespace BattleCards
                    
                     if(Tokens.tokens[index+1].Tipo==TokenTypes.effect_quitapoder)
                     {
-                        var effect = new QuitarPower(int.Parse(Tokens.tokens[index+1].Info));
-                        efectos.effects.Add(effect);
-                        var aux=  comprobacionesEfecto(index+2,efectos);
+                        var effect = new RemovePower(int.Parse(Tokens.tokens[index+1].Info));
+                        Effects.effects.Add(effect);
+                        var aux =EffectChecks(index+2, Effects);
                         return aux +2;
                     }
                 
                     if(Tokens.tokens[index+1].Tipo==TokenTypes.effect_subepoder)
                     {
-                        var effect = new SubirPoder(int.Parse(Tokens.tokens[index+1].Info));
-                        efectos.effects.Add(effect);
-                       var aux=  comprobacionesEfecto(index+2,efectos);
+                        var effect = new PowerUp(int.Parse(Tokens.tokens[index+1].Info));
+                        Effects.effects.Add(effect);
+                       var aux= EffectChecks(index+2, Effects);
                         return aux +2;
                     }
                 }
@@ -166,7 +166,7 @@ namespace BattleCards
             }
             return 0;
         }
-        public int comprobacionesCondicion(int index,List<Comprobacion> condiciones)
+        public int ChecksCondition(int index,List<Checks> Conditions)
         {
             if (index >=Tokens.tokens.Count())
             {
@@ -174,27 +174,27 @@ namespace BattleCards
             }
             if(Tokens.tokens[index].Tipo==TokenTypes.condicionfaccion)
             {
-                condiciones.Add(p => p.Faction==int.Parse(Tokens.tokens[index].Info));
-                var aux= comprobacionesCondicion(index+1,condiciones);
+                Conditions.Add(p => p.Faction==int.Parse(Tokens.tokens[index].Info));
+                var aux= ChecksCondition(index+1, Conditions);
                 return aux+1;
             }
             if(Tokens.tokens[index].Tipo==TokenTypes.menospoder)
             {
-                condiciones.Add(p => p.Power<int.Parse(Tokens.tokens[index].Info));
-                 var aux= comprobacionesCondicion(index+1,condiciones);
+                Conditions.Add(p => p.Power<int.Parse(Tokens.tokens[index].Info));
+                 var aux= ChecksCondition(index+1, Conditions);
                 return aux+1;
             }
             if(Tokens.tokens[index].Tipo==TokenTypes.maspoder)
             {
-                condiciones.Add(p => p.Power>int.Parse(Tokens.tokens[index].Info));
-                var aux= comprobacionesCondicion(index+1,condiciones);
+                Conditions.Add(p => p.Power>int.Parse(Tokens.tokens[index].Info));
+                var aux= ChecksCondition(index+1, Conditions);
                 return aux+1;
                 
             }
             if(Tokens.tokens[index].Tipo==TokenTypes.igualpoder)
             {
-                condiciones.Add(p => p.Power==int.Parse(Tokens.tokens[index].Info));
-                var aux= comprobacionesCondicion(index+1,condiciones);
+                Conditions.Add(p => p.Power==int.Parse(Tokens.tokens[index].Info));
+                var aux= ChecksCondition(index+1, Conditions);
                 return aux+1;
                 
             }

@@ -36,6 +36,10 @@ namespace BattleCards
             }
             
         }
+        /// <summary>
+        /// LLeva el conteo del power de las cartas en el tablero
+        /// </summary>
+      
         public void Point(List<Card> PlayerM)
         {
             int point=0;
@@ -43,16 +47,29 @@ namespace BattleCards
             {
                 point += PlayerM[i].Power;
             }
+            if (point <= 0)
+                point = 0;
             TotalPoint = point;
         }
+        /// <summary>
+        /// Reinicia el contador de power
+        /// </summary>
         public void ResetPoint()
         {
             TotalPoint = 0;
         }
+        
+        /// <summary>
+        /// Actualiza las rondas ganadas
+        /// </summary>
         public void Update()
         {
             TotalRounds = RaundsWon + "/5";
         }
+        /// <summary>
+        /// Comprueba si hay que quitar o poner la carta en el deck
+        /// </summary>
+
         public void CreateDeck(Card card, bool PutOrRemove)
         {
             if (PutOrRemove)
@@ -72,7 +89,9 @@ namespace BattleCards
                
             }
         }
-        
+        /// <summary>
+        /// Forma el deck llamando a CardDataBase.CardList
+        /// </summary>
         public void GetDeck()
         {
             var CardDB = CardDataBase.CardList.ToList();

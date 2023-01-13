@@ -11,6 +11,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace The_Clam_Boat
 {
@@ -407,7 +408,12 @@ namespace The_Clam_Boat
 
         private void label9_Click(object sender, EventArgs e)
         {
-            
+            SoundPlayer sound = new SoundPlayer();
+            string url = Directory.GetCurrentDirectory();
+            sound.SoundLocation = url.Substring(0, url.Length - 10) + "/audio true/Battle.wav";
+            sound.Load();
+            sound.Play();
+            sound.Stop();
             this.Close();
             
         }
@@ -552,6 +558,7 @@ namespace The_Clam_Boat
         {
            if(GameRun.FinalCheck(Seleccion_Cartas.player1, Seleccion_Cartas.player2))
             {
+                
                 if (Seleccion_Cartas.player1.RaundsWon == 3) MessageBox.Show("El jugador " + Seleccion_Cartas.player1.Name + " ha ganado el juego");
                 else if (Seleccion_Cartas.player2.RaundsWon == 3) MessageBox.Show("El jugador " + Seleccion_Cartas.player2.Name + " ha ganado el juego");
             }
@@ -578,7 +585,7 @@ namespace The_Clam_Boat
             {
                 Imagen_infoCarta.Image = ((PictureBox)sender).Image;
                 Nombre_Carta.Text = card.Name;
-                Faccion_Carta.Text = CardDataBase.AsociarFaccion(card.Faction);
+                Faccion_Carta.Text = CardDataBase.AssociateFaction(card.Faction);  
                 Poder_n.Text = card.Power.ToString();
                 Descripcion_Carta.Text = card.Description;
             }

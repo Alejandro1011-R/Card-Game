@@ -61,3 +61,19 @@ D:\Escuela\PROJECTO CARDS 2do semestre\Card-Game\The_Clam_Boat\obj\Debug\The_Cla
 D:\Escuela\PROJECTO CARDS 2do semestre\Card-Game\The_Clam_Boat\obj\Debug\The_Clam_Boat.csproj.CopyComplete
 D:\Escuela\PROJECTO CARDS 2do semestre\Card-Game\The_Clam_Boat\obj\Debug\The_Clam_Boat.exe
 D:\Escuela\PROJECTO CARDS 2do semestre\Card-Game\The_Clam_Boat\obj\Debug\The_Clam_Boat.pdb
+C:\Mauro\Proyectos\copia en español\Card-Game\The_Clam_Boat\bin\Debug\The_Clam_Boat.exe.config
+C:\Mauro\Proyectos\copia en español\Card-Game\The_Clam_Boat\bin\Debug\The_Clam_Boat.exe
+C:\Mauro\Proyectos\copia en español\Card-Game\The_Clam_Boat\bin\Debug\The_Clam_Boat.pdb
+C:\Mauro\Proyectos\copia en español\Card-Game\The_Clam_Boat\obj\Debug\The_Clam_Boat.csproj.AssemblyReference.cache
+C:\Mauro\Proyectos\copia en español\Card-Game\The_Clam_Boat\obj\Debug\The_Clam_Boat.csproj.SuggestedBindingRedirects.cache
+C:\Mauro\Proyectos\copia en español\Card-Game\The_Clam_Boat\obj\Debug\The_Clam_Boat.Campo_Juego.resources
+C:\Mauro\Proyectos\copia en español\Card-Game\The_Clam_Boat\obj\Debug\The_Clam_Boat.Crear_Cartas.resources
+C:\Mauro\Proyectos\copia en español\Card-Game\The_Clam_Boat\obj\Debug\The_Clam_Boat.Form1.resources
+C:\Mauro\Proyectos\copia en español\Card-Game\The_Clam_Boat\obj\Debug\The_Clam_Boat.Properties.Resources.resources
+C:\Mauro\Proyectos\copia en español\Card-Game\The_Clam_Boat\obj\Debug\The_Clam_Boat.Reglas_Juego.resources
+C:\Mauro\Proyectos\copia en español\Card-Game\The_Clam_Boat\obj\Debug\The_Clam_Boat.Seleccion_Cartas.resources
+C:\Mauro\Proyectos\copia en español\Card-Game\The_Clam_Boat\obj\Debug\The_Clam_Boat.csproj.GenerateResource.cache
+C:\Mauro\Proyectos\copia en español\Card-Game\The_Clam_Boat\obj\Debug\The_Clam_Boat.csproj.CoreCompileInputs.cache
+C:\Mauro\Proyectos\copia en español\Card-Game\The_Clam_Boat\obj\Debug\The_Clam_Boat.csproj.CopyComplete
+C:\Mauro\Proyectos\copia en español\Card-Game\The_Clam_Boat\obj\Debug\The_Clam_Boat.exe
+C:\Mauro\Proyectos\copia en español\Card-Game\The_Clam_Boat\obj\Debug\The_Clam_Boat.pdb

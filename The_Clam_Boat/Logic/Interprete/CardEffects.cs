@@ -13,19 +13,20 @@ Neutral  	1          0         -1          1                     en total hay 60
 Nilfgard   -1	       1 	      0	        -1
 Scoia'tael	1	      -1          1          0
  */
-    public abstract class effecto{
-        public List<Comprobacion> comprobaciones;
-        public List<effecto> effects; //Puse esto aqui en vez de en comp de efectos pd: TC
+    public abstract class Effect
+    {
+        public List<Checks> checks;
+        public List<Effect> effects; //Puse esto aqui en vez de en comp de efectos pd: TC
         public virtual void effect(Player playerInTurn, Player playerOpposide){}
     }
 
-    public class ComposicionDeEfectos :effecto
+    public class CompositionoftheEffects : Effect
     {
         
-        public ComposicionDeEfectos()
+        public CompositionoftheEffects()
         {
-            effects = new List<effecto>();
-            comprobaciones = new List<Comprobacion>();
+            effects = new List<Effect>();
+            checks = new List<Checks>();
         }
         public override void effect(Player playerInTurn, Player playerOpposide)
         {
@@ -35,29 +36,29 @@ Scoia'tael	1	      -1          1          0
             }
         }
     }
-    class QuitarPower :effecto
+    class RemovePower : Effect
     {
-        private int CantPower;
-        public QuitarPower(int power) 
+        private int CountPower;
+        public RemovePower(int power) 
         {
-            CantPower=power;
-            comprobaciones = new List<Comprobacion>(); 
+            CountPower=power;
+            checks = new List<Checks>(); 
         }
 
         public override void effect(Player playerInTurn, Player playerOpposide)
         {
 
-            if(comprobaciones.Count()==0)
+            if(checks.Count()==0)
             {
                 if(playerOpposide.Hand.Count()>0)
                 {
 
                     int id = 0;//int.Parse(Console.ReadLine()!);
-                    foreach(var carta in playerOpposide.PlayerM)
+                    foreach(var card in playerOpposide.PlayerM)
                     {
-                        if(carta.Id==id)
+                        if(card.Id==id)
                         {
-                            carta.Power-=CantPower;
+                            card.Power-=CountPower;
                             return;
                         }
                     }
@@ -65,16 +66,16 @@ Scoia'tael	1	      -1          1          0
             }
             else
             {
-                foreach(var carta in playerOpposide.PlayerM)
+                foreach(var card in playerOpposide.PlayerM)
                 {
-                    for(int i=0;i<comprobaciones.Count();i++)
+                    for(int i=0;i< checks.Count();i++)
                     {
-                        if(!comprobaciones[i](carta))
+                        if(!checks[i](card))
                         {
                             goto next;
                         }
                     }
-                    carta.Power-=CantPower;
+                    card.Power-=CountPower;
                     next:;
 
                 }
@@ -83,30 +84,30 @@ Scoia'tael	1	      -1          1          0
         }
 
     }
-    
-    
 
-    class SubirPoder :effecto
+
+
+    class PowerUp : Effect
     {
-        private int CantPower;
+        private int CountPower;
 
         
-        public SubirPoder(int power)
+        public PowerUp(int power)
         {
-            CantPower=power;
-            comprobaciones = new List<Comprobacion>(); 
+            CountPower=power;
+            checks = new List<Checks>(); 
         }
         public override void effect(Player playerInTurn, Player playerOpposide)
         {
-            if(comprobaciones.Count()==0)
+            if(checks.Count()==0)
             {
 
                 int id = 0;//int.Parse(Console.ReadLine()!);
-                    foreach(var carta in playerInTurn.PlayerM)
+                    foreach(var card in playerInTurn.PlayerM)
                     {
-                        if(carta.Id==id)
+                        if(card.Id==id)
                         {
-                            carta.Power+=CantPower;
+                            card.Power+=CountPower;
                             return;
                         }
                     }
@@ -116,16 +117,16 @@ Scoia'tael	1	      -1          1          0
             }
             else
             {
-                foreach(var carta in playerInTurn.PlayerM)
+                foreach(var card in playerInTurn.PlayerM)
                 {
-                    for(int i=0;i<comprobaciones.Count();i++)
+                    for(int i=0;i< checks.Count();i++)
                     {
-                        if(!comprobaciones[i](carta))
+                        if(!checks[i](card))
                         {
                             goto next;
                         }
                     }
-                    carta.Power+=CantPower;
+                    card.Power+=CountPower;
                     next:;
 
                 }

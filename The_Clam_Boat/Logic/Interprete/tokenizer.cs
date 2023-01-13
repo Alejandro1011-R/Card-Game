@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Windows;
 
 namespace BattleCards
 {
     public class tokenizer
     {
         public string Text;
-        public string [] TextoLimpio;
+        public string [] CleanText;
         public List<Tokens> tokens;
         public tokenizer(string text)
         {
@@ -14,7 +15,7 @@ namespace BattleCards
             Text=text;
             GetName();
             GetInfo();
-            TextoLimpio=TextLimp(Text);
+            CleanText = TextLimp(Text);
             GetStatsAndEffects();
 
         }
@@ -34,15 +35,15 @@ namespace BattleCards
         {
             int ControlPower=0;
             int ControlFaction=0;
-            for(int i=0;i<TextoLimpio.Length;i++)
+            for(int i=0;i< CleanText.Length;i++)
             {
-                if(TextoLimpio[i]=="poder")
+                if(CleanText[i]=="poder")
                 {
                     ControlPower++;
-                    if(int.TryParse(TextoLimpio[i+1],out int intValue))
+                    if(int.TryParse(CleanText[i+1],out int intValue))
                     {
-                        var poder = new Tokens(TokenTypes.power, TextoLimpio[i+1]);
-                        tokens.Add(poder);
+                        var power = new Tokens(TokenTypes.power, CleanText[i+1]);
+                        tokens.Add(power);
                         i++;
                         continue;
                     }
@@ -51,14 +52,14 @@ namespace BattleCards
                     }   
                 }
                 
-                if(TextoLimpio[i]=="faccion")
+                if(CleanText[i]=="faccion")
                 {
                     ControlFaction++;
-                    if(int.TryParse(TextoLimpio[i+1],out int intValue))
+                    if(int.TryParse(CleanText[i+1],out int intValue))
                     {
-                        if(0<int.Parse(TextoLimpio[i+1])&&int.Parse(TextoLimpio[i+1])<=4)
+                        if(0<int.Parse(CleanText[i+1])&&int.Parse(CleanText[i+1])<=4)
                         {
-                            var faction = new Tokens(TokenTypes.faction, TextoLimpio[i+1]);
+                            var faction = new Tokens(TokenTypes.faction, CleanText[i+1]);
                             tokens.Add(faction);
                             i++;
                             continue;
@@ -73,21 +74,21 @@ namespace BattleCards
                 {
                     throw new Exception("syntax error");
                 }
-                if(TextoLimpio[i]=="que")
+                if(CleanText[i]=="que")
                 {
                     
-                    for(int j=i+1;j<TextoLimpio.Length;j++)
+                    for(int j=i+1;j< CleanText.Length;j++)
                     {
-                        if(TextoLimpio[j]=="QuitePoder")
+                        if(CleanText[j]=="QuitePoder")
                         {
-                            if(j==TextoLimpio.Length-1)
+                            if(j== CleanText.Length-1)
                             {
                                 throw new Exception("QuitePoder must receive an integer");
                             }
-                            if(int.TryParse(TextoLimpio[j+1],out int intValue))
+                            if(int.TryParse(CleanText[j+1],out int intValue))
                             {
-                                var quitapoder= new Tokens(TokenTypes.effect_quitapoder,TextoLimpio[j+1]);
-                                tokens.Add(quitapoder);
+                                var RemovePower = new Tokens(TokenTypes.effect_quitapoder, CleanText[j+1]);
+                                tokens.Add(RemovePower);
                                 j++;
                                 continue;
                             }
@@ -96,35 +97,35 @@ namespace BattleCards
                             }
 
                         }
-                        if(TextoLimpio[j]=="y")
+                        if(CleanText[j]=="y")
                         {
-                            var conjuncion= new Tokens(TokenTypes.ComposicionDeEfectos,"");
-                            tokens.Add(conjuncion);
+                            var conjunction = new Tokens(TokenTypes.ComposicionDeEfectos,"");
+                            tokens.Add(conjunction);
                             continue;
                         }
 
-                        if(TextoLimpio[j]=="cuando")
+                        if(CleanText[j]=="cuando")
                         {
-                            var condicion= new Tokens(TokenTypes.cuando,"");
-                            tokens.Add(condicion);
+                            var Conditions = new Tokens(TokenTypes.cuando,"");
+                            tokens.Add(Conditions);
                             continue;
                         }
-                        if(TextoLimpio[j]=="siemprecuando")
+                        if(CleanText[j]=="siemprecuando")
                         {
-                            var condicion= new Tokens(TokenTypes.siemprecuando,"");
-                            tokens.Add(condicion);
+                            var Conditions = new Tokens(TokenTypes.siemprecuando,"");
+                            tokens.Add(Conditions);
                             continue;
                         }
-                        if(TextoLimpio[j]=="MasPoderQue")
+                        if(CleanText[j]=="MasPoderQue")
                         {
-                            if(j==TextoLimpio.Length-1)
+                            if(j== CleanText.Length-1)
                             {
                                 throw new Exception("MasPoderQue must receive an integer");
                             }
-                            if(int.TryParse(TextoLimpio[j+1],out int intValue))
+                            if(int.TryParse(CleanText[j+1],out int intValue))
                             {
-                                var maspoder= new Tokens(TokenTypes.maspoder,TextoLimpio[j+1]);
-                                tokens.Add(maspoder);
+                                var MorePower= new Tokens(TokenTypes.maspoder, CleanText[j+1]);
+                                tokens.Add(MorePower);
                                 j++;
                                 continue;
 
@@ -134,16 +135,16 @@ namespace BattleCards
                             }
 
                         }
-                        if(TextoLimpio[j]=="PoderIgual")
+                        if(CleanText[j]=="PoderIgual")
                         {
-                            if(j==TextoLimpio.Length-1)
+                            if(j== CleanText.Length-1)
                             {
                                 throw new Exception("PoderIgual must receive an integer");
                             }
-                            if(int.TryParse(TextoLimpio[j+1],out int intValue))
+                            if(int.TryParse(CleanText[j+1],out int intValue))
                             {
-                                var igualpoder= new Tokens(TokenTypes.igualpoder,TextoLimpio[j+1]);
-                                tokens.Add(igualpoder);
+                                var EqualPower= new Tokens(TokenTypes.igualpoder, CleanText[j+1]);
+                                tokens.Add(EqualPower);
                                 j++;
                                 continue;
                             }
@@ -152,16 +153,16 @@ namespace BattleCards
                             }
 
                         }
-                        if(TextoLimpio[j]=="MenosPoderQue")
+                        if(CleanText[j]=="MenosPoderQue")
                         {
-                            if(j==TextoLimpio.Length-1)
+                            if(j== CleanText.Length-1)
                             {
                                 throw new Exception("MenosPoderQue must receive an integer");
                             }
-                            if(int.TryParse(TextoLimpio[j+1],out int intValue))
+                            if(int.TryParse(CleanText[j+1],out int intValue))
                             {
-                                var menospoder= new Tokens(TokenTypes.menospoder,TextoLimpio[j+1]);
-                                tokens.Add(menospoder);
+                                var LessPower= new Tokens(TokenTypes.menospoder, CleanText[j+1]);
+                                tokens.Add(LessPower);
                                 j++;
                                 continue;
                             }
@@ -170,16 +171,16 @@ namespace BattleCards
                             }
 
                         }
-                        if(TextoLimpio[j]=="faccion")
+                        if(CleanText[j]=="faccion")
                         {
-                            if(j==TextoLimpio.Length-1)
+                            if(j== CleanText.Length-1)
                             {
                                 throw new Exception("faccion must receive an integer");
                             }
-                            if(int.TryParse(TextoLimpio[j+1],out int intValue))
+                            if(int.TryParse(CleanText[j+1],out int intValue))
                             {
-                                var condicionfaccion= new Tokens(TokenTypes.condicionfaccion,TextoLimpio[j+1]);
-                                tokens.Add(condicionfaccion);
+                                var factionconditions = new Tokens(TokenTypes.condicionfaccion, CleanText[j+1]);
+                                tokens.Add(factionconditions);
                                 j++;
                                 continue;
                             }
@@ -189,16 +190,16 @@ namespace BattleCards
 
                         }
                         
-                        if(TextoLimpio[j]=="SubePoder")
+                        if(CleanText[j]=="SubePoder")
                         {
-                            if(j==TextoLimpio.Length-1)
+                            if(j== CleanText.Length-1)
                             {
                                 throw new Exception("SubePoder must receive an integer");
                             }
-                            if(int.TryParse(TextoLimpio[j+1],out int intValue))
+                            if(int.TryParse(CleanText[j+1],out int intValue))
                             {
-                                var subepoder= new Tokens(TokenTypes.effect_subepoder,TextoLimpio[j+1]);
-                                tokens.Add(subepoder);
+                                var PowerUp = new Tokens(TokenTypes.effect_subepoder, CleanText[j+1]);
+                                tokens.Add(PowerUp);
                                 j++;
                                 continue;
                             }
@@ -248,17 +249,17 @@ namespace BattleCards
 
         public static string[] TextLimp(string expr)
         {
-            char[] cosasraras = new char[]{' '}; 
+            char[] RareCharacters = new char[]{' '}; 
             
-            string[] subsequence = expr.Split(cosasraras , System.StringSplitOptions.RemoveEmptyEntries);
+            string[] subsequence = expr.Split(RareCharacters, System.StringSplitOptions.RemoveEmptyEntries);
 
-            string[] sincosasraras= new string[subsequence.Length];
-            for(int j=0;j<sincosasraras.Length;j++)
+            string[] LeesRareCharacters = new string[subsequence.Length];
+            for(int j=0;j< LeesRareCharacters.Length;j++)
             {
-                sincosasraras[j]= subsequence[j];
+                LeesRareCharacters[j]= subsequence[j];
             }
 
-            return sincosasraras;
+            return LeesRareCharacters;
         
         }   
     }
